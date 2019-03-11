@@ -7,6 +7,7 @@ import com.loopj.android.http.RequestParams;
 public class HttpUtils {
     private static final String BASE_URL ="http://payroll.unicode.edu.vn/api/";
     private static AsyncHttpClient client = new AsyncHttpClient();
+
     public static void get(String url, RequestParams params, AsyncHttpResponseHandler responseHandler) {
         client.get(getAbsoluteUrl(url), params, responseHandler);
     }
