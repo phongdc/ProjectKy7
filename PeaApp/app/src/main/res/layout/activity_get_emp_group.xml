@@ -4,20 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GetPeriodActivity">
-
+    tools:context=".GetEmpGroupActivity">
     <include android:id="@+id/toolbar"
-     layout="@layout/toolbar"   />
+        layout="@layout/toolbar"/>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_Period"
+    <ListView
+        android:id="@+id/lvPaySlipGroup"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/toolbar" />
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar">
 
+    </ListView>
     <ImageView
-
-        android:id="@+id/addItem"
+        android:id="@+id/addPaySlip"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_alignParentEnd="true"
@@ -26,8 +25,7 @@
         android:layout_marginEnd="15dp"
         android:layout_marginRight="15dp"
         android:layout_marginBottom="15dp"
-        android:src="@drawable/ic_add_circle_black_75dp"
-        android:onClick="clickToAddPeriod">
+        android:onClick="clickToAddPaySlip"
+        android:src="@drawable/ic_add_circle_black_75dp" />
 
-    </ImageView>
 </RelativeLayout>

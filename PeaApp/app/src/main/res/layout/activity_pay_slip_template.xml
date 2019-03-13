@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PaySlipTemplateActivity">
+    <include android:id="@+id/toolbar"
+        layout="@layout/toolbar"/>
+    <TextView
+        android:id="@+id/tvTemplateName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:text="Tên: "
+        android:textSize="20dp"
+        android:layout_below="@+id/toolbar"/>
+    <EditText
+        android:id="@+id/edtTemplateName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvTemplateName"/>
+    <TextView
+        android:id="@+id/tvPayrollDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Chọn bảng lương: "
+        android:textSize="18dp"
+        android:layout_below="@+id/edtTemplateName"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_PayrollDetails"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tvPayrollDetails"></android.support.v7.widget.RecyclerView>
+</RelativeLayout>
