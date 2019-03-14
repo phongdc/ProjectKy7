@@ -11,6 +11,15 @@ public class Payroll {
     private String frequency;
     private String variability;
     private String destination;
+    private boolean isSelected;
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
+    }
 
     public int getId() {
         return id;
