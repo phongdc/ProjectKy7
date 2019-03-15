@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".DayTypeActivity">
+
+
+    <TextView
+        android:textSize="25dp"
+        android:id="@+id/txtNameType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Loại ngày"
+        android:layout_marginLeft="5dp"
+        />
+
+    <TextView
+        android:id="@+id/txtPriority"
+        android:layout_below="@+id/txtNameType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="Độ ưu tiên"
+        android:layout_marginLeft="5dp"
+        />
+
+</RelativeLayout>

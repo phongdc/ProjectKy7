@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="450dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+    <include android:id="@+id/toolbar"
+        layout="@layout/toolbar"/>
+    <EditText
+        android:id="@+id/edtDayName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nhập tên ngày"
+        />
+    <EditText
+        android:id="@+id/edtDotw"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nhập ngày trong tuần"
+        />
+
+    <EditText
+        android:id="@+id/edtFromdateDayType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:hint="Từ ngày" />
+    <EditText
+        android:id="@+id/edtTodateDayType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Tới ngày"
+        />
+    <EditText
+        android:id="@+id/edtPriority"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nhập độ ưu tiên"
+        />
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btCancelDayType"
+                android:layout_width="125dp"
+                android:layout_height="wrap_content"
+                android:text="Cancel"/>
+            <Button
+                android:id="@+id/btSaveDayType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="OK"/>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>
