@@ -1,9 +1,11 @@
 package com.example.phongdc.peaapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Layout;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -24,6 +26,7 @@ import java.util.List;
 
 import Adapter.PayrollRecyclerAdapter;
 import Model.Payroll;
+import Model.PayslipTemplate;
 import cz.msebera.android.httpclient.Header;
 
 
@@ -33,7 +36,6 @@ public class PaySlipTemplateActivity extends AppCompatActivity {
     private List<Payroll> payrolls;
     private String nameApi = "PayrollDetail";
     private String nameApi1 = "PaySlipTemplate";
-
     //private Integer[] itemId;
     private List<Integer> array;
     private EditText edtTemplateName;
@@ -106,6 +108,8 @@ public class PaySlipTemplateActivity extends AppCompatActivity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 Toast.makeText(PaySlipTemplateActivity.this,"Thêm thành công",Toast.LENGTH_SHORT ).show();
+                finish();
+                //startActivity(new Intent(PaySlipTemplateActivity.this, GetAllPayslipTemplateActivity.class));
             }
 
             @Override
@@ -116,4 +120,6 @@ public class PaySlipTemplateActivity extends AppCompatActivity {
 
         });
     }
+
+
 }

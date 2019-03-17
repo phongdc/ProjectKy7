@@ -1,30 +1,42 @@
 package com.example.phongdc.peaapp;
 
+import android.annotation.TargetApi;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
 import Adapter.PayrollRecyclerAdapter;
 import Model.Payroll;
 import cz.msebera.android.httpclient.Header;
+import cz.msebera.android.httpclient.entity.StringEntity;
 
 public class PayrollDetailActivity extends AppCompatActivity {
 
     private TextView tvTitle;
     private RecyclerView rv_payroll;
     private List<Payroll> payrolls;
+    PopupWindow popupWindow;
     private String nameApi = "PayrollDetail";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +76,39 @@ public class PayrollDetailActivity extends AppCompatActivity {
                 }catch (Exception ex){
                     ex.printStackTrace();
                 }
+            }
+        });
+    }
+    private void callPopup() {
+
+        LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
+
+        View popupView = layoutInflater.inflate(R.layout.popup, null);
+
+        popupWindow = new PopupWindow(popupView, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, true);
+
+        popupWindow.setTouchable(true);
+        popupWindow.setFocusable(true);
+
+        popupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0);
+
+        ((Button) popupView.findViewById(R.id.btSave)).setOnClickListener(new View.OnClickListener() {
+
+            @TargetApi(Build.VERSION_CODES.GINGERBREAD)
+            public void onClick(View arg0) {
+
+
+                popupWindow.dismiss();
+
+            }
+
+        });
+
+        ((Button) popupView.findViewById(R.id.btCancel)).setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View arg0) {
+
+                popupWindow.dismiss();
             }
         });
     }

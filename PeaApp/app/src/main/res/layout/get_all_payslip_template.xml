@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".PayrollDetailActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
 
-    <include android:id="@+id/toolbar"
-        layout="@layout/toolbar"/>
+<include android:id="@+id/toolbar"
+    layout="@layout/toolbar"/>
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_Payrolls"
+
+        android:id="@+id/rv_Payslip_template"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="55dp">
@@ -18,20 +19,13 @@
     </android.support.v7.widget.RecyclerView>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/btnAddPaySlip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         app:fabSize="normal"
-        app:layout_anchor="@id/rv_Payrolls"
+        app:layout_anchor="@id/rv_Payslip_template"
         app:layout_anchorGravity="bottom|right|end"
-        tools:srcCompat="@drawable/ic_add_circle_black_150dp" />
-
-    <ImageView
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:src="@drawable/ic_more_vert_black_35dp"
-        app:layout_anchor="@id/toolbar"
-        android:layout_marginTop="10dp"
-        app:layout_anchorGravity="top|right"/>
+        android:src="@drawable/icon_add"
+        android:onClick="clickToCreateTemplate"/>
 </android.support.design.widget.CoordinatorLayout>
