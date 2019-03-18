@@ -34,8 +34,8 @@ public class PaySlipTemplateActivity extends AppCompatActivity {
     private RecyclerView rv_Payroll;
     private TextView tvTitle;
     private List<Payroll> payrolls;
-    private String nameApi = "PayrollDetail";
-    private String nameApi1 = "PaySlipTemplate";
+    private String nameApi = "payroll_detail";
+    private String nameApi1 = "payslip_template";
     //private Integer[] itemId;
     private List<Integer> array;
     private EditText edtTemplateName;

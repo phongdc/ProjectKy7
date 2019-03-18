@@ -28,7 +28,7 @@ public class GetPeriodActivity extends AppCompatActivity {
 
     private TextView tvTitle;
     private RecyclerView rv_PayPeriod;
-    private String nameApi = "PayrollPeriod";
+    private String nameApi = "payroll_period";
     private List<PayrollPeriod> periodList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -45,15 +45,19 @@ public class GetAllPayslipTemplateActivity extends AppCompatActivity {
     }
 
     public void getAllPayslipTemplate() {
-        HttpUtils.get("PaySlipTemplate", null, new JsonHttpResponseHandler() {
+        HttpUtils.get("payslip_template", null, new JsonHttpResponseHandler() {
             @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+
                 try {
-                    for (int i = 0; i < response.length(); i++) {
+                    payslipTemplateList.clear();
+                    JSONArray data =(JSONArray)  response.get("data");
+                    for (int i = 0; i < data.length(); i++) {
                         PayslipTemplate payslipTemplate = new PayslipTemplate();
-                        JSONObject object = response.getJSONObject(i);
-                        payslipTemplate.setId(object.getInt("id"));
-                        payslipTemplate.setName(object.getString("name"));
+                        JSONObject jsonObject = data.getJSONObject(i);
+                        payslipTemplate.setId(jsonObject.getInt("id"));
+                        payslipTemplate.setName(jsonObject.getString("name"));
+
                         payslipTemplateList.add(payslipTemplate);
                     }
                     rv_Payslip_template.setAdapter(new Payslip_TemplateAdapter(payslipTemplateList, GetAllPayslipTemplateActivity.this));

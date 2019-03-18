@@ -9,11 +9,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.loopj.android.http.AsyncHttpClient;
@@ -28,6 +30,7 @@ import java.util.List;
 
 import Adapter.PayrollRecyclerAdapter;
 import Model.Payroll;
+import Model.SalaryRuleGroup;
 import cz.msebera.android.httpclient.Header;
 import cz.msebera.android.httpclient.entity.StringEntity;
 
@@ -37,7 +40,9 @@ public class PayrollDetailActivity extends AppCompatActivity {
     private RecyclerView rv_payroll;
     private List<Payroll> payrolls;
     PopupWindow popupWindow;
-    private String nameApi = "PayrollDetail";
+    private String nameApi = "payroll_detail";
+    private List<SalaryRuleGroup> salaryGroupList;
+    private Spinner spnSalaryRuleGroup;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,20 +84,46 @@ public class PayrollDetailActivity extends AppCompatActivity {
             }
         });
     }
+    private void getSalaryRuleGroup(){
+        salaryGroupList = new ArrayList<>();
+        spnSalaryRuleGroup = findViewById(R.id.spnSalaryRuleGroup);
+        final ArrayAdapter<SalaryRuleGroup> adapter = new ArrayAdapter<SalaryRuleGroup>(this, android.R.layout.simple_spinner_item,salaryGroupList);
+        adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
+        HttpUtils.get("salary_rule_group", null,new JsonHttpResponseHandler(){
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
+                try{
+                for (int i = 0; i < response.length(); i++) {
+                    SalaryRuleGroup salaryRuleGroup = new SalaryRuleGroup();
+                    JSONObject object = response.getJSONObject(i);
+                    salaryRuleGroup.setId(object.getInt("id"));
+                    salaryRuleGroup.setName(object.getString("name"));
+                    salaryGroupList.add(salaryRuleGroup);
+                    spnSalaryRuleGroup.setAdapter(adapter);
+
+                }}catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+    private void createPayroll(){
+
+    }
     private void callPopup() {
 
         LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
 
-        View popupView = layoutInflater.inflate(R.layout.popup, null);
+        View popupView = layoutInflater.inflate(R.layout.create_payrolldetail_popup, null);
 
-        popupWindow = new PopupWindow(popupView, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, true);
+        popupWindow = new PopupWindow(popupView, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, true);
 
         popupWindow.setTouchable(true);
         popupWindow.setFocusable(true);
 
         popupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0);
 
-        ((Button) popupView.findViewById(R.id.btSave)).setOnClickListener(new View.OnClickListener() {
+        ((Button) popupView.findViewById(R.id.btCreatePayrollDetail)).setOnClickListener(new View.OnClickListener() {
 
             @TargetApi(Build.VERSION_CODES.GINGERBREAD)
             public void onClick(View arg0) {
@@ -111,5 +142,10 @@ public class PayrollDetailActivity extends AppCompatActivity {
                 popupWindow.dismiss();
             }
         });
+    }
+
+    public void clickToCreatePayrollDetail(View view) {
+        callPopup();
+        getSalaryRuleGroup();
     }
 }
