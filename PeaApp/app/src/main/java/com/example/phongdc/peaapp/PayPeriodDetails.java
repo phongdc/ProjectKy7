@@ -1,5 +1,6 @@
 package com.example.phongdc.peaapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
@@ -33,9 +34,7 @@ public class PayPeriodDetails extends AppCompatActivity {
     private int id;
     private String name;
     private List<Employee> empList;
-    LinearLayout linearLayout;
-    LinearLayout.LayoutParams checkParams;
-    List<CheckBox > allCheckBox;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,38 +44,11 @@ public class PayPeriodDetails extends AppCompatActivity {
         id = extras.getInt("ID");
         name = extras.getString("NAME");
         txtPeriodName = findViewById(R.id.payperiodname);
-        checkParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        checkParams.setMargins(10, 10, 10, 10);
-        checkParams.gravity = Gravity.LEFT;
-        allCheckBox = new ArrayList<CheckBox>();
-        linearLayout = (LinearLayout) findViewById(R.id.EmpList);
         empList = new ArrayList<Employee>();
         txtPeriodName.setText(name);
 
-
-
-//        getPayPeriodDetails();
         getEmployee();
     }
-
-//    private void getPayPeriodDetails() {
-//        AsyncHttpClient client = new AsyncHttpClient();
-//        client.get("http://payroll.unicode.edu.vn/api/PayrollPeriod?empId=" + id , null, new JsonHttpResponseHandler(){
-//            @Override
-//            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-//                try {
-//                    JSONObject jsonObject = new JSONObject(response.toString());
-//                    String name = jsonObject.getString("name");
-//                    txtPeriodName.setText(name);
-//                }catch (Exception ex){
-//                    ex.printStackTrace();
-//                }
-//            }
-//
-//        });
-//    }
-
-
 
     public void getEmployee(){
 
@@ -94,13 +66,6 @@ public class PayPeriodDetails extends AppCompatActivity {
                         emp.setId(object.getInt("id"));
                         emp.setEmployee_name(object.getString("employee_name"));
                         emp.setCode(object.getString("code"));
-
-                        CheckBox cb = new CheckBox(PayPeriodDetails.this);
-                        cb.setText(object.getString("employee_name"));
-                        cb.setId(i);
-                        linearLayout.addView(cb, checkParams);
-                        allCheckBox.add(cb);
-
                         empList.add(emp);
 
                     }
@@ -114,45 +79,13 @@ public class PayPeriodDetails extends AppCompatActivity {
     }
 
     public void clickToAddEmp(View view) {
-        AsyncHttpClient asyncHttpClient = new AsyncHttpClient();
-        RequestParams params = new RequestParams();
-        JSONObject object = new JSONObject();
-        JSONArray jsonArray = new JSONArray();
+        Intent intent = new Intent(this, PayPeriodAddListEmployee.class);
+        startActivity(intent);
+    }
 
-        for (int i = 0; i < allCheckBox.size(); i++){
-            if (allCheckBox.get(i).isChecked() == true){
-                jsonArray.put(empList.get(i).getId());
-            }
-        }
-
-        params.put("period_apply_id", 0);
-        params.put("list_emp", jsonArray);
-        params.put("group_emp", 0);
-        params.setUseJsonStreamer(true);
-
-        asyncHttpClient.post("http://payroll.unicode.edu.vn/api/payroll_period/apply", params, new AsyncHttpResponseHandler() {
-            @Override
-            public void onStart() {
-            }
-
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-//                GetPeriodActivity getPeriodActivity = new GetPeriodActivity();
-//                getPeriodActivity.getPayPeriod();
-                Toast.makeText(PayPeriodDetails.this,"Thêm thanh cong",Toast.LENGTH_SHORT ).show();
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                Toast.makeText(PayPeriodDetails.this,"Thêm that bai",Toast.LENGTH_SHORT ).show();
-            }
-
-
-            @Override
-            public void onRetry(int retryNo) {
-                super.onRetry(retryNo);
-            }
-        });
+    public void clickToAddGroupEmp(View view) {
+        Intent intent = new Intent(this, PayPeriodAddGroupEmployee.class);
+        startActivity(intent);
     }
 
 

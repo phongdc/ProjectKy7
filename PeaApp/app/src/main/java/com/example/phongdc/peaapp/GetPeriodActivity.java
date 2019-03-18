@@ -52,13 +52,14 @@ public class GetPeriodActivity extends AppCompatActivity {
     public void getPayPeriod(){
         HttpUtils.getByUrl("http://payroll.unicode.edu.vn/api/payroll_period", null, new JsonHttpResponseHandler(){
             @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
 //                Toast.makeText(GetPeriodActivity.this,"abc",Toast.LENGTH_LONG ).show();
                 try {
-
-                    for (int i = 0; i < response.length(); i++) {
+                    JSONObject json = new JSONObject(response.toString());
+                    JSONArray jArray = json.getJSONArray("data");
+                    for (int i = 0; i < jArray.length(); i++) {
                         PayrollPeriod period = new PayrollPeriod();
-                        JSONObject object = response.getJSONObject(i);
+                        JSONObject object = jArray.getJSONObject(i);
                         period.setId(object.getInt("id"));
                         period.setName(object.getString("name"));
                         period.setFrom_date(object.getString("from_date"));

@@ -4,34 +4,46 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
-
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="name:"/>
+        android:text="Kì Lương:"
+        android:layout_marginRight="5dp"
+        android:textSize="24dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/payperiodname"/>
-    <ScrollView
-        android:id="@+id/ScViewEmp"
+        android:id="@+id/payperiodname"
+        android:text="a"
+        android:textSize="18dp"/>
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="500px">
-        <LinearLayout
-            android:id="@+id/EmpList"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-        </LinearLayout>
-    </ScrollView>
-
-    <Button
-        android:id="@+id/btAddEmp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <Button
+        android:id="@+id/btnAddEmp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add emp"
+        android:text="Thêm Nhân Viên"
         android:onClick="clickToAddEmp"/>
+
+        <Button
+            android:id="@+id/btnAddGroupEmp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thêm Nhóm Nhân Viên"
+            android:onClick="clickToAddGroupEmp"/>
+
+    </LinearLayout>
+
+
 
 
 

@@ -29,6 +29,8 @@
         <activity android:name=".PayrollDetailActivity" />
         <activity android:name=".GetAllPayslipTemplateActivity"></activity>
         <activity android:name=".PayPeriodDetails"></activity>
+        <activity android:name=".PayPeriodAddGroupEmployee"></activity>
+        <activity android:name=".PayPeriodAddListEmployee"></activity>
     </application>
 
 </manifest>
