@@ -1,5 +1,6 @@
 package Adapter;
 
+import android.content.ClipData;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
@@ -38,10 +39,17 @@ public class Payslip_TemplateAdapter extends RecyclerView.Adapter<Payslip_Templa
     @Override
     public void onBindViewHolder(@NonNull final Payslip_TemplateViewHolder payslip_templateViewholder, int i) {
         payslip_templateViewholder.tvPayslipName.setText(payslipTemplateList.get(i).getName());
-        payslip_templateViewholder.setItemClickListener(new ItemClickListener() {
+        payslip_templateViewholder.chkSelected.setChecked(payslipTemplateList.get(i).isSelected());
+        payslip_templateViewholder.chkSelected.setTag(i);
+        payslip_templateViewholder.chkSelected.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View view, int position, boolean isLongClick) {
-                payslip_templateViewholder.chkSelected.setVisibility(View.VISIBLE);
+            public void onClick(View v) {
+                Integer pos = (Integer) payslip_templateViewholder.chkSelected.getTag();
+                if(payslipTemplateList.get(pos).isSelected()){
+                    payslipTemplateList.get(pos).setSelected(false);
+                }else {
+                    payslipTemplateList.get(pos).setSelected(true);
+                }
             }
         });
     }
@@ -50,7 +58,6 @@ public class Payslip_TemplateAdapter extends RecyclerView.Adapter<Payslip_Templa
     public int getItemCount() {
         return payslipTemplateList.size();
     }
-
     public static class Payslip_TemplateViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
         private CardView cv;
         private TextView tvPayslipName;
@@ -61,9 +68,10 @@ public class Payslip_TemplateAdapter extends RecyclerView.Adapter<Payslip_Templa
             cv = itemView.findViewById(R.id.cvPayroll);
             tvPayslipName = itemView.findViewById(R.id.tvPayrollName);
             chkSelected = itemView.findViewById(R.id.chkSelected);
-            chkSelected.setVisibility(View.INVISIBLE);
-            itemView.setOnLongClickListener(this);
+            //chkSelected.setVisibility(View.INVISIBLE);
+
         }
+
         public void setItemClickListener(ItemClickListener itemClickListener){
             this.itemClickListener = itemClickListener;
         }
@@ -74,7 +82,8 @@ public class Payslip_TemplateAdapter extends RecyclerView.Adapter<Payslip_Templa
 
         @Override
         public boolean onLongClick(View v) {
-            itemClickListener.onClick(v,getAdapterPosition(), true);
+
+            //itemClickListener.onClick(v,getAdapterPosition(), true);
             return true;
         }
     }
