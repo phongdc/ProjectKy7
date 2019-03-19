@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".GetEmpGroupActivity" />
-        <activity android:name=".GetPeriodActivity">
+        <activity android:name=".TimeFrameActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,13 +24,15 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".EmpDetailsActivity" />
         <activity android:name=".CreatePayPeriod" />
-        <!--<activity android:name=".GetPeriodActivity" />-->
+        <activity android:name=".GetPeriodActivity" />
         <activity android:name=".PaySlipTemplateActivity" />
         <activity android:name=".PayrollDetailActivity" />
         <activity android:name=".GetAllPayslipTemplateActivity"></activity>
         <activity android:name=".PayPeriodDetails"></activity>
         <activity android:name=".PayPeriodAddGroupEmployee"></activity>
         <activity android:name=".PayPeriodAddListEmployee"></activity>
+        <!--<activity android:name=".TimeFrameActivity"></activity>-->
+        <activity android:name=".CreateTimeFrame"></activity>
     </application>
 
 </manifest>
