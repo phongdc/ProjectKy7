@@ -1,6 +1,7 @@
 package com.example.phongdc.peaapp;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
@@ -165,8 +166,10 @@ public class CreatePayPeriod extends AppCompatActivity implements View.OnClickLi
 
               @Override
               public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                  GetPeriodActivity getPeriodActivity = new GetPeriodActivity();
-                  getPeriodActivity.getPayPeriod();
+//                  GetPeriodActivity getPeriodActivity = new GetPeriodActivity();
+//                  getPeriodActivity.getPayPeriod();
+                  Intent intent = new Intent(CreatePayPeriod.this, GetPeriodActivity.class);
+                  startActivity(intent);
               }
 
               @Override

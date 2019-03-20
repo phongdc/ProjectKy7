@@ -2,6 +2,7 @@ package com.example.phongdc.peaapp;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.icu.text.TimeZoneFormat;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -96,8 +97,8 @@ public class CreateTimeFrame extends AppCompatActivity implements View.OnClickLi
         RequestParams params = new RequestParams();
 
         String nameTimeFrame = timeFrameName.getText().toString();
-        String start = "08:00:00";
-        String end = "12:00:00";
+        String start = edtStartTime.getText().toString();
+        String end = edtEndTime.getText().toString();
 
 
         params.put("name", nameTimeFrame);
@@ -115,8 +116,10 @@ public class CreateTimeFrame extends AppCompatActivity implements View.OnClickLi
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                TimeFrameActivity timeFrameActivity = new TimeFrameActivity();
-                timeFrameActivity.getTimeFrame();
+//                TimeFrameActivity timeFrameActivity = new TimeFrameActivity();
+//                timeFrameActivity.getTimeFrame();
+                Intent intent = new Intent(CreateTimeFrame.this, TimeFrameActivity.class);
+                startActivity(intent);
             }
 
             @Override

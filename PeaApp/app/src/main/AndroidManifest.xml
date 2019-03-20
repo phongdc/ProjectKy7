@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".GetEmpGroupActivity" />
-        <activity android:name=".TimeFrameActivity">
+        <activity android:name=".ShiftRegisterActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,8 +31,9 @@
         <activity android:name=".PayPeriodDetails"></activity>
         <activity android:name=".PayPeriodAddGroupEmployee"></activity>
         <activity android:name=".PayPeriodAddListEmployee"></activity>
-        <!--<activity android:name=".TimeFrameActivity"></activity>-->
+        <activity android:name=".TimeFrameActivity"></activity>
         <activity android:name=".CreateTimeFrame"></activity>
+        <!--<activity android:name=".ShiftRegisterActivity"></activity>-->
     </application>
 
 </manifest>
