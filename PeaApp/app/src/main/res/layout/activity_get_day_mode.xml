@@ -4,19 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GetEmpGroupActivity">
+    android:orientation="vertical"
+    tools:context=".DayModeActivity">
     <include android:id="@+id/toolbar"
         layout="@layout/toolbar"/>
 
     <ListView
-        android:id="@+id/lvPaySlipGroup"
+        android:layout_below="@+id/toolbar"
+        android:id="@+id/lvDayType"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/toolbar">
-
-    </ListView>
+        android:layout_height="match_parent"
+         />
     <ImageView
-        android:id="@+id/addPaySlip"
+        android:id="@+id/addDayType"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_alignParentEnd="true"
@@ -25,8 +25,6 @@
         android:layout_marginEnd="15dp"
         android:layout_marginRight="15dp"
         android:layout_marginBottom="15dp"
-        android:onClick="clickToAddPaySlip"
-        android:src="@drawable/ic_add_circle_black_75dp"
-        />
-
+        android:onClick="clickToAddDayType"
+        android:src="@drawable/ic_add_circle_black_75dp" />
 </RelativeLayout>

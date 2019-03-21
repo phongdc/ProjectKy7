@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".GetInformationDayTypeActivity"></activity>
-        <activity android:name=".DayTypeActivity" />
+        <activity android:name=".DayModeActivity" />
         <activity android:name=".GetEmpGroupActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

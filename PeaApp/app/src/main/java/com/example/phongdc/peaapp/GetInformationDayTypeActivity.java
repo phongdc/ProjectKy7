@@ -1,67 +1,74 @@
 package com.example.phongdc.peaapp;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.EditText;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-import Adapter.DayTypeAdapter;
-import Model.DayType;
+import Adapter.GetInfomationDayTypeAdapter;
+import Model.DayModeInf;
 import cz.msebera.android.httpclient.Header;
 
 public class GetInformationDayTypeActivity extends AppCompatActivity {
-    private EditText edtDayNameInf, edtDotwInf, edtTodateInf, edtFromdateInf, edtPriorityInf;
-    private String nameApi = "DayType";
+
+    private String nameApi = "day_mode";
     private TextView tvTitle;
-    private SimpleDateFormat dateFormat;
+    private RecyclerView rvDayOfWeek;
+    private List<DayModeInf> dayModeInfs;
+    private TextView txtDayModeName;
+    int id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Bundle extras = this.getIntent().getExtras();
+        id = extras.getInt("dayModeID");
         setContentView(R.layout.activity_get_information_day_type);
+        txtDayModeName = findViewById(R.id.txtDayName);
         tvTitle = findViewById(R.id.tvTitle);
-        tvTitle.setText("Thông tin DayType");
-        edtDayNameInf = findViewById(R.id.edtDayNameInf);
-        edtDotwInf = findViewById(R.id.edtDotwInf);
-        edtTodateInf = findViewById(R.id.edtTodateInf);
-        edtFromdateInf = findViewById(R.id.edtFromdateInf);
-        edtPriorityInf = findViewById(R.id.edtPriorityInf);
-        dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        //getDetail();
+        tvTitle.setText("Thông tin DayMode");
+        rvDayOfWeek = findViewById(R.id.rvDayOfWeek);
+        dayModeInfs = new ArrayList<>();
+        rvDayOfWeek.setLayoutManager(new LinearLayoutManager(this));
+        getDetail();
+
+
+
     }
     public  void  getDetail() {
         HttpUtils.get(nameApi, null, new JsonHttpResponseHandler(){
             @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 try {
-                    for (int i = 0; i < response.length(); i++) {
-                        JSONObject object = response.getJSONObject(i);
-                        edtDayNameInf.setText(object.getString("name"));
-
-                        String address = object.getString("days_of_the_week");
-                        edtDotwInf.setText(address);
-                        edtPriorityInf.setText(object.getString("priority"));
-                        String fromdate = object.getString("from_date");
-                        Date date = dateFormat.parse(fromdate);
-                        edtFromdateInf.setText(dateFormat.format(date));
-
-                        String fromdate2 = object.getString("to_date");
-                        Date date2 = dateFormat.parse(fromdate2);
-                        edtTodateInf.setText(dateFormat.format(date2));
-                    }
-
-                }catch (Exception e){
-                    e.printStackTrace();
+                    JSONArray data = (JSONArray) response.get("data");
+                    for (int i = 0; i < data.length(); i++) {
+                        JSONObject object = data.getJSONObject(i);
+                        if(id == object.getInt("id")){
+                            String name =  object.getString("name");
+                            txtDayModeName.setText(name);
+                            JSONArray dataDayOfWeek = (JSONArray) object.get("day_of_week");
+                            for (int j = 0; j < dataDayOfWeek.length(); j++) {
+                                JSONObject obj = dataDayOfWeek.getJSONObject(j);
+                                DayModeInf dayModeInf = new DayModeInf();
+                                dayModeInf.setNameDay(obj.getString("name"));
+                                dayModeInf.setId(obj.getInt("id"));
+                                dayModeInf.setActive(obj.getBoolean("active"));
+                                dayModeInfs.add(dayModeInf);
+                            }//end for
+                            rvDayOfWeek.setAdapter(new GetInfomationDayTypeAdapter(dayModeInfs, GetInformationDayTypeActivity.this));
+                        }//end if
+                    }//end for
+                }catch (Exception ex){
+                    ex.printStackTrace();
                 }
             }
             @Override
@@ -70,4 +77,5 @@ public class GetInformationDayTypeActivity extends AppCompatActivity {
             }
         });
     }
+
 }
