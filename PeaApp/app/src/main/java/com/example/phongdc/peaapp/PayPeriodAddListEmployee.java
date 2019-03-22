@@ -68,6 +68,7 @@ public class PayPeriodAddListEmployee extends AppCompatActivity {
                         CheckBox cb = new CheckBox(PayPeriodAddListEmployee.this);
                         cb.setText(object.getString("employee_name"));
                         cb.setId(i);
+                        cb.setTextSize(20);
                         linearLayout.addView(cb, checkParams);
                         allCheckBox.add(cb);
 

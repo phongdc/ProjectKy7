@@ -65,9 +65,9 @@ public static class ShiftRegisterViewHolder extends  RecyclerView.ViewHolder imp
     public void onBindViewHolder(final GetShiftRegisterRecyclerAdapter.ShiftRegisterViewHolder ShiftRegisterViewHolder, final int i) {
         ShiftRegisterViewHolder.tvShiftRegisterName.setText(shiftRegisters.get(i).getEmpName().toString());
 
-//        ShiftRegisterViewHolder.setItemClickListener(new ItemClickListener() {
-//            @Override
-//            public void onClick(View view, int position, boolean isLongClick) {
+        ShiftRegisterViewHolder.setItemClickListener(new ItemClickListener() {
+            @Override
+            public void onClick(View view, int position, boolean isLongClick) {
 //                Context context = view.getContext();
 //                Intent intent = new Intent(context, ShiftRegisterDetails.class);
 //
@@ -91,8 +91,8 @@ public static class ShiftRegisterViewHolder extends  RecyclerView.ViewHolder imp
 //                bundle.putString("EndTIME", endTime);
 //                intent.putExtras(bundle);
 //                context.startActivity(intent);
-//            }
-//        });
+            }
+        });
 
     }
 

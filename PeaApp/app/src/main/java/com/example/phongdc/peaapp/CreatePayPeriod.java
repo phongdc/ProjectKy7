@@ -145,8 +145,8 @@ public class CreatePayPeriod extends AppCompatActivity implements View.OnClickLi
 //            e.printStackTrace();
 //        }
         String namePeriod = periodName.getText().toString();
-        String from = "2010-07-03";
-        String to = "2012-08-04";
+        String from = edtFromDate.getText().toString();
+        String to = edtTodate.getText().toString();
         int i = 1;
 
         params.put("payslip_template_id", templateID);

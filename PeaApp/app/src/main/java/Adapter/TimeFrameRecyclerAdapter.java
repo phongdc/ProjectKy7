@@ -68,9 +68,9 @@ public static class TimeFrameViewHolder extends  RecyclerView.ViewHolder impleme
     public void onBindViewHolder(final TimeFrameRecyclerAdapter.TimeFrameViewHolder TimeFrameViewHolder, final int i) {
         TimeFrameViewHolder.tvTimeFrameName.setText(timeFrame.get(i).getName().toString());
 
-//        TimeFrameViewHolder.setItemClickListener(new ItemClickListener() {
-//            @Override
-//            public void onClick(View view, int position, boolean isLongClick) {
+        TimeFrameViewHolder.setItemClickListener(new ItemClickListener() {
+            @Override
+            public void onClick(View view, int position, boolean isLongClick) {
 //                Context context = view.getContext();
 //                Intent intent = new Intent(context, PayPeriodDetails.class);
 //
@@ -81,8 +81,8 @@ public static class TimeFrameViewHolder extends  RecyclerView.ViewHolder impleme
 //                bundle.putString("NAME", b);
 //                intent.putExtras(bundle);
 //                context.startActivity(intent);
-//            }
-//        });
+            }
+        });
 
     }
 

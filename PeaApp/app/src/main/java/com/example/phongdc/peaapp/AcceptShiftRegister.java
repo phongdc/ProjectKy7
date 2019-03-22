@@ -70,6 +70,7 @@ public class AcceptShiftRegister extends AppCompatActivity {
                             shiftRegistersList.add(shiftRegister);
                             CheckBox cb = new CheckBox(AcceptShiftRegister.this);
                             cb.setText(object.getString("name"));
+                            cb.setTextSize(20);
                             cb.setId(i);
                             linearLayout.addView(cb, checkParams);
                             allCheckBox.add(cb);
