@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
         drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), mToolbar);
         drawerFragment.setDrawerListener(this);
 
-        Intent intent = new Intent(this, LoginActivity.class);
+        Intent intent = new Intent(this, CheckFingerActivity.class);
         startActivity(intent);
 
     }
