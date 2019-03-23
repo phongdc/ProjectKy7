@@ -17,7 +17,6 @@ import cz.msebera.android.httpclient.Header;
 public class MyDetailActivity extends AppCompatActivity {
     private String nameApi ="Employee/detail?id=1";
     private TextView tvName;
-    private TextView tvTitle;
     private TextView tvCompany;
     private TextView tvBirthday;
     private TextView tvEmail;
@@ -28,8 +27,6 @@ public class MyDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_detail);
-        tvTitle = findViewById(R.id.tvTitle);
-        tvTitle.setText("Nhóm nhân viên");
         tvName = findViewById(R.id.txtImg);
         tvCompany = findViewById(R.id.txtCom);
         tvBirthday = findViewById(R.id.txtBd);

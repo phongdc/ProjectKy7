@@ -10,9 +10,9 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
-import com.example.phongdc.peaapp.R;
 
 import com.example.phongdc.peaapp.ItemClickListener;
+import com.example.phongdc.peaapp.R;
 
 import java.util.List;
 
@@ -41,7 +41,7 @@ public class GetInfomationDayTypeAdapter extends RecyclerView.Adapter<GetInfomat
         payrollViewHolder.tvDayMode.setText(dayModeInfs.get(i).getNameDay());
         payrollViewHolder.checkBoxDayMode.setChecked(dayModeInfs.get(i).isActive());
         payrollViewHolder.checkBoxDayMode.setTag(i);
-        payrollViewHolder.checkBoxDayMode.setOnClickListener(new View.OnClickListener(){
+        payrollViewHolder.checkBoxDayMode.setOnClickListener(new OnClickListener(){
             @Override
             public void onClick(View v) {
                 Integer pos = (Integer) payrollViewHolder.checkBoxDayMode.getTag();

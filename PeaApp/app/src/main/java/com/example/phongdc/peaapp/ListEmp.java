@@ -9,16 +9,22 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.loopj.android.http.JsonHttpResponseHandler;
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
 import com.squareup.moshi.Types;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 import Adapter.EmpRecycleAdapter;
 import Model.Employee;
+import cz.msebera.android.httpclient.Header;
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -26,59 +32,45 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 public class ListEmp extends AppCompatActivity {
-
+    private List<Employee> employeeList;
+    private TextView tvTotal;
+    private RecyclerView rvEmps;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_emp);
 
         //tạo recyclerView
-        final RecyclerView rvEmps = (RecyclerView)findViewById(R.id.rv_Emp);
-        final TextView tvTotal = (TextView) findViewById(R.id.tvTotal);
+        employeeList = new ArrayList<>();
+         rvEmps = (RecyclerView)findViewById(R.id.rv_Emp);
+          tvTotal = (TextView) findViewById(R.id.tvTotal);
         rvEmps.setLayoutManager(new LinearLayoutManager(this));
         // Khởi tạo OkHttpClient để lấy dữ liệu.
-        OkHttpClient client = new OkHttpClient();
-
-        // Khởi tạo Moshi adapter để biến đổi json sang model java (ở đây là User)
-        Moshi moshi = new Moshi.Builder().build();
-        Type empType = Types.newParameterizedType(List.class, Employee.class);
-        final JsonAdapter<List<Employee>> jsonAdapter = moshi.adapter(empType);
-        // Tạo request lên server.
-        Request request = new Request.Builder()
-                .url("http://payroll.unicode.edu.vn/api/Employee")
-                .build();
-
-        // Thực thi request.
-        client.newCall(request).enqueue(new Callback() {
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                // Lấy thông tin JSON trả về. Bạn có thể log lại biến json này để xem nó như thế nào.
-                String json = response.body().string();
-                final List<Employee> employees = jsonAdapter.fromJson(json);
-                final int total = employees.size();
-
-
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        rvEmps.setAdapter(new EmpRecycleAdapter(employees, ListEmp.this));
-                        tvTotal.setText("Total: " + total);
-
-                    }
-                });
-            }
-
-            @Override
-            public void onFailure(Call call, IOException e) {
-                Log.e("Error", "Network Error");
-            }
-
-        });
+        getEmpList();
 }
 
-    public void clickToDetails(View view) {
-        
-        Toast.makeText(this,"abc",Toast.LENGTH_SHORT).show();
-    }
+  private void getEmpList(){
+        HttpUtils.get("employee", null, new JsonHttpResponseHandler(){
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                try {
+                    JSONArray dataArray = (JSONArray) response.get("data");
+                    for (int i = 0; i < dataArray.length(); i++) {
+                        Employee employee = new Employee();
+                        JSONObject object = dataArray.getJSONObject(i);
+                        employee.setId(object.getInt("id"));
+                        employee.setEmployee_name(object.getString("employee_name"));
+                        employee.setCode(object.getString("code"));
+                        employeeList.add(employee);
+                        int total = employeeList.size();
+                        tvTotal.setText("Total: "+total);
+                    }
+                    rvEmps.setAdapter(new EmpRecycleAdapter(employeeList, ListEmp.this));
+                }
+               catch (Exception e){
+                    e.printStackTrace();
+               }
+            }
+        });
+  }
 }

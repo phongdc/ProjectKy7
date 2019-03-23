@@ -4,9 +4,11 @@ import android.annotation.TargetApi;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -42,7 +44,7 @@ public class GetEmpGroupActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_emp_group);
-        lvPaySlipGroup = findViewById(R.id.lvPaySlipGroup);
+        lvPaySlipGroup = findViewById(R.id.lvEmpGroup);
         tvTitle = findViewById(R.id.tvTitle);
         tvTitle.setText("Nhóm nhân viên");
         empGroups = new ArrayList<>();
@@ -58,16 +60,17 @@ public class GetEmpGroupActivity extends AppCompatActivity {
     }
 
     private void getPaySlipGroup() {
-        HttpUtils.get("EmployeeGroup", null, new JsonHttpResponseHandler() {
+        HttpUtils.get("employee_group", null, new JsonHttpResponseHandler() {
             @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 try {
-                    for (int i = 0; i < response.length(); i++) {
+                    JSONArray data = (JSONArray)response.get("data");
+                    for (int i = 0; i < data.length(); i++) {
                         EmpGroup empGroup = new EmpGroup();
-                        JSONObject object = response.getJSONObject(i);
+                        JSONObject object = data.getJSONObject(i);
                         empGroup.setId(object.getInt("id"));
                         empGroup.setName(object.getString("name"));
-                        empGroup.setCreate_date(object.getString("create_date"));
+                        //empGroup.setCreate_date(object.getString("create_date"));
                         empGroups.add(empGroup);
                     }
                     adapter.notifyDataSetChanged();
