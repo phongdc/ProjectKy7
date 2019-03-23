@@ -119,16 +119,18 @@
                     android:textStyle="bold" />
 
                 <EditText
+                    android:id="@+id/edtDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tvDescription"
                     android:inputType="textMultiLine"
-                    android:lines="5" />
+                    android:lines="8" />
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent"
+                android:gravity="bottom">
 
                 <Button
                     android:id="@+id/btCancel"
@@ -141,7 +143,8 @@
                     android:layout_marginLeft="60dp"
                     android:layout_marginTop="0dp"
                     android:background="@drawable/my_button"
-                    android:text="Hủy" />
+                    android:text="Hủy"
+                    android:onClick="clickToCancel"/>
 
                 <Button
                     android:id="@+id/btCreatePayrollDetail"
@@ -152,7 +155,8 @@
                     android:layout_marginTop="0dp"
                     android:layout_toRightOf="@+id/btCancel"
                     android:background="@drawable/my_button"
-                    android:text="Tạo" />
+                    android:text="Tạo"
+                    android:onClick="clickToCreate"/>
             </RelativeLayout>
         </LinearLayout>
 
