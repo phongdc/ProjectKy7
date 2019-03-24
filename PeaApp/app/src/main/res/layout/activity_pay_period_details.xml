@@ -4,6 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"/>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -24,22 +28,45 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="2"
         android:gravity="center">
-        <Button
-        android:id="@+id/btnAddEmp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Thêm Nhân Viên"
-        android:onClick="clickToAddEmp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_margin="30dp">
 
-        <Button
-            android:id="@+id/btnAddGroupEmp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Thêm Nhóm Nhân Viên"
-            android:onClick="clickToAddGroupEmp"/>
+            <Button
+                android:id="@+id/btnAddEmp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Thêm Nhân Viên"
+                android:textSize="18dp"
+                android:background="@drawable/my_button"
+                android:onClick="clickToAddEmp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_margin="30dp"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp">
+            <Button
+                android:id="@+id/btnAddGroupEmp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/my_button"
+                android:textSize="18dp"
+                android:text="Thêm Nhóm Nhân Viên"
+                android:onClick="clickToAddGroupEmp"/>
+
+        </LinearLayout>
+
+
+
 
     </LinearLayout>
 
