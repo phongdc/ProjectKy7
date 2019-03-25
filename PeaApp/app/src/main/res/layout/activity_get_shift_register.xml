@@ -34,8 +34,9 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Duyệt Ca"
+            android:text="Duyệt Những Ca Chưa Duyệt"
             android:layout_gravity="center"
+            android:padding="5dp"
             android:background="@drawable/my_button"
             android:onClick="clickToGoToShiftAccept"/>
     </LinearLayout>

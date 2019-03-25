@@ -1,6 +1,7 @@
 package Adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -22,11 +23,13 @@ public static class ShiftRegisterViewHolder extends  RecyclerView.ViewHolder imp
 
     CardView cv;
     TextView tvShiftRegisterName;
+    TextView tvShiftStatus;
     private ItemClickListener itemClickListener;
     public ShiftRegisterViewHolder(View itemView) {
         super(itemView);
         cv = (CardView)itemView.findViewById(R.id.cvShiftRegister);
         tvShiftRegisterName = (TextView)itemView.findViewById(R.id.tvShiftRegisterName);
+        tvShiftStatus = (TextView)itemView.findViewById(R.id.tvShiftStatus);
 
         itemView.setOnClickListener(this);
         itemView.setOnLongClickListener(this);
@@ -64,6 +67,14 @@ public static class ShiftRegisterViewHolder extends  RecyclerView.ViewHolder imp
     @Override
     public void onBindViewHolder(final GetShiftRegisterRecyclerAdapter.ShiftRegisterViewHolder ShiftRegisterViewHolder, final int i) {
         ShiftRegisterViewHolder.tvShiftRegisterName.setText(shiftRegisters.get(i).getEmpName().toString());
+        if(shiftRegisters.get(i).getStatus().toString().equals("Đã duyệt")){
+            ShiftRegisterViewHolder.tvShiftStatus.setText(shiftRegisters.get(i).getStatus().toString());
+            ShiftRegisterViewHolder.tvShiftStatus.setTextColor(Color.GREEN);
+        } else {
+            ShiftRegisterViewHolder.tvShiftStatus.setText(shiftRegisters.get(i).getStatus().toString());
+            ShiftRegisterViewHolder.tvShiftStatus.setTextColor(Color.RED);
+        }
+
 
         ShiftRegisterViewHolder.setItemClickListener(new ItemClickListener() {
             @Override

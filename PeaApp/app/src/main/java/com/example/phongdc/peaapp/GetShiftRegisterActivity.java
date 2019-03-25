@@ -53,7 +53,7 @@ public class GetShiftRegisterActivity extends AppCompatActivity {
                     JSONArray jArray = json.getJSONArray("data");
                     for (int i = 0; i < jArray.length(); i++) {
                         JSONObject object = jArray.getJSONObject(i);
-                        if(!object.getString("status").matches("Đã duyệt")){
+//                        if(!object.getString("status").matches("Đã duyệt")){
                             ShiftRegister shiftRegister = new ShiftRegister();
                             shiftRegister.setShiftId(object.getInt("id"));
                             shiftRegister.setTimeFrameId(object.getInt("time_frame_id"));
@@ -64,7 +64,7 @@ public class GetShiftRegisterActivity extends AppCompatActivity {
                             shiftRegister.setEndTime(object.getString("end_time"));
                             shiftRegister.setStatus(object.getString("status"));
                             shiftRegisterList.add(shiftRegister);
-                        }
+//                        }
 
                     }
                     rv_ShiftRegister.setAdapter(new GetShiftRegisterRecyclerAdapter(shiftRegisterList, GetShiftRegisterActivity.this));
