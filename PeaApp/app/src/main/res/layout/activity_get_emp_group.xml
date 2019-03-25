@@ -9,23 +9,27 @@
         layout="@layout/toolbar"/>
 
     <ListView
-        android:id="@+id/lvPaySlipGroup"
+        android:id="@+id/lvEmpGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/toolbar">
 
     </ListView>
-    <ImageView
-        android:id="@+id/addPaySlip"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/btnAddPaySlip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginBottom="15dp"
-        android:onClick="clickToAddPaySlip"
-        android:src="@drawable/ic_add_circle_black_75dp" />
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="30dp"
+        android:onClick="clickToCreateEmoGroup"
+        android:src="@drawable/iconadd"
+        app:fabSize="normal"
+        app:layout_anchor="@id/lvEmpGroup"
+        app:layout_anchorGravity="bottom|right|end" />
 
 </RelativeLayout>

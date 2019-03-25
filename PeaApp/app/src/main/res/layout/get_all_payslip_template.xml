@@ -26,14 +26,7 @@
         app:fabSize="normal"
         app:layout_anchor="@id/rv_Payslip_template"
         app:layout_anchorGravity="bottom|right|end"
-        android:src="@drawable/icon_add"
+        android:src="@drawable/iconadd"
         android:onClick="clickToCreateTemplate"/>
 
-    <!--<ImageView-->
-        <!--android:layout_width="35dp"-->
-        <!--android:layout_height="35dp"-->
-        <!--android:layout_marginTop="10dp"-->
-        <!--android:src="@drawable/ic_more_vert_black_35dp"-->
-        <!--app:layout_anchor="@id/toolbar"-->
-        <!--app:layout_anchorGravity="top|right" />-->
 </android.support.design.widget.CoordinatorLayout>

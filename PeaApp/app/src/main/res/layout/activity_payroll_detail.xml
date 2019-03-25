@@ -25,7 +25,7 @@
         app:fabSize="normal"
         app:layout_anchor="@id/rv_Payrolls"
         app:layout_anchorGravity="bottom|right|end"
-        tools:srcCompat="@drawable/ic_add_circle_black_150dp"
+        android:src="@drawable/iconadd"
         android:onClick="clickToCreatePayrollDetail"/>
 
 </android.support.design.widget.CoordinatorLayout>
