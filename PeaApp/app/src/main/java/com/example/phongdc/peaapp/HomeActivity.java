@@ -5,6 +5,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.format.Time;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,12 +15,18 @@ public class HomeActivity extends AppCompatActivity implements FragmentDrawer.Fr
     private Toolbar mToolbar;
     private FragmentDrawer drawerFragment;
     private TextView tvTitle;
+    private TextView tvCurrentDay;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         mToolbar = findViewById(R.id.toolbar);
         tvTitle = findViewById(R.id.tvTitle);
+        tvCurrentDay = findViewById(R.id.tvCurrentDay);
+        Time today = new Time();
+        today.setToNow();
+        int month = today.month +1;
+        tvCurrentDay.setText("Ngày "+today.monthDay +" tháng " +month +" năm "+today.year);
         tvTitle.setText("HOME");
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -74,9 +81,25 @@ public class HomeActivity extends AppCompatActivity implements FragmentDrawer.Fr
     public void clickToPayrollDetail(View view) {
         startActivity(new Intent(HomeActivity.this, PayrollDetailActivity.class));
     }
+    public void clickToDayMode(View view) {
+        startActivity(new Intent(HomeActivity.this, DayModeActivity.class));
+    }
 
     @Override
     public void onDrawerItemSelected(View view, int position) {
 
+    }
+
+
+    public void clickToTimeFrame(View view) {
+        startActivity(new Intent(HomeActivity.this, TimeFrameActivity.class));
+    }
+
+
+    public void clickToAcceptShiftRegister(View view) {
+        startActivity(new Intent(HomeActivity.this, AcceptShiftRegister.class));
+    }
+
+    public void clickToSalaryRule(View view) {
     }
 }

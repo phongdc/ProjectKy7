@@ -6,33 +6,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".EmpDetailsActivity">
-    <android.support.v7.widget.CardView
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"/>
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        app:cardBackgroundColor="#5A9216">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Thông tin nhân viên"
-                android:textColor="#FFFFFF"
-                android:gravity="center"/>
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/ic_arrow_back_black_24dp"
-
-                />
-        </RelativeLayout>
-
-    </android.support.v7.widget.CardView>
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        app:cardBackgroundColor="#8BC34A">
+        android:background="#8BC34A"
+        android:orientation="vertical"
+        android:padding="10dp">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -40,43 +22,54 @@
                 android:id="@+id/tvEmpCode"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="ID: "
+                android:text="Code: "
                 android:gravity="left"
                 android:layout_marginLeft="5dp"
-                android:layout_marginTop="10dp"/>
+                />
         </RelativeLayout>
+    </LinearLayout>
 
-    </android.support.v7.widget.CardView>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Họ và tên"/>
+        android:text="Họ và tên"
+        android:layout_marginLeft="5dp"
+        android:textSize="15dp"/>
 
 
     <EditText
         android:id="@+id/edtEmpName"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Email"/>
+        android:text="Email"
+        android:layout_marginLeft="5dp"
+        android:textSize="15dp"/>
     <EditText
         android:id="@+id/edtEmpEmail"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Địa chỉ"/>
+        android:text="Địa chỉ"
+        android:layout_marginLeft="5dp"
+        android:textSize="15dp"/>
     <EditText
         android:id="@+id/edtEmpAddress"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Số điện thoại"
+        android:layout_marginLeft="5dp"
+        android:textSize="15dp"
         />
     <EditText
         android:id="@+id/edtEmpPhone"
@@ -85,19 +78,25 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Loại nhân viên"/>
+        android:text="Loại nhân viên"
+        android:layout_marginLeft="5dp"
+        android:textSize="15dp"/>
     <EditText
         android:id="@+id/edtEmpRole_Name"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginLeft="5dp"
+        >
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cấp lương"/>
+            android:text="Cấp lương"
+            android:textSize="15dp"/>
         <Spinner
             android:id="@+id/spnSalaryLevel"
             android:layout_width="wrap_content"

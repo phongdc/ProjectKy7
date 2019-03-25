@@ -34,7 +34,7 @@ public class GetInformationDayTypeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_get_information_day_type);
         txtDayModeName = findViewById(R.id.txtDayName);
         tvTitle = findViewById(R.id.tvTitle);
-        tvTitle.setText("Thông tin DayMode");
+        tvTitle.setText("Thông tin lịch làm");
         rvDayOfWeek = findViewById(R.id.rvDayOfWeek);
         dayModeInfs = new ArrayList<>();
         rvDayOfWeek.setLayoutManager(new LinearLayoutManager(this));

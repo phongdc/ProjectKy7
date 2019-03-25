@@ -39,7 +39,7 @@ public class DayModeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_day_mode);
         tvTitle = findViewById(R.id.tvTitle);
-        tvTitle.setText("Loại ngày");
+        tvTitle.setText("Lịch ngày làm");
         lvDayType = findViewById(R.id.lvDayType);
 
         dayModes = new ArrayList<>();

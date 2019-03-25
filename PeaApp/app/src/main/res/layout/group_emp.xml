@@ -12,12 +12,5 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         />
-    <TextView
-        android:textSize="20dp"
-        android:hint="Ngày tạo"
-        android:layout_below="@id/txtTenGroup"
-        android:id="@+id/txtNgayTao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"/>
+
 </RelativeLayout>

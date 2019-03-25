@@ -52,7 +52,6 @@ public class ListGroupAdapter extends BaseAdapter {
             view = inflater.inflate(layout, null);
             holder = new ViewHolder();
             holder.txtTenGroup =  view.findViewById(R.id.txtTenGroup );
-            holder.txtNgayTao =  view.findViewById(R.id.txtNgayTao);
             view.setTag(holder);
         }else{
             holder = (ViewHolder) view.getTag();
@@ -60,7 +59,6 @@ public class ListGroupAdapter extends BaseAdapter {
 
         EmpGroup listGroup = empGroups.get(i);
         holder.txtTenGroup.setText(listGroup.getName());
-        holder.txtNgayTao.setText(listGroup.getCreate_date());
         return view;
     }
 }
