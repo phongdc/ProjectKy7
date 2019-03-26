@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:paddingTop="5dp">
 
     <TextView
-        android:textSize="24dp"
+        android:textSize="20dp"
         android:layout_marginTop="10dp"
         android:id="@+id/txtTenGroup"
         android:text="Tên Group"
@@ -12,12 +15,5 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         />
-    <TextView
-        android:textSize="20dp"
-        android:hint="Ngày tạo"
-        android:layout_below="@id/txtTenGroup"
-        android:id="@+id/txtNgayTao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"/>
-</RelativeLayout>
+
+</LinearLayout>

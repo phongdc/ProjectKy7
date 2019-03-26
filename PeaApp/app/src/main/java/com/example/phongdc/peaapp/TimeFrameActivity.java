@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.phongdc.peaapp.AsyncHttpClient.HttpUtils;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.json.JSONArray;

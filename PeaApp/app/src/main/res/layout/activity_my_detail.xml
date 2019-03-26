@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#8BC34A"
-    tools:context=".MyDetailActivity">
+    tools:context=".User.MyDetailActivity">
 
 
     <android.support.v7.widget.CardView

@@ -1,12 +1,12 @@
 package com.example.phongdc.peaapp.SalaryRule;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
-import com.example.phongdc.peaapp.HttpUtils;
+import com.example.phongdc.peaapp.AsyncHttpClient.HttpUtils;
 import com.example.phongdc.peaapp.R;
 import com.loopj.android.http.JsonHttpResponseHandler;
 

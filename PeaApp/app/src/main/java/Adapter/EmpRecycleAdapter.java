@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.phongdc.peaapp.EmpDetailsActivity;
+import com.example.phongdc.peaapp.Employees.EmpDetailsActivity;
 import com.example.phongdc.peaapp.ItemClickListener;
 import com.example.phongdc.peaapp.R;
 

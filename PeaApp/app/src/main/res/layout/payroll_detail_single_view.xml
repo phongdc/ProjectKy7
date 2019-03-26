@@ -6,8 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingTop="4dp"
-    tools:context=".ListEmp">
+    android:paddingTop="5dp"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    tools:context=".Employees.ListEmp">
 
     <android.support.v7.widget.CardView
         android:id="@+id/cvPayroll"
