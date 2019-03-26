@@ -15,18 +15,21 @@ import java.util.Date;
 import cz.msebera.android.httpclient.Header;
 
 public class MyDetailActivity extends AppCompatActivity {
-    private String nameApi ="Employee/detail?id=1";
+    private String nameApi ="http://payroll.unicode.edu.vn/api/employee?id=4";
     private TextView tvName;
     private TextView tvCompany;
     private TextView tvBirthday;
     private TextView tvEmail;
     private TextView tvAddress;
-    private TextView tvPhone;
+    private TextView tvPhone, tvTitle;
+
     private SimpleDateFormat dateFormat;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_detail);
+        tvTitle = findViewById(R.id.tvTitle);
+        tvTitle.setText("Thông tin cá nhân");
         tvName = findViewById(R.id.txtImg);
         tvCompany = findViewById(R.id.txtCom);
         tvBirthday = findViewById(R.id.txtBd);
@@ -37,7 +40,7 @@ public class MyDetailActivity extends AppCompatActivity {
         getDetail();
     }
     public  void  getDetail() {
-        HttpUtils.get(nameApi, null, new JsonHttpResponseHandler(){
+        HttpUtils.get("http://payroll.unicode.edu.vn/api/employee?id=4", null, new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 try {
@@ -46,7 +49,7 @@ public class MyDetailActivity extends AppCompatActivity {
 
                     String address = object.getString("address");
                     tvAddress.setText(address);
-
+                    tvEmail.setText(object.getString("email"));
                     tvPhone.setText(object.getString("phone"));
                     String birthday = object.getString("birth_day");
                     Date date = dateFormat.parse(birthday);

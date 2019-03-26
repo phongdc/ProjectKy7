@@ -12,6 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".CalendarEmployeeActivity"></activity>
+        <activity android:name=".HomeEmployee" />
         <activity android:name=".GetEmpGroupActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -20,7 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="GetInformationDayTypeActivity"/>
+        <activity android:name=".GetInformationDayTypeActivity" />
         <activity android:name=".DayModeActivity" />
         <activity android:name=".AcceptShiftRegister" />
         <activity android:name=".HomeActivity" />
@@ -33,16 +35,16 @@
         <activity android:name=".PaySlipTemplateActivity" />
         <activity android:name=".PayrollDetailActivity" />
         <activity android:name=".GetAllPayslipTemplateActivity" />
-        <activity android:name=".CheckFingerActivity"></activity>
-        <activity android:name=".PayPeriodAddGroupEmployee"></activity>
-        <activity android:name=".PayPeriodAddListEmployee"></activity>
-        <activity android:name=".TimeFrameActivity"></activity>
-        <activity android:name=".CreateTimeFrame"></activity>
-        <activity android:name=".ShiftRegisterActivity"></activity>
-        <activity android:name=".GetShiftRegisterActivity"></activity>
-        <activity android:name=".AcceptShiftRegister"></activity>
-        <activity android:name=".PayPeriodDetails"></activity>
-        <activity android:name=".CreatePayrollDetailActivity"></activity>
+        <activity android:name=".CheckFingerActivity" />
+        <activity android:name=".PayPeriodAddGroupEmployee" />
+        <activity android:name=".PayPeriodAddListEmployee" />
+        <activity android:name=".TimeFrameActivity" />
+        <activity android:name=".CreateTimeFrame" />
+        <activity android:name=".ShiftRegisterActivity" />
+        <activity android:name=".GetShiftRegisterActivity" />
+        <activity android:name=".AcceptShiftRegister" />
+        <activity android:name=".PayPeriodDetails" />
+        <activity android:name=".CreatePayrollDetailActivity" />
     </application>
 
 </manifest>

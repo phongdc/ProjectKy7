@@ -6,19 +6,34 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <ImageView
+    <!--<ImageView-->
 
+
+        <!--android:id="@+id/addItem"-->
+        <!--android:layout_width="75dp"-->
+        <!--android:layout_height="75dp"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_marginEnd="15dp"-->
+        <!--android:layout_marginRight="15dp"-->
+        <!--android:layout_marginBottom="15dp"-->
+        <!--android:src="@drawable/ic_add_circle_black_75dp">-->
+
+    <!--</ImageView>-->
+    <android.support.design.widget.FloatingActionButton
         android:id="@+id/addItem"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginBottom="15dp"
-        android:src="@drawable/ic_add_circle_black_75dp">
-
-    </ImageView>
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/iconadd"
+        app:fabSize="normal"
+        app:layout_anchor="@id/rv_Payslip_template"
+        app:layout_anchorGravity="bottom|right|end" />
 
 </RelativeLayout>
