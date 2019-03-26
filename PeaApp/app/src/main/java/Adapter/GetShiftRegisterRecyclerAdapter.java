@@ -1,7 +1,8 @@
 package Adapter;
 
 import android.content.Context;
-import android.graphics.Color;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.phongdc.peaapp.ItemClickListener;
 import com.example.phongdc.peaapp.R;
+import com.example.phongdc.peaapp.ShiftRegisterDetailsActivity;
 
 import java.util.List;
 
@@ -29,7 +31,7 @@ public static class ShiftRegisterViewHolder extends  RecyclerView.ViewHolder imp
         super(itemView);
         cv = (CardView)itemView.findViewById(R.id.cvShiftRegister);
         tvShiftRegisterName = (TextView)itemView.findViewById(R.id.tvShiftRegisterName);
-        tvShiftStatus = (TextView)itemView.findViewById(R.id.tvShiftStatus);
+//        tvShiftStatus = (TextView)itemView.findViewById(R.id.tvShiftStatus);
 
         itemView.setOnClickListener(this);
         itemView.setOnLongClickListener(this);
@@ -67,41 +69,42 @@ public static class ShiftRegisterViewHolder extends  RecyclerView.ViewHolder imp
     @Override
     public void onBindViewHolder(final GetShiftRegisterRecyclerAdapter.ShiftRegisterViewHolder ShiftRegisterViewHolder, final int i) {
         ShiftRegisterViewHolder.tvShiftRegisterName.setText(shiftRegisters.get(i).getEmpName().toString());
-        if(shiftRegisters.get(i).getStatus().toString().equals("Đã duyệt")){
-            ShiftRegisterViewHolder.tvShiftStatus.setText(shiftRegisters.get(i).getStatus().toString());
-            ShiftRegisterViewHolder.tvShiftStatus.setTextColor(Color.GREEN);
-        } else {
-            ShiftRegisterViewHolder.tvShiftStatus.setText(shiftRegisters.get(i).getStatus().toString());
-            ShiftRegisterViewHolder.tvShiftStatus.setTextColor(Color.RED);
-        }
+
+//        if(shiftRegisters.get(i).getStatus().toString().equals("Đã duyệt")){
+//            ShiftRegisterViewHolder.tvShiftStatus.setText(shiftRegisters.get(i).getStatus().toString());
+//            ShiftRegisterViewHolder.tvShiftStatus.setTextColor(Color.GREEN);
+//        } else {
+//            ShiftRegisterViewHolder.tvShiftStatus.setText(shiftRegisters.get(i).getStatus().toString());
+//            ShiftRegisterViewHolder.tvShiftStatus.setTextColor(Color.RED);
+//        }
 
 
         ShiftRegisterViewHolder.setItemClickListener(new ItemClickListener() {
             @Override
             public void onClick(View view, int position, boolean isLongClick) {
-//                Context context = view.getContext();
-//                Intent intent = new Intent(context, ShiftRegisterDetails.class);
+                Context context = view.getContext();
+                Intent intent = new Intent(context, ShiftRegisterDetailsActivity.class);
 //
 //                int shiftId = shiftRegisters.get(i).getShiftId();
 //                int timeFrameId = shiftRegisters.get(i).getTimeFrameId();
 //                String status = shiftRegisters.get(i).getStatus();
-//                String empName = shiftRegisters.get(i).getEmpName();
+                String empName = shiftRegisters.get(i).getEmpName();
 //                String startDate = shiftRegisters.get(i).getStartDate();
 //                String endDate = shiftRegisters.get(i).getEndDate();
 //                String startTime = shiftRegisters.get(i).getStartTime();
 //                String endTime = shiftRegisters.get(i).getEndTime();
 //
-//                Bundle bundle = new Bundle();
+                Bundle bundle = new Bundle();
 //                bundle.putInt("ShiftID", shiftId);
 //                bundle.putInt("TimeFrameID", timeFrameId);
 //                bundle.putString("Status", status);
-//                bundle.putString("EmpNAME", empName);
+                bundle.putString("EmpNAME", empName);
 //                bundle.putString("StartDATE", startDate);
 //                bundle.putString("EndDATE", endDate);
 //                bundle.putString("StartTIME", startTime);
 //                bundle.putString("EndTIME", endTime);
-//                intent.putExtras(bundle);
-//                context.startActivity(intent);
+                intent.putExtras(bundle);
+                context.startActivity(intent);
             }
         });
 

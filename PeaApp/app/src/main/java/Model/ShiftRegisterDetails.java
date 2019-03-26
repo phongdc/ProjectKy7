@@ -1,6 +1,6 @@
 package Model;
 
-public class ShiftRegister {
+public class ShiftRegisterDetails {
 
     public int shiftId;
     public int timeFrameId;
