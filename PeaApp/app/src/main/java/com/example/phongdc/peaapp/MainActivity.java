@@ -1,13 +1,12 @@
 package com.example.phongdc.peaapp;
 
 import android.content.Intent;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
 
-import Model.PaySlip;
+import com.example.phongdc.peaapp.Home.HomeActivity;
+import com.example.phongdc.peaapp.Login.LoginActivity;
+import com.example.phongdc.peaapp.User.MyDetailActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent intent = new Intent(MainActivity.this, CalendarEmployeeActivity.class);
+        Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
 
     }

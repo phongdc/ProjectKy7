@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PayrollDetailActivity">
+    android:background="@color/ListBackground"
+    tools:context=".PayrollDetail.PayrollDetailActivity">
 
     <include android:id="@+id/toolbar"
         layout="@layout/toolbar"/>
@@ -26,6 +27,7 @@
         app:layout_anchor="@id/rv_Payrolls"
         app:layout_anchorGravity="bottom|right|end"
         android:src="@drawable/iconadd"
+        android:backgroundTint="@color/colorPrimary"
         android:onClick="clickToCreatePayrollDetail"/>
 
 </android.support.design.widget.CoordinatorLayout>

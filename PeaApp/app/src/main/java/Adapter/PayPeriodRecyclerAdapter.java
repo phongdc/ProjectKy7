@@ -11,9 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.phongdc.peaapp.EmpDetailsActivity;
 import com.example.phongdc.peaapp.ItemClickListener;
-import com.example.phongdc.peaapp.PayPeriodDetails;
+import com.example.phongdc.peaapp.PayrollPeriod.PayPeriodDetails;
 import com.example.phongdc.peaapp.R;
 
 import java.util.List;

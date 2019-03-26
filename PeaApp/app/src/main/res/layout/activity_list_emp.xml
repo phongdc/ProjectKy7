@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ListEmp">
+    android:background="#dcedc8"
+    tools:context=".Employees.ListEmp">
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="40dp"

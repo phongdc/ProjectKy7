@@ -1,6 +1,7 @@
 package Adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -18,33 +19,35 @@ import Model.ShiftRegister;
 
 public class GetShiftRegisterRecyclerAdapter extends RecyclerView.Adapter<GetShiftRegisterRecyclerAdapter.ShiftRegisterViewHolder> {
 
-public static class ShiftRegisterViewHolder extends  RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener{
+    public static class ShiftRegisterViewHolder extends  RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener{
 
-    CardView cv;
-    TextView tvShiftRegisterName;
-    private ItemClickListener itemClickListener;
-    public ShiftRegisterViewHolder(View itemView) {
-        super(itemView);
-        cv = (CardView)itemView.findViewById(R.id.cvShiftRegister);
-        tvShiftRegisterName = (TextView)itemView.findViewById(R.id.tvShiftRegisterName);
+        CardView cv;
+        TextView tvShiftRegisterName;
+        TextView tvShiftStatus;
+        private ItemClickListener itemClickListener;
+        public ShiftRegisterViewHolder(View itemView) {
+            super(itemView);
+            cv = (CardView)itemView.findViewById(R.id.cvShiftRegister);
+            tvShiftRegisterName = (TextView)itemView.findViewById(R.id.tvShiftRegisterName);
+            tvShiftStatus = (TextView)itemView.findViewById(R.id.tvShiftStatus);
 
-        itemView.setOnClickListener(this);
-        itemView.setOnLongClickListener(this);
-    }
-    public void setItemClickListener(ItemClickListener itemClickListener){
-        this.itemClickListener = itemClickListener;
-    }
-    @Override
-    public void onClick(View v) {
-        itemClickListener.onClick(v, getAdapterPosition(),false);
-    }
+            itemView.setOnClickListener(this);
+            itemView.setOnLongClickListener(this);
+        }
+        public void setItemClickListener(ItemClickListener itemClickListener){
+            this.itemClickListener = itemClickListener;
+        }
+        @Override
+        public void onClick(View v) {
+            itemClickListener.onClick(v, getAdapterPosition(),false);
+        }
 
-    @Override
-    public boolean onLongClick(View v) {
-        itemClickListener.onClick(v,getAdapterPosition(), true);
-        return true;
+        @Override
+        public boolean onLongClick(View v) {
+            itemClickListener.onClick(v,getAdapterPosition(), true);
+            return true;
+        }
     }
-}
 
     private List<ShiftRegister> shiftRegisters;
     private Context context;
@@ -64,6 +67,14 @@ public static class ShiftRegisterViewHolder extends  RecyclerView.ViewHolder imp
     @Override
     public void onBindViewHolder(final GetShiftRegisterRecyclerAdapter.ShiftRegisterViewHolder ShiftRegisterViewHolder, final int i) {
         ShiftRegisterViewHolder.tvShiftRegisterName.setText(shiftRegisters.get(i).getEmpName().toString());
+        if(shiftRegisters.get(i).getStatus().toString().equals("Đã duyệt")){
+            ShiftRegisterViewHolder.tvShiftStatus.setText(shiftRegisters.get(i).getStatus().toString());
+            ShiftRegisterViewHolder.tvShiftStatus.setTextColor(Color.GREEN);
+        } else {
+            ShiftRegisterViewHolder.tvShiftStatus.setText(shiftRegisters.get(i).getStatus().toString());
+            ShiftRegisterViewHolder.tvShiftStatus.setTextColor(Color.RED);
+        }
+
 
         ShiftRegisterViewHolder.setItemClickListener(new ItemClickListener() {
             @Override
