@@ -1,6 +1,7 @@
 package Adapter;
 
 import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,6 +42,7 @@ public class ListGroupAdapter extends BaseAdapter {
 
     private class ViewHolder{
         TextView txtTenGroup, txtNgayTao;
+        CardView cardView;
     }
 
     @Override
@@ -52,7 +54,7 @@ public class ListGroupAdapter extends BaseAdapter {
             view = inflater.inflate(layout, null);
             holder = new ViewHolder();
             holder.txtTenGroup =  view.findViewById(R.id.txtTenGroup );
-            holder.txtNgayTao =  view.findViewById(R.id.txtNgayTao);
+            holder.cardView = view.findViewById(R.id.cvEmpGroup);
             view.setTag(holder);
         }else{
             holder = (ViewHolder) view.getTag();
@@ -60,7 +62,6 @@ public class ListGroupAdapter extends BaseAdapter {
 
         EmpGroup listGroup = empGroups.get(i);
         holder.txtTenGroup.setText(listGroup.getName());
-        holder.txtNgayTao.setText(listGroup.getCreate_date());
         return view;
     }
 }

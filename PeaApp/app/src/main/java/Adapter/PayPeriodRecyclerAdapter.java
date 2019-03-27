@@ -1,6 +1,8 @@
 package Adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -10,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.phongdc.peaapp.ItemClickListener;
+import com.example.phongdc.peaapp.PayrollPeriod.PayPeriodDetails;
 import com.example.phongdc.peaapp.R;
 
 import java.util.List;
@@ -60,8 +63,24 @@ public class PayPeriodRecyclerAdapter extends RecyclerView.Adapter<PayPeriodRecy
     }
 
     @Override
-    public void onBindViewHolder(final PayPeriodViewHolder payPeriodViewHolder, int i) {
+    public void onBindViewHolder(final PayPeriodViewHolder payPeriodViewHolder, final int i) {
         payPeriodViewHolder.tvPeriodName.setText(payrollPeriods.get(i).getName());
+
+        payPeriodViewHolder.setItemClickListener(new ItemClickListener() {
+            @Override
+            public void onClick(View view, int position, boolean isLongClick) {
+                Context context = view.getContext();
+                Intent intent = new Intent(context, PayPeriodDetails.class);
+
+                int a = payrollPeriods.get(i).getId();
+                String b = payrollPeriods.get(i).getName();
+                Bundle bundle = new Bundle();
+                bundle.putInt("ID", a);
+                bundle.putString("NAME", b);
+                intent.putExtras(bundle);
+                context.startActivity(intent);
+            }
+        });
 
     }
 

@@ -75,7 +75,7 @@ public class PayrollDetailActivity extends AppCompatActivity {
                         //payroll.setSalary_rule_group_id(object.getInt("salary_rule_group_id"));
                         payroll.setName(object.getString("name"));
                         //payroll.setValue(object.getInt("value"));
-                        //payroll.setDescription(object.getString("description"));
+                        payroll.setDescription(object.getString("description"));
                         //payroll.setDefault_formula_id(object.getInt("default_formula_id"));
                         //payroll.setFrequency(object.getString("frequency"));
                         //payroll.setVariability(object.getString("variability"));

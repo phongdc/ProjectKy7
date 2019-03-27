@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ShiftRegister.ShiftRegisterActivity">
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Đăng Kí Giờ Làm"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:layout_margin="10dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Chọn Nhân Viên"/>
+    <Spinner
+        android:id="@+id/spnEmployee"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Chọn Khung Giờ Làm"/>
+    <Spinner
+        android:id="@+id/spnTimeFrame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:weightSum="11">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_weight="1"
+
+        android:text="Thời gian:"/>
+
+        <EditText
+            android:id="@+id/edtShiftFromdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:textAlignment="center"
+            android:hint="Từ ngày"/>
+        <EditText
+            android:id="@+id/edtShiftTodate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:textAlignment="center"
+            android:hint="Tới ngày"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnAddShift"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:background="@drawable/my_button"
+        android:onClick="clickToAddShift"/>
+</LinearLayout>
