@@ -3,12 +3,21 @@ package com.example.phongdc.peaapp.PayrollPeriod;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.phongdc.peaapp.AsyncHttpClient.HttpUtils;
+import com.example.phongdc.peaapp.PayrollPeriod.PayPeriodAddListEmployee;
 import com.example.phongdc.peaapp.R;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -17,7 +26,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import Adapter.PayPeriodRecyclerAdapter;
 import Model.Employee;
+import Model.PayrollPeriod;
 import cz.msebera.android.httpclient.Header;
 
 public class PayPeriodDetails extends AppCompatActivity {
@@ -71,12 +82,12 @@ public class PayPeriodDetails extends AppCompatActivity {
     }
 
     public void clickToAddEmp(View view) {
-        Intent intent = new Intent(this, PayPeriodAddListEmployee.class);
+        Intent intent = new Intent(PayPeriodDetails.this, PayPeriodAddListEmployee.class);
         startActivity(intent);
     }
 
     public void clickToAddGroupEmp(View view) {
-        Intent intent = new Intent(this, PayPeriodAddGroupEmployee.class);
+        Intent intent = new Intent(PayPeriodDetails.this, PayPeriodAddGroupEmployee.class);
         startActivity(intent);
     }
 

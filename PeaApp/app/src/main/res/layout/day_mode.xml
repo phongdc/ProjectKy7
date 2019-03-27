@@ -9,7 +9,13 @@
     android:paddingTop="5dp"
     android:paddingLeft="5dp"
     android:paddingRight="5dp">
-
+    <android.support.v7.widget.CardView
+        android:id="@+id/cv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
     <TextView
         android:textSize="20dp"
@@ -18,22 +24,6 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         />
-    <!--<TextView-->
-        <!--android:id="@+id/txtDayOfWeek"-->
-        <!--android:textSize="20dp"-->
-        <!--android:layout_below="@+id/txtNameMode"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="Ngày trong tuần"-->
-        <!--android:layout_marginLeft="5dp"/>-->
-    <!--<TextView-->
-        <!--android:id="@+id/txtSpecialDay"-->
-        <!--android:layout_below="@+id/txtDayFilter"-->
-        <!--android:textSize="20dp"-->
-        <!--android:text="Ngày lễ"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginLeft="5dp"/>-->
 
     <TextView
         android:id="@+id/txtPriority"
@@ -44,5 +34,6 @@
         android:text="Độ ưu tiên"
         android:layout_marginLeft="5dp"
         />
-
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
 </RelativeLayout>

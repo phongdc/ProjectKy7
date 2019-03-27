@@ -19,22 +19,20 @@ public class MyDetailActivity extends AppCompatActivity {
     private String nameApi ="Employee/detail?id=1";
     private TextView tvName;
     private TextView tvCompany;
-    private TextView tvBirthday;
     private TextView tvEmail;
     private TextView tvAddress;
-    private TextView tvPhone;
-    private SimpleDateFormat dateFormat;
+    private TextView tvPhone, tvTitle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_detail);
+        tvTitle = findViewById(R.id.tvTitle);
+        tvTitle.setText("Thông tin cá nhân");
         tvName = findViewById(R.id.txtImg);
         tvCompany = findViewById(R.id.txtCom);
-        tvBirthday = findViewById(R.id.txtBd);
         tvEmail = findViewById(R.id.txtMail);
         tvAddress = findViewById(R.id.txtLc);
         tvPhone = findViewById(R.id.txtPhone);
-        dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         getDetail();
     }
     public  void  getDetail() {
@@ -47,11 +45,9 @@ public class MyDetailActivity extends AppCompatActivity {
 
                     String address = object.getString("address");
                     tvAddress.setText(address);
-
+                    tvEmail.setText(object.getString("email"));
                     tvPhone.setText(object.getString("phone"));
-                    String birthday = object.getString("birth_day");
-                    Date date = dateFormat.parse(birthday);
-                    tvBirthday.setText(dateFormat.format(date));
+
 
                 }catch (Exception e){
                     e.printStackTrace();

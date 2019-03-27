@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
 import com.example.phongdc.peaapp.AsyncHttpClient.HttpUtils;
+import com.example.phongdc.peaapp.Home.HomeActivity;
 import com.example.phongdc.peaapp.R;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
@@ -31,7 +32,7 @@ public class ListEmp extends AppCompatActivity {
 
         //tạo recyclerView
         employeeList = new ArrayList<>();
-         rvEmps = (RecyclerView)findViewById(R.id.rv_Emp);
+          rvEmps = (RecyclerView)findViewById(R.id.rv_Emp);
           tvTotal = (TextView) findViewById(R.id.tvTotal);
         rvEmps.setLayoutManager(new LinearLayoutManager(this));
         // Khởi tạo OkHttpClient để lấy dữ liệu.
@@ -39,7 +40,8 @@ public class ListEmp extends AppCompatActivity {
 }
 
   private void getEmpList(){
-        HttpUtils.get("employee", null, new JsonHttpResponseHandler(){
+        String token = HomeActivity.getToken();
+        HttpUtils.getAuth("employee", token ,null, new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 try {

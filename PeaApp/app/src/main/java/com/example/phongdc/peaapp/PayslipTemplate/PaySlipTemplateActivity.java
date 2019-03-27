@@ -105,7 +105,6 @@ public class PaySlipTemplateActivity extends AppCompatActivity {
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 Toast.makeText(PaySlipTemplateActivity.this,"Thêm thành công",Toast.LENGTH_SHORT ).show();
                 finish();
-                //startActivity(new Intent(PaySlipTemplateActivity.this, GetAllPayslipTemplateActivity.class));
             }
 
             @Override

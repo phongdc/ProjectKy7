@@ -23,7 +23,10 @@ public class HttpUtils {
     public static void postByUrl(String url, RequestParams params, AsyncHttpResponseHandler responseHandler) {
         client.post(url, params, responseHandler);
     }
-
+    public static void getAuth(String url, String token, RequestParams params, AsyncHttpResponseHandler responseHandler) {
+        client.get(getAbsoluteUrl(url), params, responseHandler);
+        client.addHeader("Authorization", token);
+    }
     private static String getAbsoluteUrl(String relativeUrl) {
         return BASE_URL + relativeUrl;
     }

@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.example.phongdc.peaapp.Home.HomeActivity;
 import com.example.phongdc.peaapp.Login.LoginActivity;
+import com.example.phongdc.peaapp.User.MyDetailActivity;
 
 public class MainActivity extends AppCompatActivity {
 

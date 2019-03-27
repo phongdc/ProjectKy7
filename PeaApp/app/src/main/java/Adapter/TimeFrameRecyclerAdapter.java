@@ -18,33 +18,33 @@ import Model.TimeFrame;
 
 public class TimeFrameRecyclerAdapter extends RecyclerView.Adapter<TimeFrameRecyclerAdapter.TimeFrameViewHolder> {
 
-public static class TimeFrameViewHolder extends  RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener{
+    public static class TimeFrameViewHolder extends  RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener{
 
-    CardView cv;
-    TextView tvTimeFrameName;
-    private ItemClickListener itemClickListener;
-    public TimeFrameViewHolder(View itemView) {
-        super(itemView);
-        cv = (CardView)itemView.findViewById(R.id.cvTimeFrame);
-        tvTimeFrameName = (TextView)itemView.findViewById(R.id.tvTimeFrameName);
+        CardView cv;
+        TextView tvTimeFrameName;
+        private ItemClickListener itemClickListener;
+        public TimeFrameViewHolder(View itemView) {
+            super(itemView);
+            cv = (CardView)itemView.findViewById(R.id.cvTimeFrame);
+            tvTimeFrameName = (TextView)itemView.findViewById(R.id.tvTimeFrameName);
 
-        itemView.setOnClickListener(this);
-        itemView.setOnLongClickListener(this);
-    }
-    public void setItemClickListener(ItemClickListener itemClickListener){
-        this.itemClickListener = itemClickListener;
-    }
-    @Override
-    public void onClick(View v) {
-        itemClickListener.onClick(v, getAdapterPosition(),false);
-    }
+            itemView.setOnClickListener(this);
+            itemView.setOnLongClickListener(this);
+        }
+        public void setItemClickListener(ItemClickListener itemClickListener){
+            this.itemClickListener = itemClickListener;
+        }
+        @Override
+        public void onClick(View v) {
+            itemClickListener.onClick(v, getAdapterPosition(),false);
+        }
 
-    @Override
-    public boolean onLongClick(View v) {
-        itemClickListener.onClick(v,getAdapterPosition(), true);
-        return true;
+        @Override
+        public boolean onLongClick(View v) {
+            itemClickListener.onClick(v,getAdapterPosition(), true);
+            return true;
+        }
     }
-}
 
     private List<TimeFrame> timeFrame;
     private Context context;
