@@ -1,4 +1,4 @@
-package com.example.phongdc.peaapp.PayrollDetail;
+package com.example.phongdc.peaapp;
 
 import android.annotation.TargetApi;
 import android.content.Intent;
@@ -10,24 +10,31 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.example.phongdc.peaapp.AsyncHttpClient.HttpUtils;
-import com.example.phongdc.peaapp.R;
+import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
 import Adapter.PayrollRecyclerAdapter;
 import Model.Payroll;
+import Model.SalaryRuleGroup;
 import cz.msebera.android.httpclient.Header;
+import cz.msebera.android.httpclient.entity.StringEntity;
 
 public class PayrollDetailActivity extends AppCompatActivity {
 
@@ -43,7 +50,7 @@ public class PayrollDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payroll_detail);
         findViewById();
-        tvTitle.setText("Thành phần lương");
+        tvTitle.setText("Bảng lương");
         payrolls = new ArrayList<>();
 
         rv_payroll.setLayoutManager(new LinearLayoutManager(this));

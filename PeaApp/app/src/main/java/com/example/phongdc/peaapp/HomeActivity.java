@@ -1,9 +1,9 @@
-package com.example.phongdc.peaapp.Home;
+package com.example.phongdc.peaapp;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.format.Time;
 import android.view.Menu;
@@ -18,10 +18,6 @@ import com.example.phongdc.peaapp.LeftMenu.FragmentDrawer;
 import com.example.phongdc.peaapp.PayrollDetail.PayrollDetailActivity;
 import com.example.phongdc.peaapp.PayrollPeriod.GetPeriodActivity;
 import com.example.phongdc.peaapp.PayslipTemplate.GetAllPayslipTemplateActivity;
-import com.example.phongdc.peaapp.R;
-import com.example.phongdc.peaapp.SalaryRule.SalaryRuleGroupActivity;
-import com.example.phongdc.peaapp.ShiftRegister.AcceptShiftRegister;
-import com.example.phongdc.peaapp.TimeFrame.TimeFrameActivity;
 import com.example.phongdc.peaapp.User.MyDetailActivity;
 
 public class HomeActivity extends AppCompatActivity implements FragmentDrawer.FragmentDrawerListener{
@@ -29,10 +25,6 @@ public class HomeActivity extends AppCompatActivity implements FragmentDrawer.Fr
     private FragmentDrawer drawerFragment;
     private TextView tvTitle;
     private TextView tvCurrentDay;
-    private TextView tvUsername;
-    private TextView tvCode;
-    private int userID;
-    public static String token;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,8 +32,6 @@ public class HomeActivity extends AppCompatActivity implements FragmentDrawer.Fr
         mToolbar = findViewById(R.id.toolbar);
         tvTitle = findViewById(R.id.tvTitle);
         tvCurrentDay = findViewById(R.id.tvCurrentDay);
-        tvUsername = findViewById(R.id.tvUserName);
-        tvCode = findViewById(R.id.tvCode);
         Time today = new Time();
         today.setToNow();
         int month = today.month +1;
@@ -53,16 +43,7 @@ public class HomeActivity extends AppCompatActivity implements FragmentDrawer.Fr
                 getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
         drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), mToolbar);
         drawerFragment.setDrawerListener(this);
-        Bundle extras = this.getIntent().getExtras();
-//        String code = extras.getString("Code");
-//        String userName = extras.getString("UserName");
-//        userID = extras.getInt("UserID");
-//        tvUsername.setText(userName);
-//        tvCode.setText("Code: "+ code);
-            token = extras.getString("token");
-    }
-    public static  String getToken(){
-        return token;
+
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -129,6 +110,5 @@ public class HomeActivity extends AppCompatActivity implements FragmentDrawer.Fr
     }
 
     public void clickToSalaryRule(View view) {
-        startActivity(new Intent(HomeActivity.this, SalaryRuleGroupActivity.class));
     }
 }

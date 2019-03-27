@@ -34,8 +34,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        username = (EditText)findViewById(R.id.edtUsername);
-        password = (EditText)findViewById(R.id.edtPassword);
+        username = (EditText)findViewById(R.id.txtUsername);
+        password = (EditText)findViewById(R.id.txtPassword);
 
     }
 
@@ -45,8 +45,8 @@ public class LoginActivity extends AppCompatActivity {
         AsyncHttpClient asyncHttpClient = new AsyncHttpClient();
         RequestParams params = new RequestParams();
 
-        String n = username.getText().toString();
-        String p = password.getText().toString();
+        String n = username.getText().toString().trim();
+        String p = password.getText().toString().trim();
 
         final ProgressDialog loading = new ProgressDialog(LoginActivity.this);
         loading.setMessage("Login....");
@@ -73,12 +73,37 @@ public class LoginActivity extends AppCompatActivity {
                 loading.dismiss();
                 try {
                     if ((response.getBoolean("success")) == true) {
-                        String data = response.getString("role");
-                            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                            startActivity(intent);
-                        }
+                        JSONObject jsonObject =  (JSONObject) response.get("data");
+                            JSONArray role = jsonObject.getJSONArray("role");
+                            String token = jsonObject.getString("token");
+                        Bundle bundle = new Bundle();
+
+                        bundle.putString("token", token);
+                        for (int i = 0; i < role.length() ; i++) {
+                            String mRole = role.getString(i);
+
+                            if (mRole.matches("Administrator")) {
+                                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                                intent.putExtras(bundle);
+                                startActivity(intent);
+                                finish();
+
+                            }}
+                            JSONObject EmpObject =  (JSONObject) jsonObject.get("employee");
+                                String code = EmpObject.getString("code");
+                                String userName = EmpObject.getString("employee_name");
+                                int userId = EmpObject.getInt("id");
+                                bundle.putInt("UserID", userId);
+                                bundle.putString("Code", code);
+                                bundle.putString("UserName", userName);
+                                Intent intent = new Intent(LoginActivity.this, HomeEmployee.class);
+                                intent.putExtras(bundle);
+                                startActivity(intent);
+
+                            }
+
                         else {
-                        Toast.makeText(LoginActivity.this, "Wrong username or password", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "Sai tài khoản hoặc mật khẩu !", Toast.LENGTH_SHORT).show();
                         password.setText("");
                     }
                 }catch (Exception e){
@@ -89,6 +114,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                 super.onFailure(statusCode, headers, throwable, errorResponse);
+                Toast.makeText(LoginActivity.this, "Vui lòng thử lại", Toast.LENGTH_SHORT).show();
+
                 loading.dismiss();
 
             }

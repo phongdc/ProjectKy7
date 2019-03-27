@@ -1,25 +1,35 @@
-package com.example.phongdc.peaapp.Employees;
+package com.example.phongdc.peaapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.example.phongdc.peaapp.AsyncHttpClient.HttpUtils;
-import com.example.phongdc.peaapp.Home.HomeActivity;
-import com.example.phongdc.peaapp.R;
 import com.loopj.android.http.JsonHttpResponseHandler;
+import com.squareup.moshi.JsonAdapter;
+import com.squareup.moshi.Moshi;
+import com.squareup.moshi.Types;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
 import Adapter.EmpRecycleAdapter;
 import Model.Employee;
 import cz.msebera.android.httpclient.Header;
+import okhttp3.Call;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 public class ListEmp extends AppCompatActivity {
     private List<Employee> employeeList;
@@ -32,7 +42,7 @@ public class ListEmp extends AppCompatActivity {
 
         //tạo recyclerView
         employeeList = new ArrayList<>();
-          rvEmps = (RecyclerView)findViewById(R.id.rv_Emp);
+         rvEmps = (RecyclerView)findViewById(R.id.rv_Emp);
           tvTotal = (TextView) findViewById(R.id.tvTotal);
         rvEmps.setLayoutManager(new LinearLayoutManager(this));
         // Khởi tạo OkHttpClient để lấy dữ liệu.
@@ -40,8 +50,7 @@ public class ListEmp extends AppCompatActivity {
 }
 
   private void getEmpList(){
-        String token = HomeActivity.getToken();
-        HttpUtils.getAuth("employee", token ,null, new JsonHttpResponseHandler(){
+        HttpUtils.get("employee", null, new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 try {

@@ -1,4 +1,4 @@
-package com.example.phongdc.peaapp.ShiftRegister;
+package com.example.phongdc.peaapp;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
@@ -14,7 +14,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.phongdc.peaapp.AsyncHttpClient.HttpUtils;
-import com.example.phongdc.peaapp.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -33,7 +32,7 @@ import Model.Employee;
 import Model.TimeFrame;
 import cz.msebera.android.httpclient.Header;
 
-public class ShiftRegisterActivity extends AppCompatActivity implements View.OnClickListener {
+public class ShiftRegisterActivity  extends AppCompatActivity implements View.OnClickListener {
     private EditText edtShiftFromDate;
     private EditText edtShiftTodate;
     private DatePickerDialog shiftFromDatePickerDialog;
@@ -155,8 +154,8 @@ public class ShiftRegisterActivity extends AppCompatActivity implements View.OnC
 
 //        String from = edtShiftFromDate.getText().toString();
 //        String to = edtShiftTodate.getText().toString();
-        String from = edtShiftFromDate.getText().toString();
-        String to = edtShiftTodate.getText().toString();
+        String from = "2010-07-03";
+        String to = "2012-08-04";
 
         params.put("employee_id", empID);
         params.put("start_time",from);
@@ -175,7 +174,7 @@ public class ShiftRegisterActivity extends AppCompatActivity implements View.OnC
 //                Intent intent = new Intent(ShiftRegisterActivity.this, GetPeriodActivity.class);
 //                startActivity(intent);
                 Toast.makeText(ShiftRegisterActivity.this,"Thêm Thành Công",Toast.LENGTH_SHORT ).show();
-                finish();
+
             }
 
             @Override

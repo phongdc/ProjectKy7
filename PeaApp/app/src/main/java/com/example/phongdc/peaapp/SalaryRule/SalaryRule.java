@@ -1,9 +1,11 @@
 package com.example.phongdc.peaapp.SalaryRule;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.phongdc.peaapp.AsyncHttpClient.HttpUtils;
@@ -23,18 +25,20 @@ public class SalaryRule extends AppCompatActivity {
     private List<Model.SalaryRule> salaryRuleList;
     private TextView tvTitle;
     private RecyclerView rv_SalaryRule;
-
+    private int id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_salary_rule);
         findViewById();
         rv_SalaryRule.setLayoutManager(new LinearLayoutManager(this));
+        Bundle extras = this.getIntent().getExtras();
+        id = extras.getInt("salaryGroupID");
     }
     private void findViewById(){
         salaryRuleList = new ArrayList<>();
         tvTitle = findViewById(R.id.tvTitle);
-        tvTitle.setText("SalaryRule");
+        tvTitle.setText("Quy định lương");
         rv_SalaryRule = findViewById(R.id.rv_SalaryRule);
         getSalaryRule();
     }
@@ -60,4 +64,9 @@ public class SalaryRule extends AppCompatActivity {
             }
         });
     }
+
+    public void clickToCreateSalaryRule(View view) {
+        startActivity(new Intent(SalaryRule.this, CreateSalaryRule.class));
+    }
+
 }

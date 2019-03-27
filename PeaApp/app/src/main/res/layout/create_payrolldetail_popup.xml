@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/toolbar"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="-2dp"
         android:paddingLeft="10dp"
         android:paddingTop="10dp">
 
@@ -124,7 +124,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tvDescription"
                     android:inputType="textMultiLine"
-                    android:lines="8" />
+                    android:lines="6" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -139,12 +139,12 @@
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
-                    android:layout_marginStart="60dp"
-                    android:layout_marginLeft="60dp"
+                    android:layout_marginStart="11dp"
+                    android:layout_marginLeft="11dp"
                     android:layout_marginTop="0dp"
                     android:background="@drawable/my_button"
-                    android:text="Hủy"
-                    android:onClick="clickToCancel"/>
+                    android:onClick="clickToCancel"
+                    android:text="Hủy" />
 
                 <Button
                     android:id="@+id/btCreatePayrollDetail"
@@ -155,8 +155,8 @@
                     android:layout_marginTop="0dp"
                     android:layout_toRightOf="@+id/btCancel"
                     android:background="@drawable/my_button"
-                    android:text="Tạo"
-                    android:onClick="clickToCreate"/>
+                    android:onClick="clickToCreate"
+                    android:text="Tạo" />
             </RelativeLayout>
         </LinearLayout>
 

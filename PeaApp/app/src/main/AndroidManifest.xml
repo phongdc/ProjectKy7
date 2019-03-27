@@ -42,6 +42,11 @@
         <activity android:name=".ShiftRegister.GetShiftRegisterActivity"></activity>
         <activity android:name=".TimeFrame.TimeFrameActivity"></activity>
         <activity android:name=".TimeFrame.CreateTimeFrame"></activity>
+        <activity android:name=".SalaryRule.SalaryRuleGroupActivity"></activity>
+        <activity android:name=".SalaryRule.SalaryRule"></activity>
+        <activity android:name=".SalaryRule.CreateSalaryRule"></activity>
+        <activity android:name=".Home.HomeEmployee"></activity>
+        <activity android:name=".PayRollEmpActivity"></activity>
     </application>
 
 </manifest>
