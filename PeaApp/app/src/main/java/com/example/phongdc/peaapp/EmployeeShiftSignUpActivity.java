@@ -26,6 +26,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -35,6 +36,7 @@ import java.util.List;
 import Model.Employee;
 import Model.TimeFrame;
 import cz.msebera.android.httpclient.Header;
+import cz.msebera.android.httpclient.entity.StringEntity;
 
 public class EmployeeShiftSignUpActivity extends AppCompatActivity implements View.OnClickListener{
     private TextView tvTitle;
@@ -232,9 +234,12 @@ public class EmployeeShiftSignUpActivity extends AppCompatActivity implements Vi
 
     }
 
-    public void clickToSignUpShiftForEmployee(View view) {
+    public void clickToSignUpShiftForEmployee(View view) throws UnsupportedEncodingException {
         AsyncHttpClient asyncHttpClient = new AsyncHttpClient();
         final RequestParams params = new RequestParams();
+        final RequestParams params2 = new RequestParams();
+
+        JSONArray jsonArray = new JSONArray();
         JSONArray jsonArrayDate = new JSONArray();
         JSONArray jsonArrayTimeFrame = new JSONArray();
         JSONArray jsonArrayMinTime = new JSONArray();
@@ -267,19 +272,20 @@ public class EmployeeShiftSignUpActivity extends AppCompatActivity implements Vi
         }
 
 
-        params.put("employee_id", empListID);
-//        params.put("employee_id", 1);
+//        params.put("employee_id", empListID);
+        params.put("employee_id", 1);
         params.put("list_date", jsonArrayDate.toString());
-        params.put("list_time_frame_id", jsonArrayTimeFrame);
-        params.put("list_shift_min", jsonArrayMinTime);
-        params.put("list_shift_max", jsonArrayMaxTime);
-
+        params.put("list_time_frame_id", jsonArrayTimeFrame.toString());
+        params.put("list_shift_min", jsonArrayMinTime.toString());
+        params.put("list_shift_max", jsonArrayMaxTime.toString());
         params.put("store_id", 1);
         params.put("brand_id", 1);
 
-        params.setUseJsonStreamer(true);
+        jsonArray.put(params);
+        params2.add("",jsonArray.toString());
+        params2.setUseJsonStreamer(true);
 
-        asyncHttpClient.post("http://payroll.unicode.edu.vn/api/attendance", params, new AsyncHttpResponseHandler() {
+        asyncHttpClient.post("http://payroll.unicode.edu.vn/api/attendance", params2, new AsyncHttpResponseHandler() {
             @Override
             public void onStart() {
             }
@@ -293,7 +299,7 @@ public class EmployeeShiftSignUpActivity extends AppCompatActivity implements Vi
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                 Toast.makeText(EmployeeShiftSignUpActivity.this,"Thêm that bai",Toast.LENGTH_SHORT ).show();
-//                Toast.makeText(EmployeeShiftSignUpActivity.this,params.toString(),Toast.LENGTH_SHORT ).show();
+                Toast.makeText(EmployeeShiftSignUpActivity.this,params2.toString(),Toast.LENGTH_SHORT ).show();
             }
 
 

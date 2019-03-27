@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".EmployeeShiftSignUpActivity">
+        <activity android:name=".PayRollEmpActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -39,9 +39,10 @@
         <activity android:name=".ShiftRegisterActivity"></activity>
         <activity android:name=".GetShiftRegisterActivity"></activity>
         <activity android:name=".AcceptShiftRegister"></activity>
-        <!--<activity android:name=".EmployeeShiftSignUpActivity"></activity>-->
+        <activity android:name=".EmployeeShiftSignUpActivity"></activity>
         <activity android:name=".ShiftRegisterDetailsActivity"></activity>
 
+        <!--<activity android:name=".PayRollEmpActivity"></activity>-->
     </application>
 
 </manifest>
