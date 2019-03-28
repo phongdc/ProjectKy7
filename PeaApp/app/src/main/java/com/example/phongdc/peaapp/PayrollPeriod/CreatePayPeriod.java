@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.phongdc.peaapp.AsyncHttpClient.HttpUtils;
+import com.example.phongdc.peaapp.Home.HomeActivity;
 import com.example.phongdc.peaapp.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -46,13 +47,14 @@ public class CreatePayPeriod extends AppCompatActivity implements View.OnClickLi
     private List<String> paySlipListName;
     private int templateID;
     Spinner spnTemplate;
-
+    private String token;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_pay_period);
         dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         findViewsById();
+        token = HomeActivity.getToken();
         tvTitle.setText("Tạo Kỳ Lương");
         paySlipList = new ArrayList<PayslipTemplate>();
         paySlipListName = new ArrayList<>();
@@ -152,7 +154,7 @@ public class CreatePayPeriod extends AppCompatActivity implements View.OnClickLi
 
         params.setUseJsonStreamer(true);
 
-        asyncHttpClient.post("http://payroll.unicode.edu.vn/api/payroll_period", params, new AsyncHttpResponseHandler() {
+        HttpUtils.postByUrlAuth("http://payroll.unicode.edu.vn/api/payroll_period",token, params, new AsyncHttpResponseHandler() {
             @Override
             public void onStart() {
             }
@@ -180,7 +182,7 @@ public class CreatePayPeriod extends AppCompatActivity implements View.OnClickLi
 
     public void getPaySlipTemplate(){
 
-        HttpUtils.getByUrl("http://payroll.unicode.edu.vn/api/payslip_template", null, new JsonHttpResponseHandler(){
+        HttpUtils.getByUrlAuth("http://payroll.unicode.edu.vn/api/payslip_template",token, null, new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
 

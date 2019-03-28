@@ -52,19 +52,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
-                    android:id="@+id/tvCompany"
+                    android:id="@+id/tvCode"
                     android:textSize="20dp"
-                    android:text="FPT University"
+                    android:text="Code"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <TextView
-                    android:id="@+id/tvCode"
+                    android:id="@+id/tvBalance"
                     android:layout_alignParentRight="true"
                     android:textSize="20dp"
-                    android:text="ID: SE62594"
+                    android:text="Balance"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </RelativeLayout>
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
@@ -77,63 +80,64 @@
                         android:layout_weight="3"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
-                        <LinearLayout
-                            android:paddingTop="10dp"
-                            android:paddingLeft="15dp"
-                            android:paddingRight="5dp"
-                            android:gravity="center"
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent">
-                            <LinearLayout
-                                android:gravity="center"
-                                android:layout_gravity="center"
-                                android:orientation="vertical"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:onClick="clickToEmployeeList">
-                                <ImageView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="100dp"
-                                    android:src="@drawable/group_icon"
-                                    />
-                                <TextView
-                                    android:textAlignment="center"
-                                    android:text="Nhân viên"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    />
-                            </LinearLayout>
-                        </LinearLayout>
-                        <LinearLayout
-                            android:paddingTop="10dp"
-                            android:paddingLeft="10dp"
-                            android:paddingRight="10dp"
-                            android:gravity="center"
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent">
-                            <LinearLayout
+                        <!--<LinearLayout-->
+                            <!--android:paddingTop="10dp"-->
+                            <!--android:paddingLeft="15dp"-->
+                            <!--android:paddingRight="5dp"-->
+                            <!--android:gravity="center"-->
+                            <!--android:layout_weight="1"-->
+                            <!--android:layout_width="0dp"-->
+                            <!--android:layout_height="match_parent">-->
+                            <!--<LinearLayout-->
+                                <!--android:gravity="center"-->
+                                <!--android:layout_gravity="center"-->
+                                <!--android:orientation="vertical"-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="match_parent"-->
+                                <!--android:onClick="clickToEmployeeList">-->
+                                <!--<ImageView-->
+                                    <!--android:layout_width="match_parent"-->
+                                    <!--android:layout_height="100dp"-->
+                                    <!--android:src="@drawable/group_icon"-->
+                                    <!--/>-->
+                                <!--<TextView-->
+                                    <!--android:textAlignment="center"-->
+                                    <!--android:text="Nhân viên"-->
+                                    <!--android:layout_width="match_parent"-->
+                                    <!--android:layout_height="wrap_content"-->
+                                    <!--/>-->
+                            <!--</LinearLayout>-->
+                        <!--</LinearLayout>-->
+                        <!--<LinearLayout-->
+                            <!--android:paddingTop="10dp"-->
+                            <!--android:paddingLeft="10dp"-->
+                            <!--android:paddingRight="10dp"-->
+                            <!--android:gravity="center"-->
+                            <!--android:layout_weight="1"-->
+                            <!--android:layout_width="0dp"-->
+                            <!--android:layout_height="match_parent">-->
+                            <!--<LinearLayout-->
 
-                                android:gravity="center"
-                                android:layout_gravity="center"
-                                android:orientation="vertical"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:onClick="clickToGroupEmp"
-                                >
-                                <ImageView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="100dp"
-                                    android:src="@drawable/usergroup_icon"
-                                    />
-                                <TextView
-                                    android:textAlignment="center"
-                                    android:text="Nhóm nhân viên"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content" />
-                            </LinearLayout>
-                        </LinearLayout>
+                                <!--android:gravity="center"-->
+                                <!--android:layout_gravity="center"-->
+                                <!--android:orientation="vertical"-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="match_parent"-->
+                                <!--android:onClick="clickToGroupEmp"-->
+                                <!--&gt;-->
+                                <!--<ImageView-->
+                                    <!--android:layout_width="match_parent"-->
+                                    <!--android:layout_height="100dp"-->
+                                    <!--android:src="@drawable/usergroup_icon"-->
+                                    <!--/>-->
+                                <!--<TextView-->
+                                    <!--android:textAlignment="center"-->
+                                    <!--android:text="Nhóm nhân viên"-->
+                                    <!--android:layout_width="match_parent"-->
+                                    <!--android:layout_height="wrap_content" />-->
+                            <!--</LinearLayout>-->
+                        <!--</LinearLayout>-->
+
                         <LinearLayout
                             android:paddingTop="10dp"
                             android:paddingLeft="5dp"
@@ -149,7 +153,7 @@
                                 android:orientation="vertical"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:onClick="clickToPayPeriod">
+                                android:onClick="clickToPayPeriodEmp">
                                 <ImageView
                                     android:layout_width="match_parent"
                                     android:layout_height="100dp"
@@ -161,8 +165,11 @@
                                     android:layout_height="wrap_content" />
                             </LinearLayout>
                         </LinearLayout>
+
+
                     </LinearLayout>
                 </LinearLayout>
+
                 <LinearLayout
 
                     android:layout_width="match_parent"
@@ -171,33 +178,33 @@
                         android:layout_weight="3"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
-                        <LinearLayout
-                            android:paddingTop="10dp"
-                            android:paddingLeft="15dp"
-                            android:paddingRight="5dp"
-                            android:gravity="center"
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent">
-                            <LinearLayout
-                                android:gravity="center"
-                                android:layout_gravity="center"
-                                android:orientation="vertical"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:onClick="clickToPaySlipTemplate">
-                                <ImageView
+                        <!--<LinearLayout-->
+                            <!--android:paddingTop="10dp"-->
+                            <!--android:paddingLeft="15dp"-->
+                            <!--android:paddingRight="5dp"-->
+                            <!--android:gravity="center"-->
+                            <!--android:layout_weight="1"-->
+                            <!--android:layout_width="0dp"-->
+                            <!--android:layout_height="match_parent">-->
+                            <!--<LinearLayout-->
+                                <!--android:gravity="center"-->
+                                <!--android:layout_gravity="center"-->
+                                <!--android:orientation="vertical"-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="match_parent"-->
+                                <!--android:onClick="clickToPaySlipTemplate">-->
+                                <!--<ImageView-->
 
-                                    android:layout_width="match_parent"
-                                    android:layout_height="100dp"
-                                    android:src="@drawable/slip_icon"/>
-                                <TextView
-                                    android:textAlignment="center"
-                                    android:text="Mẫu phiếu lương"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content" />
-                            </LinearLayout>
-                        </LinearLayout>
+                                    <!--android:layout_width="match_parent"-->
+                                    <!--android:layout_height="100dp"-->
+                                    <!--android:src="@drawable/slip_icon"/>-->
+                                <!--<TextView-->
+                                    <!--android:textAlignment="center"-->
+                                    <!--android:text="Mẫu phiếu lương"-->
+                                    <!--android:layout_width="match_parent"-->
+                                    <!--android:layout_height="wrap_content" />-->
+                            <!--</LinearLayout>-->
+                        <!--</LinearLayout>-->
                         <LinearLayout
                             android:paddingTop="10dp"
                             android:paddingLeft="10dp"
@@ -213,7 +220,7 @@
                                 android:orientation="vertical"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:onClick="clickToPayrollDetail">
+                                android:onClick="clickToPayrollDetailEmp">
                                 <ImageView
                                     android:layout_width="match_parent"
                                     android:layout_height="100dp"
@@ -221,7 +228,7 @@
                                     android:src="@drawable/iconpayrolls"/>
                                 <TextView
                                     android:textAlignment="center"
-                                    android:text="Bảng lương"
+                                    android:text="Thành phần lương"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content" />
                             </LinearLayout>
@@ -241,7 +248,7 @@
                                 android:orientation="vertical"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:onClick="clickToDayMode">
+                                android:onClick="clickToAttendanceEmp">
                                 <ImageView
                                     android:layout_width="match_parent"
                                     android:layout_height="100dp"
@@ -277,7 +284,7 @@
                                 android:orientation="vertical"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:onClick="clickToTimeFrame"
+                                android:onClick="clickToCheckAttendanceEmp"
                                 >
 
                                 <ImageView
@@ -306,7 +313,7 @@
                                 android:orientation="vertical"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:onClick="clickToAcceptShiftRegister"
+                                android:onClick="clickToAcceptShiftRegisterEmp"
                                 >
                                 <ImageView
                                     android:layout_width="match_parent"
@@ -319,48 +326,48 @@
                                     android:layout_height="wrap_content" />
                             </LinearLayout>
                         </LinearLayout>
-                        <LinearLayout
-                            android:paddingTop="10dp"
-                            android:paddingLeft="5dp"
-                            android:paddingRight="15dp"
-                            android:gravity="center"
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent">
-                            <LinearLayout
-                                android:gravity="center"
-                                android:layout_gravity="center"
-                                android:orientation="vertical"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:onClick="clickToSalaryRule"
-                                >
-                                <ImageView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="100dp"
-                                    android:src="@drawable/flash"
-                                    />
-                                <TextView
-                                    android:textAlignment="center"
-                                    android:text="Xin nghỉ"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content" />
-                            </LinearLayout>
-                        </LinearLayout>
+                        <!--<LinearLayout-->
+                            <!--android:paddingTop="10dp"-->
+                            <!--android:paddingLeft="5dp"-->
+                            <!--android:paddingRight="15dp"-->
+                            <!--android:gravity="center"-->
+                            <!--android:layout_weight="1"-->
+                            <!--android:layout_width="0dp"-->
+                            <!--android:layout_height="match_parent">-->
+                            <!--<LinearLayout-->
+                                <!--android:gravity="center"-->
+                                <!--android:layout_gravity="center"-->
+                                <!--android:orientation="vertical"-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="match_parent"-->
+                                <!--android:onClick="clickToOff"-->
+                                <!--&gt;-->
+                                <!--<ImageView-->
+                                    <!--android:layout_width="match_parent"-->
+                                    <!--android:layout_height="100dp"-->
+                                    <!--android:src="@drawable/flash"-->
+                                    <!--/>-->
+                                <!--<TextView-->
+                                    <!--android:textAlignment="center"-->
+                                    <!--android:text="Xin nghỉ"-->
+                                    <!--android:layout_width="match_parent"-->
+                                    <!--android:layout_height="wrap_content" />-->
+                            <!--</LinearLayout>-->
+                        <!--</LinearLayout>-->
                     </LinearLayout>
                 </LinearLayout>
 
 
 
             </LinearLayout>
-
+            </ScrollView>
         </LinearLayout>
     </FrameLayout>
 
     <!-- Container for contents of drawer - use NavigationView to make configuration easier -->
     <fragment
-        android:id="@+id/fragment_navigation_drawer"
-        android:name="com.example.phongdc.peaapp.FragmentDrawer"
+        android:id="@+id/fragment_navigation_drawers"
+        android:name="com.example.phongdc.peaapp.LeftMenu.FragmentDrawer"
         android:layout_width="@dimen/nav_drawer_width"
         android:layout_height="match_parent"
         android:layout_gravity="start"

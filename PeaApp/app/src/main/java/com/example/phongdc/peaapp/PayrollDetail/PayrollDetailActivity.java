@@ -16,6 +16,7 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.example.phongdc.peaapp.AsyncHttpClient.HttpUtils;
+import com.example.phongdc.peaapp.Home.HomeActivity;
 import com.example.phongdc.peaapp.R;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
@@ -43,7 +44,7 @@ public class PayrollDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payroll_detail);
         findViewById();
-        tvTitle.setText("Bảng lương");
+        tvTitle.setText("Thành phần lương");
         payrolls = new ArrayList<>();
 
         rv_payroll.setLayoutManager(new LinearLayoutManager(this));
@@ -55,14 +56,16 @@ public class PayrollDetailActivity extends AppCompatActivity {
 
     }
     private void getPayroll(){
-        HttpUtils.get(nameApi, null, new JsonHttpResponseHandler() {
+        String token =HomeActivity.getToken();
+        HttpUtils.getAuth(nameApi,token, null, new JsonHttpResponseHandler() {
             @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 try {
                     payrolls.clear();
-                    for (int i = 0; i < response.length(); i++) {
+                    JSONArray data = (JSONArray) response.get("data");
+                    for (int i = 0; i < data.length(); i++) {
                         Payroll payroll = new Payroll();
-                        JSONObject object = response.getJSONObject(i);
+                        JSONObject object = data.getJSONObject(i);
                         payroll.setId(object.getInt("id"));
                         //payroll.setPayroll_detail_category_id(object.getInt("payroll_detail_category_id"));
                         //payroll.setSalary_rule_group_id(object.getInt("salary_rule_group_id"));

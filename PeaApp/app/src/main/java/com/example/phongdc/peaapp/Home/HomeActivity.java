@@ -19,6 +19,7 @@ import com.example.phongdc.peaapp.PayrollDetail.PayrollDetailActivity;
 import com.example.phongdc.peaapp.PayrollPeriod.GetPeriodActivity;
 import com.example.phongdc.peaapp.PayslipTemplate.GetAllPayslipTemplateActivity;
 import com.example.phongdc.peaapp.R;
+import com.example.phongdc.peaapp.SalaryRule.SalaryRuleGroupActivity;
 import com.example.phongdc.peaapp.ShiftRegister.AcceptShiftRegister;
 import com.example.phongdc.peaapp.TimeFrame.TimeFrameActivity;
 import com.example.phongdc.peaapp.User.MyDetailActivity;
@@ -30,7 +31,7 @@ public class HomeActivity extends AppCompatActivity implements FragmentDrawer.Fr
     private TextView tvCurrentDay;
     private TextView tvUsername;
     private TextView tvCode;
-    private int userID;
+//    private int userID;
     public static String token;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +73,7 @@ public class HomeActivity extends AppCompatActivity implements FragmentDrawer.Fr
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+
             return true;
         }
 
@@ -128,5 +130,6 @@ public class HomeActivity extends AppCompatActivity implements FragmentDrawer.Fr
     }
 
     public void clickToSalaryRule(View view) {
+        startActivity(new Intent(HomeActivity.this, SalaryRuleGroupActivity.class));
     }
 }

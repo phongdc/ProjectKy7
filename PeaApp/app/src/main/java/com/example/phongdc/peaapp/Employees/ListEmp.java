@@ -1,5 +1,6 @@
 package com.example.phongdc.peaapp.Employees;
 
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -25,6 +26,7 @@ public class ListEmp extends AppCompatActivity {
     private List<Employee> employeeList;
     private TextView tvTotal;
     private RecyclerView rvEmps;
+    private SwipeRefreshLayout pullToRefresh;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,13 +36,22 @@ public class ListEmp extends AppCompatActivity {
         employeeList = new ArrayList<>();
           rvEmps = (RecyclerView)findViewById(R.id.rv_Emp);
           tvTotal = (TextView) findViewById(R.id.tvTotal);
+          pullToRefresh = findViewById(R.id.pullToRefresh);
         rvEmps.setLayoutManager(new LinearLayoutManager(this));
         // Khởi tạo OkHttpClient để lấy dữ liệu.
         getEmpList();
+        pullToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getEmpList();
+                pullToRefresh.setRefreshing(false);
+            }
+        });
 }
 
   private void getEmpList(){
         String token = HomeActivity.getToken();
+        employeeList.clear();
         HttpUtils.getAuth("employee", token ,null, new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {

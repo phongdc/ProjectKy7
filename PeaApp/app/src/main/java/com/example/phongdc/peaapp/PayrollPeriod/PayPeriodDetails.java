@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.phongdc.peaapp.AsyncHttpClient.HttpUtils;
+import com.example.phongdc.peaapp.Home.HomeActivity;
 import com.example.phongdc.peaapp.PayrollPeriod.PayPeriodAddListEmployee;
 import com.example.phongdc.peaapp.R;
 import com.loopj.android.http.AsyncHttpClient;
@@ -55,7 +56,7 @@ public class PayPeriodDetails extends AppCompatActivity {
 
     public void getEmployee(){
 
-        HttpUtils.getByUrl("http://payroll.unicode.edu.vn/api/employee", null, new JsonHttpResponseHandler(){
+        HttpUtils.getByUrlAuth("http://payroll.unicode.edu.vn/api/employee",HomeActivity.getToken(), null, new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
 

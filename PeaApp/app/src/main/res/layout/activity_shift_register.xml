@@ -14,17 +14,20 @@
         android:text="Đăng Kí Giờ Làm"
         android:gravity="center"
         android:textSize="20dp"
-        android:layout_margin="10dp"/>
+        android:layout_margin="10dp"
+        />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Chọn Nhân Viên"/>
+        android:text="Chọn Nhân Viên"
+        android:visibility="gone"/>
     <Spinner
         android:id="@+id/spnEmployee"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:drawable/btn_dropdown"
-        android:spinnerMode="dropdown"/>
+        android:spinnerMode="dropdown"
+        android:visibility="gone"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -42,27 +45,28 @@
         android:orientation="horizontal"
         android:layout_marginTop="10dp"
         android:weightSum="11">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
-        android:layout_weight="1"
+            android:layout_weight="1"
 
-        android:text="Thời gian:"/>
+            android:text="Thời gian:"/>
 
         <EditText
             android:id="@+id/edtShiftFromdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="5"
+            android:layout_weight="10"
             android:textAlignment="center"
-            android:hint="Từ ngày"/>
+            android:hint="ngày"/>
         <EditText
             android:id="@+id/edtShiftTodate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="5"
             android:textAlignment="center"
+            android:visibility="gone"
             android:hint="Tới ngày"/>
     </LinearLayout>
 

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.phongdc.peaapp.AsyncHttpClient.HttpUtils;
+import com.example.phongdc.peaapp.Home.HomeEmployee;
 import com.example.phongdc.peaapp.R;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
@@ -21,7 +22,8 @@ public class MyDetailActivity extends AppCompatActivity {
     private TextView tvCompany;
     private TextView tvEmail;
     private TextView tvAddress;
-    private TextView tvPhone, tvTitle;
+    private TextView tvPhone, tvTitle, txtBd;
+    private int userId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,30 +35,34 @@ public class MyDetailActivity extends AppCompatActivity {
         tvEmail = findViewById(R.id.txtMail);
         tvAddress = findViewById(R.id.txtLc);
         tvPhone = findViewById(R.id.txtPhone);
+        txtBd = findViewById(R.id.txtBd);
+        Bundle extras = this.getIntent().getExtras();
         getDetail();
     }
     public  void  getDetail() {
-        HttpUtils.get(nameApi, null, new JsonHttpResponseHandler(){
+        userId = HomeEmployee.getUserID();
+        HttpUtils.get("employee?id="+ userId , null, new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 try {
-                    JSONObject object = new JSONObject(response.toString());
-                    tvName.setText(object.getString("employee_name"));
-
-                    String address = object.getString("address");
-                    tvAddress.setText(address);
-                    tvEmail.setText(object.getString("email"));
-                    tvPhone.setText(object.getString("phone"));
-
-
-                }catch (Exception e){
+                    JSONObject data = (JSONObject) response.get("data");
+                    for (int i = 0; i < data.length(); i++) {
+                        //Employee employee = new Employee();
+                        //JSONObject jsonObject = data.getJSONObject(i);
+                        //Double salary = jsonObject.getDouble("salary");
+                        String name = data.getString("employee_name");
+                        String address = data.getString("address");
+                        String phoneNum = data.getString("phone");
+                        String email = data.getString("email");
+                        String empRole = data.getString("salary");
+                        tvName.setText(name);
+                        tvAddress.setText(address);
+                        tvPhone.setText(phoneNum);
+                        tvEmail.setText(email);
+                        txtBd.setText(empRole);
+                    }}catch(Exception e){
                     e.printStackTrace();
                 }
-
-            }
-            @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                super.onFailure(statusCode, headers, throwable, errorResponse);
             }
         });
     }

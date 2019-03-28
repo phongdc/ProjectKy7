@@ -11,6 +11,7 @@ import android.widget.TextView;
 import Adapter.PayPeriodRecyclerAdapter;
 
 import com.example.phongdc.peaapp.AsyncHttpClient.HttpUtils;
+import com.example.phongdc.peaapp.Home.HomeActivity;
 import com.example.phongdc.peaapp.R;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
@@ -49,7 +50,7 @@ public class GetPeriodActivity extends AppCompatActivity {
 
     }
     public void getPayPeriod(){
-        HttpUtils.getByUrl("http://payroll.unicode.edu.vn/api/payroll_period", null, new JsonHttpResponseHandler(){
+        HttpUtils.getByUrlAuth("http://payroll.unicode.edu.vn/api/payroll_period",HomeActivity.getToken(),null, new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
 //                Toast.makeText(GetPeriodActivity.this,"abc",Toast.LENGTH_LONG ).show();
