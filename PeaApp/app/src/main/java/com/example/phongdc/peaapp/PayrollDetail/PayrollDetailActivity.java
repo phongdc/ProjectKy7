@@ -16,6 +16,7 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.example.phongdc.peaapp.AsyncHttpClient.HttpUtils;
+import com.example.phongdc.peaapp.Home.HomeActivity;
 import com.example.phongdc.peaapp.R;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
@@ -55,7 +56,8 @@ public class PayrollDetailActivity extends AppCompatActivity {
 
     }
     private void getPayroll(){
-        HttpUtils.get(nameApi, null, new JsonHttpResponseHandler() {
+        String token =HomeActivity.getToken();
+        HttpUtils.getAuth(nameApi,token, null, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 try {

@@ -6,10 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.phongdc.peaapp.EmployeeGroups.GetEmpGroupActivity;
 import com.example.phongdc.peaapp.Home.HomeActivity;
 import com.example.phongdc.peaapp.Home.HomeEmployee;
 import com.example.phongdc.peaapp.MainActivity;
@@ -23,14 +21,12 @@ import com.squareup.moshi.Json;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import customfonts.MyEditText;
-import customfonts.MyTextView;
 import cz.msebera.android.httpclient.Header;
 
 public class LoginActivity extends AppCompatActivity {
 
-    MyEditText username;
-    MyEditText password;
+    EditText username;
+    EditText password;
 
 
     @Override
@@ -38,8 +34,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        username = findViewById(R.id.txtUsername);
-        password = findViewById(R.id.txtPassword);
+        username = (EditText)findViewById(R.id.txtUsername);
+        password = (EditText)findViewById(R.id.txtPassword);
 
     }
 
@@ -62,18 +58,10 @@ public class LoginActivity extends AppCompatActivity {
         params.setUseJsonStreamer(true);
 
         asyncHttpClient.post("http://payroll.unicode.edu.vn/api/user/login", params, new JsonHttpResponseHandler() {
-            @Override
-            public void onStart() {
-            }
-
-//            @Override
-//            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-//
-//            }
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                super.onSuccess(statusCode, headers, response);
+                //super.onSuccess(statusCode, headers, response);
                 loading.dismiss();
                 try {
                     if ((response.getBoolean("success")) == true) {
@@ -95,9 +83,16 @@ public class LoginActivity extends AppCompatActivity {
                             }}
                             JSONObject EmpObject =  (JSONObject) jsonObject.get("employee");
                                 String code = EmpObject.getString("code");
+                                int id = EmpObject.getInt("id");
                                 String userName = EmpObject.getString("employee_name");
-                                int userId = EmpObject.getInt("id");
-                                bundle.putInt("UserID", userId);
+                        JSONObject membership =  (JSONObject) jsonObject.get("membership");
+                        JSONArray accountArray = membership.getJSONArray("account");
+                                JSONObject obj = accountArray.getJSONObject(0);
+                                int balance = obj.getInt("balance");
+                                String accountCode = obj.getString("code");
+                                bundle.putInt("Balance", balance);
+                                bundle.putInt("UserID", id);
+                                bundle.putString("accountCode", accountCode);
                                 bundle.putString("Code", code);
                                 bundle.putString("UserName", userName);
                                 Intent intent = new Intent(LoginActivity.this, HomeEmployee.class);
@@ -135,9 +130,5 @@ public class LoginActivity extends AppCompatActivity {
                 super.onRetry(retryNo);
             }
         });
-    }
-
-    public void clickToCreateAccount(View view) {
-        startActivity(new Intent(LoginActivity.this, RegisterEmployeeActivity.class));
     }
 }

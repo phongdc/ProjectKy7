@@ -34,12 +34,13 @@ public class CheckFingerActivity extends AppCompatActivity {
         });
     }
     private void checkAttendent(){
+        String token = HomeEmployee.getToken();
         String code = HomeEmployee.getUserCode();
         RequestParams params = new RequestParams();
         params.put("store_id", 1);
         params.put("code", code);
         params.setUseJsonStreamer(true);
-        HttpUtils.post("check_finger", params, new AsyncHttpResponseHandler() {
+        HttpUtils.postAuth("check_finger",token, params, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 Toast.makeText(CheckFingerActivity.this, "Xin cảm ơn", Toast.LENGTH_SHORT).show();

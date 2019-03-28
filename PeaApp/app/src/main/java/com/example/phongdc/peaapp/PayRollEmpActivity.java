@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
+import com.example.phongdc.peaapp.AsyncHttpClient.HttpUtils;
 import com.example.phongdc.peaapp.Home.HomeEmployee;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
@@ -17,7 +18,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Adapter.PayRollEmpRecyclerAdapter;
+import Adapter.TimeFrameRecyclerAdapter;
 import Model.PayRollEmp;
+import Model.Payroll;
+import Model.TimeFrame;
 import cz.msebera.android.httpclient.Header;
 
 public class PayRollEmpActivity extends AppCompatActivity {
@@ -25,7 +29,7 @@ public class PayRollEmpActivity extends AppCompatActivity {
     private TextView tvTitle;
     private RecyclerView rv_PayRollEmp;
     private List<PayRollEmp> payRollList;
-    private int a;
+    int a;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +53,8 @@ public class PayRollEmpActivity extends AppCompatActivity {
     }
 
     public void getPayRollEmp(){
-        HttpUtils.getByUrl("http://payroll.unicode.edu.vn/api/payroll_period?empId=" + a, null, new JsonHttpResponseHandler(){
+        String token = HomeEmployee.getToken();
+        HttpUtils.getByUrlAuth("http://payroll.unicode.edu.vn/api/payroll_period?empId=" + a,token, null, new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 try {

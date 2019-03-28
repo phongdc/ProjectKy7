@@ -43,7 +43,7 @@ public class PayrollRecyclerAdapter extends RecyclerView.Adapter<PayrollRecycler
         payrollViewHolder.tvPayrollName.setText(payrolls.get(i).getName());
         payrollViewHolder.chkSelected.setChecked(payrolls.get(i).isSelected());
         payrollViewHolder.chkSelected.setTag(i);
-        payrollViewHolder.chkSelected.setOnClickListener(new View.OnClickListener(){
+        payrollViewHolder.chkSelected.setOnClickListener(new OnClickListener(){
             @Override
             public void onClick(View v) {
                 Integer pos = (Integer) payrollViewHolder.chkSelected.getTag();

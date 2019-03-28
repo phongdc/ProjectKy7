@@ -12,16 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-
-        <activity android:name=".Login.RegisterEmployeeActivity" />
         <activity android:name=".EmployeeGroups.GetEmpGroupActivity" />
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".DayMode.GetInformationDayTypeActivity" />
         <activity android:name=".DayMode.DayModeActivity" />
@@ -50,6 +43,17 @@
         <activity android:name=".SalaryRule.CreateSalaryRule" />
         <activity android:name=".Home.HomeEmployee" />
         <activity android:name=".PayRollEmpActivity" />
+        <activity android:name=".PayslipTemplate.PayslipTemplateDetailActivity"></activity>
+        <activity android:name=".CalendarEmployeeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".CalendarEmployeeDetailActivity">
+
+        </activity>
     </application>
 
 </manifest>

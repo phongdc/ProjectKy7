@@ -13,8 +13,7 @@ import android.widget.TextView;
 
 import com.example.phongdc.peaapp.CheckFinger.CheckFingerActivity;
 import com.example.phongdc.peaapp.LeftMenu.FragmentDrawer;
-import com.example.phongdc.peaapp.LoginActivity;
-import com.example.phongdc.peaapp.MyDetailActivity;
+import com.example.phongdc.peaapp.Login.LoginActivity;
 import com.example.phongdc.peaapp.PayRollEmpActivity;
 import com.example.phongdc.peaapp.PayrollDetail.PayrollDetailActivity;
 import com.example.phongdc.peaapp.PayrollPeriod.GetPeriodActivity;
@@ -28,8 +27,12 @@ public class HomeEmployee extends AppCompatActivity implements FragmentDrawer.Fr
     private TextView tvCurrentDay;
     public static int ID;
     public static String Code;
+    public static String accountCode;
     private TextView tvUsername;
     private TextView tvUserCode;
+    private TextView tvUserBalance;
+    public static String token;
+    private static int userID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +43,7 @@ public class HomeEmployee extends AppCompatActivity implements FragmentDrawer.Fr
         tvCurrentDay = findViewById(R.id.tvCurrentDay);
         tvUsername = findViewById(R.id.tvUserName);
         tvUserCode = findViewById(R.id.tvCode);
+        tvUserBalance = findViewById(R.id.tvBalance);
         Time today = new Time();
         today.setToNow();
         int month = today.month +1;
@@ -51,18 +55,27 @@ public class HomeEmployee extends AppCompatActivity implements FragmentDrawer.Fr
         drawerFragment.setUp(R.id.fragment_navigation_drawers, (DrawerLayout) findViewById(R.id.drawer_layout), mToolbar);
         drawerFragment.setDrawerListener(this);
         Bundle extras = this.getIntent().getExtras();
-        ID = extras.getInt("UserID");
         Code = extras.getString("Code");
         String name = extras.getString("UserName");
+        int balance = extras.getInt("Balance");
+        userID = extras.getInt("UserID");
         tvUsername.setText(name);
         tvUserCode.setText(Code);
-
+        accountCode = extras.getString("accountCode");
+        tvUserBalance.setText(balance);
+        token = extras.getString("token");
     }
     public static String getUserCode(){
         return Code;
     }
-    public static int getUserID(){
-        return ID;
+    public static String getAccountCode(){
+        return accountCode;
+    }
+    public static  String getToken(){
+        return token;
+    }
+    public static Integer getUserID(){
+        return userID;
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -129,9 +142,5 @@ public class HomeEmployee extends AppCompatActivity implements FragmentDrawer.Fr
     public void clickToAcceptShiftRegisterEmp(View view) {
         startActivity(new Intent(HomeEmployee.this, ShiftRegisterActivity.class));
 
-    }
-
-    public void clickToMyDetail(View view) {
-        startActivity(new Intent(HomeEmployee.this, MyDetailActivity.class));
     }
 }

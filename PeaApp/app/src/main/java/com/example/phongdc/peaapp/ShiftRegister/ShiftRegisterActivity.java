@@ -1,6 +1,7 @@
 package com.example.phongdc.peaapp.ShiftRegister;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
@@ -24,16 +25,18 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 import Model.Employee;
+import Model.PayslipTemplate;
 import Model.TimeFrame;
 import cz.msebera.android.httpclient.Header;
 
-public class ShiftRegisterActivity extends AppCompatActivity implements View.OnClickListener {
+public class ShiftRegisterActivity  extends AppCompatActivity implements View.OnClickListener {
     private EditText edtShiftFromDate;
     private EditText edtShiftTodate;
     private DatePickerDialog shiftFromDatePickerDialog;
@@ -153,14 +156,14 @@ public class ShiftRegisterActivity extends AppCompatActivity implements View.OnC
         final RequestParams params = new RequestParams();
         JSONObject object = new JSONObject();
 
-//        String from = edtShiftFromDate.getText().toString();
-//        String to = edtShiftTodate.getText().toString();
         String from = edtShiftFromDate.getText().toString();
-        String to = edtShiftTodate.getText().toString();
+//        String to = edtShiftTodate.getText().toString();
+//        String from = "2010-07-03";
+//        String to = "2012-08-04";
 
-        params.put("employee_id", empID);
+        params.put("employee_id", 2);
         params.put("start_time",from);
-        params.put("end_time", to);
+        params.put("end_time", from);
         params.put("time_frame_id", timeFrameID);
 
         params.setUseJsonStreamer(true);
@@ -175,12 +178,13 @@ public class ShiftRegisterActivity extends AppCompatActivity implements View.OnC
 //                Intent intent = new Intent(ShiftRegisterActivity.this, GetPeriodActivity.class);
 //                startActivity(intent);
                 Toast.makeText(ShiftRegisterActivity.this,"Thêm Thành Công",Toast.LENGTH_SHORT ).show();
-                finish();
+
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                 Toast.makeText(ShiftRegisterActivity.this,"Thêm that bai",Toast.LENGTH_SHORT ).show();
+//                Toast.makeText(ShiftRegisterActivity.this,params.toString(),Toast.LENGTH_SHORT ).show();
             }
 
 

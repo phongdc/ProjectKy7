@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.phongdc.peaapp.AsyncHttpClient.HttpUtils;
+import com.example.phongdc.peaapp.Home.HomeActivity;
 import com.example.phongdc.peaapp.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -33,12 +34,16 @@ public class PayPeriodAddListEmployee extends AppCompatActivity {
     LinearLayout linearLayout;
     LinearLayout.LayoutParams checkParams;
     List<CheckBox> allCheckBox;
-
+    private String token;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pay_period_add_list_emp);
 
+        Bundle extras = this.getIntent().getExtras();
+        id = extras.getInt("ID");
+        name = extras.getString("NAME");
+        token = HomeActivity.getToken();
         checkParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         checkParams.setMargins(10, 10, 10, 10);
         checkParams.gravity = Gravity.LEFT;
@@ -52,7 +57,7 @@ public class PayPeriodAddListEmployee extends AppCompatActivity {
 
     public void getEmployee(){
 
-        HttpUtils.getByUrl("http://payroll.unicode.edu.vn/api/employee", null, new JsonHttpResponseHandler(){
+        HttpUtils.getByUrlAuth("http://payroll.unicode.edu.vn/api/employee",token,null, new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
 
@@ -63,7 +68,7 @@ public class PayPeriodAddListEmployee extends AppCompatActivity {
                     for (int i = 0; i < jArray.length(); i++) {
                         Employee emp = new Employee();
                         JSONObject object = jArray.getJSONObject(i);
-                        emp.setId(object.getInt("id"));
+//                        emp.setId(object.getInt("id"));
                         emp.setEmployee_name(object.getString("employee_name"));
                         emp.setCode(object.getString("code"));
 
@@ -97,12 +102,12 @@ public class PayPeriodAddListEmployee extends AppCompatActivity {
             }
         }
 
-        params.put("period_apply_id", 0);
+        params.put("period_apply_id", id);
         params.put("list_emp", jsonArray);
         params.put("group_emp", 0);
         params.setUseJsonStreamer(true);
 
-        asyncHttpClient.post("http://payroll.unicode.edu.vn/api/payroll_period/apply", params, new AsyncHttpResponseHandler() {
+        HttpUtils.postByUrlAuth("http://payroll.unicode.edu.vn/api/payroll_period/apply", token,params, new AsyncHttpResponseHandler() {
             @Override
             public void onStart() {
             }

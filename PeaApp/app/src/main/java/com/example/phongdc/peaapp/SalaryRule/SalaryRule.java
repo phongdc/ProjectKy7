@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.phongdc.peaapp.AsyncHttpClient.HttpUtils;
+import com.example.phongdc.peaapp.Home.HomeActivity;
 import com.example.phongdc.peaapp.R;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
@@ -34,16 +35,18 @@ public class SalaryRule extends AppCompatActivity {
         rv_SalaryRule.setLayoutManager(new LinearLayoutManager(this));
         Bundle extras = this.getIntent().getExtras();
         id = extras.getInt("salaryGroupID");
+        getSalaryRule();
     }
     private void findViewById(){
         salaryRuleList = new ArrayList<>();
         tvTitle = findViewById(R.id.tvTitle);
         tvTitle.setText("Quy định lương");
         rv_SalaryRule = findViewById(R.id.rv_SalaryRule);
-        getSalaryRule();
     }
     private void getSalaryRule(){
-        HttpUtils.get("salary_rule", null, new JsonHttpResponseHandler(){
+        String token = HomeActivity.getToken();
+        salaryRuleList.clear();
+        HttpUtils.getAuth("salary_rule?group_id=" +id ,token, null, new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 try {
@@ -67,6 +70,17 @@ public class SalaryRule extends AppCompatActivity {
 
     public void clickToCreateSalaryRule(View view) {
         startActivity(new Intent(SalaryRule.this, CreateSalaryRule.class));
+        onStop();
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        getSalaryRule();
+    }
 }
