@@ -20,7 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DayMode.GetInformationDayTypeActivity"/>
+        <activity android:name=".DayMode.GetInformationDayTypeActivity" />
         <activity android:name=".DayMode.DayModeActivity" />
         <activity android:name=".User.MyDetailActivity" />
         <activity android:name=".Employees.ListEmp" />
@@ -31,20 +31,24 @@
         <activity android:name=".PayslipTemplate.PaySlipTemplateActivity" />
         <activity android:name=".PayrollDetail.PayrollDetailActivity" />
         <activity android:name=".PayslipTemplate.GetAllPayslipTemplateActivity" />
-        <activity android:name=".CheckFinger.CheckFingerActivity"></activity>
-        <activity android:name=".PayrollPeriod.PayPeriodAddGroupEmployee"></activity>
-        <activity android:name=".PayrollPeriod.PayPeriodAddListEmployee"></activity>
-        <activity android:name=".PayrollPeriod.PayPeriodDetails"></activity>
-        <activity android:name=".PayrollDetail.CreatePayrollDetailActivity"></activity>
-        <activity android:name=".Home.HomeActivity"></activity>
-        <activity android:name=".ShiftRegister.AcceptShiftRegister"></activity>
-        <activity android:name=".ShiftRegister.ShiftRegisterActivity"></activity>
-        <activity android:name=".ShiftRegister.GetShiftRegisterActivity"></activity>
-        <activity android:name=".TimeFrame.TimeFrameActivity"></activity>
-        <activity android:name=".TimeFrame.CreateTimeFrame"></activity>
-        <activity android:name=".SalaryRule.SalaryRuleGroupActivity"></activity>
-        <activity android:name=".SalaryRule.SalaryRule"></activity>
-        <activity android:name=".SalaryRule.CreateSalaryRule"></activity>
+        <activity android:name=".CheckFinger.CheckFingerActivity" />
+        <activity android:name=".PayrollPeriod.PayPeriodAddGroupEmployee" />
+        <activity android:name=".PayrollPeriod.PayPeriodAddListEmployee" />
+        <activity android:name=".PayrollPeriod.PayPeriodDetails" />
+        <activity android:name=".PayrollDetail.CreatePayrollDetailActivity" />
+        <activity android:name=".Home.HomeActivity" />
+        <activity android:name=".ShiftRegister.AcceptShiftRegister" />
+        <activity android:name=".ShiftRegister.ShiftRegisterActivity" />
+        <activity android:name=".ShiftRegister.GetShiftRegisterActivity" />
+        <activity android:name=".TimeFrame.TimeFrameActivity" />
+        <activity android:name=".TimeFrame.CreateTimeFrame" />
+        <activity android:name=".SalaryRule.SalaryRuleGroupActivity" />
+        <activity android:name=".SalaryRule.SalaryRule" />
+        <activity android:name=".SalaryRule.CreateSalaryRule" />
+        <activity android:name=".Home.HomeEmployee" />
+        <activity android:name=".PayRollEmpActivity" />
+        <activity android:name=".PayslipTemplate.PayslipTemplateDetailActivity"></activity>
+        <activity android:name=".Employee"></activity>
     </application>
 
 </manifest>

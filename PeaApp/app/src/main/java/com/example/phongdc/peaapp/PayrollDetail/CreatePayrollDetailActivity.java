@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.phongdc.peaapp.AsyncHttpClient.HttpUtils;
+import com.example.phongdc.peaapp.Home.HomeActivity;
 import com.example.phongdc.peaapp.R;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -39,11 +40,13 @@ public class CreatePayrollDetailActivity extends AppCompatActivity {
     private List<String>salaryGroupName;
     private List<PayrollCategory> categoryList;
     private List<String> categorysName;
+    private String token;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_payrolldetail_popup);
         findViewById();
+        token = HomeActivity.getToken();
         salaryGroupName = new ArrayList<>();
         categorysName = new ArrayList<>();
         getSalaryRuleGroup();
@@ -89,14 +92,15 @@ public class CreatePayrollDetailActivity extends AppCompatActivity {
         spnSalaryRuleGroup = findViewById(R.id.spnSalaryRuleGroup);
         edtDescription = findViewById(R.id.edtDescription);
         tvTitle = findViewById(R.id.tvTitle);
-        tvTitle.setText("Tạo bảng lương");
+        tvTitle.setText("Tạo thành phần lương");
 
     }
     private void getSalaryRuleGroup(){
+
         salaryGroupList = new ArrayList<>();
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,salaryGroupName);
         adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
-        HttpUtils.get("salary_rule_group", null,new JsonHttpResponseHandler(){
+        HttpUtils.getAuth("salary_rule_group",token, null,new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 try{
@@ -121,7 +125,7 @@ public class CreatePayrollDetailActivity extends AppCompatActivity {
         categoryList = new ArrayList<>();
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,categorysName);
         adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
-        HttpUtils.get("payroll_detail_category", null,new JsonHttpResponseHandler(){
+        HttpUtils.getAuth("payroll_detail_category",token, null,new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
@@ -160,7 +164,7 @@ public class CreatePayrollDetailActivity extends AppCompatActivity {
         params.put("salary_rule_group_id", salaryRuleID);
         params.put("description", mDescriptiop);
         params.setUseJsonStreamer(true);
-        HttpUtils.post("payroll_detail", params, new AsyncHttpResponseHandler() {
+        HttpUtils.postAuth("payroll_detail",token, params, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 Toast.makeText(CreatePayrollDetailActivity.this, "Thêm thành công", Toast.LENGTH_SHORT).show();

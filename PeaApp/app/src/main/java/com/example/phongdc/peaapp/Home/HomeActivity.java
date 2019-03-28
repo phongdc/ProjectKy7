@@ -31,7 +31,7 @@ public class HomeActivity extends AppCompatActivity implements FragmentDrawer.Fr
     private TextView tvCurrentDay;
     private TextView tvUsername;
     private TextView tvCode;
-    private int userID;
+//    private int userID;
     public static String token;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +73,7 @@ public class HomeActivity extends AppCompatActivity implements FragmentDrawer.Fr
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+
             return true;
         }
 

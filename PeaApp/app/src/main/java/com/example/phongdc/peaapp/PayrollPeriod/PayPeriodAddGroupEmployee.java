@@ -14,6 +14,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.phongdc.peaapp.AsyncHttpClient.HttpUtils;
+import com.example.phongdc.peaapp.Home.HomeActivity;
 import com.example.phongdc.peaapp.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -42,7 +43,7 @@ public class PayPeriodAddGroupEmployee extends AppCompatActivity {
     RadioGroup rdGroupEmp;
     RadioButton rdEmp;
     int selectedId;
-
+    private String token;
 //    Spinner spnEmpGroup;
 //    private int empGroupID;
 
@@ -50,6 +51,10 @@ public class PayPeriodAddGroupEmployee extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pay_period_add_group_emp);
+        token = HomeActivity.getToken();
+        Bundle extras = this.getIntent().getExtras();
+        id = extras.getInt("ID");
+        name = extras.getString("NAME");
 
 //        spnEmpGroup = (Spinner)findViewById(R.id.spnEmpGroup);
         empGroupsName = new ArrayList<>();
@@ -91,7 +96,7 @@ public class PayPeriodAddGroupEmployee extends AppCompatActivity {
 
     public void getGroupEmployee(){
 
-        HttpUtils.getByUrl("http://payroll.unicode.edu.vn/api/employee_group", null, new JsonHttpResponseHandler(){
+        HttpUtils.getByUrlAuth("http://payroll.unicode.edu.vn/api/employee_group",token, null, new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
 
@@ -132,13 +137,13 @@ public class PayPeriodAddGroupEmployee extends AppCompatActivity {
 
         rdEmp = (RadioButton) findViewById(selectedId);
 
-        params.put("period_apply_id", 0);
+        params.put("period_apply_id", id);
         params.put("list_emp", "");
         params.put("group_emp", rdEmp.getId());
 
         params.setUseJsonStreamer(true);
 
-        asyncHttpClient.post("http://payroll.unicode.edu.vn/api/payroll_period/apply", params, new AsyncHttpResponseHandler() {
+        HttpUtils.postByUrlAuth("http://payroll.unicode.edu.vn/api/payroll_period/apply",token, params, new AsyncHttpResponseHandler() {
             @Override
             public void onStart() {
             }

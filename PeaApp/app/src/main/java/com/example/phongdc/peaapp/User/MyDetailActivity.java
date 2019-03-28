@@ -23,7 +23,7 @@ public class MyDetailActivity extends AppCompatActivity {
     private TextView tvEmail;
     private TextView tvAddress;
     private TextView tvPhone, tvTitle, txtBd;
-    private int id;
+    private int userId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,8 +40,8 @@ public class MyDetailActivity extends AppCompatActivity {
         getDetail();
     }
     public  void  getDetail() {
-        id = HomeEmployee.getUserID();
-        HttpUtils.get("employee?id="+id , null, new JsonHttpResponseHandler(){
+        userId = HomeEmployee.getUserID();
+        HttpUtils.get("employee?id="+ userId , null, new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 try {

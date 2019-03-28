@@ -20,13 +20,6 @@
                 android:text="Danh sách nhân viên"
                 android:textColor="#FFFFFF"
                 android:gravity="center"/>
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/ic_arrow_back_black_24dp"
-
-                />
         </RelativeLayout>
 
     </android.support.v7.widget.CardView>
@@ -50,10 +43,15 @@
 
             </android.support.v7.widget.CardView>
 
-
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/pullToRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="80dp">
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_Emp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="80dp"/>
+        />
+    </android.support.v4.widget.SwipeRefreshLayout>
 </RelativeLayout>

@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:background="@color/ListBackground"
     tools:context=".Employees.EmpDetailsActivity">
     <include
         android:id="@+id/toolbar"
@@ -85,7 +86,6 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
             android:text="Email: "
-
             android:textSize="20dp" />
     <EditText
         android:id="@+id/edtEmpEmail"

@@ -6,6 +6,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.phongdc.peaapp.AsyncHttpClient.HttpUtils;
+import com.example.phongdc.peaapp.Home.HomeActivity;
 import com.example.phongdc.peaapp.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -44,7 +45,8 @@ public class EmpDetailsActivity extends AppCompatActivity {
         getEmpDetails();
     }
     private void getEmpDetails() {
-        HttpUtils.get("employee?id="+id, null, new JsonHttpResponseHandler(){
+        String token = HomeActivity.getToken();
+        HttpUtils.getAuth("employee?id="+id,token, null, new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 try {

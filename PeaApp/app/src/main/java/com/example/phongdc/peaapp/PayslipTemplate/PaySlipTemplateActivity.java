@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.phongdc.peaapp.AsyncHttpClient.HttpUtils;
+import com.example.phongdc.peaapp.Home.HomeActivity;
 import com.example.phongdc.peaapp.R;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -32,6 +33,7 @@ public class PaySlipTemplateActivity extends AppCompatActivity {
     private List<Payroll> payrolls;
     private String nameApi = "payroll_detail";
     private String nameApi1 = "payslip_template";
+    private String token;
     //private Integer[] itemId;
     private List<Integer> array;
     private EditText edtTemplateName;
@@ -42,6 +44,7 @@ public class PaySlipTemplateActivity extends AppCompatActivity {
         findViewById();
         tvTitle.setText("Tạo mẫu phiếu lương");
         payrolls = new ArrayList<>();
+        token = HomeActivity.getToken();
         rv_Payroll.setLayoutManager(new LinearLayoutManager(this));
         getPayrolls();
     }
@@ -52,7 +55,7 @@ public class PaySlipTemplateActivity extends AppCompatActivity {
 
     }
     public void getPayrolls(){
-       HttpUtils.get(nameApi, null, new JsonHttpResponseHandler() {
+       HttpUtils.getAuth(nameApi,token, null, new JsonHttpResponseHandler() {
            @Override
            public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                try {
@@ -98,9 +101,9 @@ public class PaySlipTemplateActivity extends AppCompatActivity {
         JSONArray jsonArray = new JSONArray(array);
         RequestParams params = new RequestParams();
         params.put("name", edtTemplateName.getText().toString());
-        params.put("list_parroll_detail",jsonArray);
+        params.put("list_payroll_detail",jsonArray);
         params.setUseJsonStreamer(true);
-        HttpUtils.post(nameApi1, params, new AsyncHttpResponseHandler() {
+        HttpUtils.postAuth(nameApi1,token, params, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 Toast.makeText(PaySlipTemplateActivity.this,"Thêm thành công",Toast.LENGTH_SHORT ).show();

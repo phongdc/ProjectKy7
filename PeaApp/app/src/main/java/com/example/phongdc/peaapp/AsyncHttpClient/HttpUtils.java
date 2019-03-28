@@ -27,6 +27,21 @@ public class HttpUtils {
         client.get(getAbsoluteUrl(url), params, responseHandler);
         client.addHeader("Authorization", token);
     }
+    public static void postAuth(String url,String token, RequestParams params, AsyncHttpResponseHandler responseHandler) {
+        client.post(getAbsoluteUrl(url), params, responseHandler);
+        client.addHeader("Authorization", token);
+    }
+    public static void getByUrlAuth(String url, String token,RequestParams params, AsyncHttpResponseHandler responseHandler) {
+        client.get(url, params, responseHandler);
+        client.addHeader("Authorization", token);
+    }
+    public static void postByUrlAuth(String url,String token, RequestParams params, AsyncHttpResponseHandler responseHandler) {
+        client.post(url, params, responseHandler);
+        client.addHeader("Authorization", token);
+    }
+    public static void delete(String url, RequestParams params, AsyncHttpResponseHandler responseHandler) {
+        client.delete(getAbsoluteUrl(url), params, responseHandler);
+    }
     private static String getAbsoluteUrl(String relativeUrl) {
         return BASE_URL + relativeUrl;
     }

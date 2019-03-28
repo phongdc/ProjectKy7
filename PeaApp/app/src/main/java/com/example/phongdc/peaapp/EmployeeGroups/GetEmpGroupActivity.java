@@ -15,6 +15,7 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.example.phongdc.peaapp.AsyncHttpClient.HttpUtils;
+import com.example.phongdc.peaapp.Home.HomeActivity;
 import com.example.phongdc.peaapp.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -60,7 +61,8 @@ public class GetEmpGroupActivity extends AppCompatActivity {
     }
 
     private void getPaySlipGroup() {
-        HttpUtils.get("employee_group", null, new JsonHttpResponseHandler() {
+        String token = HomeActivity.getToken();
+        HttpUtils.getAuth("employee_group",token, null, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 try {

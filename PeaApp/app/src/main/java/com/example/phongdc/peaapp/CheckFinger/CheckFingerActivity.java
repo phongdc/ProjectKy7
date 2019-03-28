@@ -8,6 +8,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.phongdc.peaapp.AsyncHttpClient.HttpUtils;
+import com.example.phongdc.peaapp.Home.HomeEmployee;
 import com.example.phongdc.peaapp.R;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -33,11 +34,13 @@ public class CheckFingerActivity extends AppCompatActivity {
         });
     }
     private void checkAttendent(){
+        String token = HomeEmployee.getToken();
+        String code = HomeEmployee.getUserCode();
         RequestParams params = new RequestParams();
         params.put("store_id", 1);
-        params.put("code", "0001");
+        params.put("code", code);
         params.setUseJsonStreamer(true);
-        HttpUtils.post("CheckFinger", params, new AsyncHttpResponseHandler() {
+        HttpUtils.postAuth("check_finger",token, params, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 Toast.makeText(CheckFingerActivity.this, "Xin cảm ơn", Toast.LENGTH_SHORT).show();

@@ -10,6 +10,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.phongdc.peaapp.AsyncHttpClient.HttpUtils;
+import com.example.phongdc.peaapp.Home.HomeActivity;
+import com.example.phongdc.peaapp.Home.HomeEmployee;
 import com.example.phongdc.peaapp.R;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
@@ -64,7 +66,8 @@ public class DayModeActivity extends AppCompatActivity {
 
 
     private void getDayMode(){
-        HttpUtils.get("day_mode", null, new JsonHttpResponseHandler(){
+        String token = HomeActivity.getToken();
+        HttpUtils.getAuth("day_mode", token,null, new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 try {
