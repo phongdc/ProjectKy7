@@ -49,6 +49,10 @@ public class PayPeriodAddGroupEmployee extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pay_period_add_group_emp);
 
+        Bundle extras = this.getIntent().getExtras();
+        id = extras.getInt("ID");
+        name = extras.getString("NAME");
+
 //        spnEmpGroup = (Spinner)findViewById(R.id.spnEmpGroup);
         empGroupsName = new ArrayList<>();
         empGroups = new ArrayList<EmpGroup>();
@@ -130,7 +134,7 @@ public class PayPeriodAddGroupEmployee extends AppCompatActivity {
 
         rdEmp = (RadioButton) findViewById(selectedId);
 
-        params.put("period_apply_id", 0);
+        params.put("period_apply_id", id);
         params.put("list_emp", "");
         params.put("group_emp", rdEmp.getId());
 

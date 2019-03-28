@@ -80,11 +80,23 @@ public class PayPeriodDetails extends AppCompatActivity {
 
     public void clickToAddEmp(View view) {
         Intent intent = new Intent(this, PayPeriodAddListEmployee.class);
+
+        Bundle bundle = new Bundle();
+        bundle.putInt("ID", id);
+        bundle.putString("NAME", name);
+        intent.putExtras(bundle);
+
         startActivity(intent);
     }
 
     public void clickToAddGroupEmp(View view) {
         Intent intent = new Intent(this, PayPeriodAddGroupEmployee.class);
+
+        Bundle bundle = new Bundle();
+        bundle.putInt("ID", id);
+        bundle.putString("NAME", name);
+        intent.putExtras(bundle);
+
         startActivity(intent);
     }
 

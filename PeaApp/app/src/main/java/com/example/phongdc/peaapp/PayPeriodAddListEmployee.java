@@ -37,6 +37,10 @@ public class PayPeriodAddListEmployee extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pay_period_add_list_emp);
 
+        Bundle extras = this.getIntent().getExtras();
+        id = extras.getInt("ID");
+        name = extras.getString("NAME");
+
         checkParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         checkParams.setMargins(10, 10, 10, 10);
         checkParams.gravity = Gravity.LEFT;
@@ -95,7 +99,7 @@ public class PayPeriodAddListEmployee extends AppCompatActivity {
             }
         }
 
-        params.put("period_apply_id", 1);
+        params.put("period_apply_id", id);
         params.put("list_emp", jsonArray);
         params.put("group_emp", 0);
         params.setUseJsonStreamer(true);
