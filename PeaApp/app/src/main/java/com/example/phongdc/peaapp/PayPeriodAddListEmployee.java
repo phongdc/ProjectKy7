@@ -61,7 +61,7 @@ public class PayPeriodAddListEmployee extends AppCompatActivity {
                     for (int i = 0; i < jArray.length(); i++) {
                         Employee emp = new Employee();
                         JSONObject object = jArray.getJSONObject(i);
-                        emp.setId(object.getInt("id"));
+//                        emp.setId(object.getInt("id"));
                         emp.setEmployee_name(object.getString("employee_name"));
                         emp.setCode(object.getString("code"));
 
@@ -95,7 +95,7 @@ public class PayPeriodAddListEmployee extends AppCompatActivity {
             }
         }
 
-        params.put("period_apply_id", 0);
+        params.put("period_apply_id", 1);
         params.put("list_emp", jsonArray);
         params.put("group_emp", 0);
         params.setUseJsonStreamer(true);

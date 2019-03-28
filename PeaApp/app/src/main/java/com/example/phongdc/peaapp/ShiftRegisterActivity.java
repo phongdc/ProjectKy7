@@ -154,14 +154,14 @@ public class ShiftRegisterActivity  extends AppCompatActivity implements View.On
         final RequestParams params = new RequestParams();
         JSONObject object = new JSONObject();
 
-//        String from = edtShiftFromDate.getText().toString();
+        String from = edtShiftFromDate.getText().toString();
 //        String to = edtShiftTodate.getText().toString();
-        String from = "2010-07-03";
-        String to = "2012-08-04";
+//        String from = "2010-07-03";
+//        String to = "2012-08-04";
 
-        params.put("employee_id", empID);
+        params.put("employee_id", 2);
         params.put("start_time",from);
-        params.put("end_time", to);
+        params.put("end_time", from);
         params.put("time_frame_id", timeFrameID);
 
         params.setUseJsonStreamer(true);
@@ -182,6 +182,7 @@ public class ShiftRegisterActivity  extends AppCompatActivity implements View.On
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                 Toast.makeText(ShiftRegisterActivity.this,"Thêm that bai",Toast.LENGTH_SHORT ).show();
+//                Toast.makeText(ShiftRegisterActivity.this,params.toString(),Toast.LENGTH_SHORT ).show();
             }
 
 

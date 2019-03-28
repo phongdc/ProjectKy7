@@ -32,7 +32,7 @@ public class PayRollEmpRecyclerAdapter extends RecyclerView.Adapter<PayRollEmpRe
         public PayRollEmpViewHolder(View itemView) {
             super(itemView);
             cv = (CardView)itemView.findViewById(R.id.cvPayrollEmp);
-            tvPayRollEmoName = (TextView)itemView.findViewById(R.id.tvPayrollName);
+            tvPayRollEmoName = (TextView)itemView.findViewById(R.id.tvPayrollEmpName);
             tvPayRollEmpFromDate = (TextView)itemView.findViewById(R.id.tvPayrollEmpFromDate);
             tvPayRollEmpToDate = (TextView)itemView.findViewById(R.id.tvPayrollEmpToDate);
 

@@ -34,7 +34,7 @@ public class PayRollEmpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payroll_period_emp);
 
-        a = 1;
+        a = 2;
 
         findViewById();
         tvTitle.setText("PayRoll");

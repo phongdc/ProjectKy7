@@ -77,8 +77,5 @@ public class GetShiftRegisterActivity extends AppCompatActivity {
     }
 
 
-    public void clickToGoToShiftAccept(View view) {
-        Intent intent = new Intent(GetShiftRegisterActivity.this, AcceptShiftRegister.class);
-        startActivity(intent);
-    }
+
 }

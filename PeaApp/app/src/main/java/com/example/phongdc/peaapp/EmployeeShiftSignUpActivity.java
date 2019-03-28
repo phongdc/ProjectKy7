@@ -2,6 +2,7 @@ package com.example.phongdc.peaapp;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.view.Gravity;
@@ -28,6 +29,7 @@ import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.sql.Time;
+import java.text.Annotation;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -240,6 +242,7 @@ public class EmployeeShiftSignUpActivity extends AppCompatActivity implements Vi
         final RequestParams params2 = new RequestParams();
 
         JSONArray jsonArray = new JSONArray();
+
         JSONArray jsonArrayDate = new JSONArray();
         JSONArray jsonArrayTimeFrame = new JSONArray();
         JSONArray jsonArrayMinTime = new JSONArray();
@@ -282,10 +285,10 @@ public class EmployeeShiftSignUpActivity extends AppCompatActivity implements Vi
         params.put("brand_id", 1);
 
         jsonArray.put(params);
-        params2.add("",jsonArray.toString());
+        params2.add("", jsonArray.toString());
         params2.setUseJsonStreamer(true);
 
-        asyncHttpClient.post("http://payroll.unicode.edu.vn/api/attendance", params2, new AsyncHttpResponseHandler() {
+        asyncHttpClient.post("http://payroll.unicode.edu.vn/api/attendance",params2 , new AsyncHttpResponseHandler() {
             @Override
             public void onStart() {
             }

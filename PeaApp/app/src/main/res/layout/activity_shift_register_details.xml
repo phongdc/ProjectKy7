@@ -5,23 +5,46 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#cccccc"
+    android:weightSum="8"
     tools:context=".ShiftRegisterDetailsActivity">
     <include android:id="@+id/toolbar"
         layout="@layout/toolbar"   />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:orientation="vertical"
         android:layout_weight="7">
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_ShiftRegisterDetails"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/toolbar"
-            />
+            android:layout_height="match_parent">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_ShiftRegisterDetails"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/toolbar"
+                />
 
+        </ScrollView>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_weight="1">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Duyệt Những Ca Chưa Duyệt"
+            android:layout_gravity="center"
+            android:padding="5dp"
+            android:background="@drawable/my_button"
+            android:onClick="clickToGoToShiftAccept"/>
     </LinearLayout>
 
 </LinearLayout>

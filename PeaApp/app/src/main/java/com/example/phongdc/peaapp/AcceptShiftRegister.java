@@ -23,6 +23,7 @@ import java.util.List;
 
 import Model.Employee;
 import Model.ShiftRegister;
+import Model.ShiftRegisterDetails;
 import cz.msebera.android.httpclient.Header;
 
 public class AcceptShiftRegister extends AppCompatActivity {
@@ -43,6 +44,9 @@ public class AcceptShiftRegister extends AppCompatActivity {
         checkParams.setMargins(10, 10, 10, 10);
         checkParams.gravity = Gravity.LEFT;
 
+        Bundle extras = this.getIntent().getExtras();
+        empName = extras.getString("EmployeeName");
+
         allCheckBox = new ArrayList<CheckBox>();
         linearLayout = (LinearLayout) findViewById(R.id.shiftRegisterlist);
         shiftRegistersList = new ArrayList<ShiftRegister>();
@@ -61,19 +65,27 @@ public class AcceptShiftRegister extends AppCompatActivity {
                     JSONArray jArray = json.getJSONArray("data");
 
                     for (int i = 0; i < jArray.length(); i++) {
+                        JSONObject json2 = jArray.getJSONObject(i);
+                        JSONArray jArray2 = json2.getJSONArray("shift");
 
-                        JSONObject object = jArray.getJSONObject(i);
-                        if(!object.getString("status").matches("Đã duyệt")){
+
+                        for (int y = 0; y < jArray2.length(); y++) {
+                            JSONObject object = jArray2.getJSONObject(y);
                             ShiftRegister shiftRegister = new ShiftRegister();
-                            shiftRegister.setShiftId(object.getInt("id"));
-                            shiftRegister.setEmpName(object.getString("name"));
-                            shiftRegistersList.add(shiftRegister);
-                            CheckBox cb = new CheckBox(AcceptShiftRegister.this);
-                            cb.setText(object.getString("name"));
-                            cb.setTextSize(20);
-                            cb.setId(i);
-                            linearLayout.addView(cb, checkParams);
-                            allCheckBox.add(cb);
+                            if(!object.getString("status").matches("Đã duyệt") && object.getString("name").matches(empName)){
+
+                                shiftRegister.setShiftId(object.getInt("id"));
+                                shiftRegister.setEmpName(object.getString("name"));
+                                shiftRegistersList.add(shiftRegister);
+
+                                CheckBox cb = new CheckBox(AcceptShiftRegister.this);
+                                cb.setText(object.getString("name"));
+                                cb.setTextSize(20);
+                                cb.setId(i);
+                                linearLayout.addView(cb, checkParams);
+                                allCheckBox.add(cb);
+                            }
+
                         }
                     }
 

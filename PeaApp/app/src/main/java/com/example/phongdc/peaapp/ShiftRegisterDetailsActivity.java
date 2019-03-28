@@ -1,9 +1,11 @@
 package com.example.phongdc.peaapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.TextView;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -66,7 +68,7 @@ public class ShiftRegisterDetailsActivity extends AppCompatActivity {
                         for (int y = 0; y < jArray2.length(); y++) {
                             JSONObject object = jArray2.getJSONObject(y);
                             ShiftRegisterDetails shiftRegister = new ShiftRegisterDetails();
-//                            if (object.getString("name").matches(name)){
+                            if (object.getString("name").matches(name)){
                                 shiftRegister.setShiftId(object.getInt("id"));
                                 shiftRegister.setTimeFrameName(object.getString("time_frame_name"));
                                 shiftRegister.setEmpName(object.getString("name"));
@@ -76,7 +78,7 @@ public class ShiftRegisterDetailsActivity extends AppCompatActivity {
                                 shiftRegister.setEndTime(object.getString("end_time"));
                                 shiftRegister.setStatus(object.getString("status"));
                                 shiftRegisterList.add(shiftRegister);
-//                        }
+                        }
 
                         }
                     }
@@ -88,6 +90,16 @@ public class ShiftRegisterDetailsActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void clickToGoToShiftAccept(View view) {
+        Intent intent = new Intent(ShiftRegisterDetailsActivity.this, AcceptShiftRegister.class);
+
+        Bundle bundle = new Bundle();
+        bundle.putString("EmployeeName", name);
+        intent.putExtras(bundle);
+
+        startActivity(intent);
     }
 
 }
