@@ -5,5 +5,6 @@ public class ConfigApi {
 
     public interface Api {
         String ATTENDANCE = "attendance";
+        String STATUS = "attendance/status";
     }
 }

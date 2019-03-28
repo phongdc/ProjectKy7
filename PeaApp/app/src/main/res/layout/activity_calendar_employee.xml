@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".CalendarEmployeeActivity">
-
     <com.applandeo.materialcalendarview.CalendarView
         android:id="@+id/calendarView"
         app:todayLabelColor="@color/colorBlack"

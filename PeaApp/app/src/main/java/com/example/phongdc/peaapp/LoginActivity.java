@@ -13,7 +13,6 @@ private EditText edtUserName;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
     }
-
     public void clickToLogin(View view) {
         startActivity(new Intent(LoginActivity.this, HomeActivity.class));
     }

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".CalendarEmployeeDetailActivity">
+  <TextView
+      android:layout_marginBottom="@dimen/dp10"
+      android:textSize="20sp"
+      android:gravity="center"
+      android:layout_gravity="center"
+      android:id="@+id/time_choose"
+      android:layout_marginTop="@dimen/dp10"
+      android:text="Ngày 28/03/2019"
+      android:textStyle="bold"
+      android:layout_width="match_parent"
+      android:textColor="@color/colorBlack"
+      android:layout_height="wrap_content" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="@dimen/dp10"
+        android:background="@drawable/radius_10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:weightSum="10"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textStyle="bold"
+                android:textColor="@color/colorBlack"
+                android:text="Bắt đầu ca"
+                android:layout_weight="4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/shift_min"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:text="2019-03-21T08:00:00"
+                android:layout_weight="6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="@dimen/dp10"
+            android:weightSum="10"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textStyle="bold"
+                android:textColor="@color/colorBlack"
+                android:text="Kết thúc ca"
+                android:layout_weight="4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/shift_max"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:text="2019-03-21T12:00:00"
+                android:layout_weight="6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="@dimen/dp10"
+            android:weightSum="10"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textStyle="bold"
+                android:textColor="@color/colorBlack"
+                android:text="Điểm danh vào"
+                android:layout_weight="4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/check_min"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:text="2019-03-21T08:07:00"
+                android:layout_weight="6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+
+    </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="@dimen/dp10"
+            android:weightSum="10"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textStyle="bold"
+                android:textColor="@color/colorBlack"
+                android:text="Điểm danh ra"
+                android:layout_weight="4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/check_max"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:text="2019-03-21T11:45:00"
+                android:layout_weight="6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="@dimen/dp10"
+            android:weightSum="10"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textStyle="bold"
+                android:textColor="@color/colorBlack"
+                android:text="Tổng thời gian"
+                android:layout_weight="4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/total_time"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:text="03:38:00"
+                android:layout_weight="6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+</LinearLayout>
+    <ImageView
+        android:id="@+id/status_checked"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/checked"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center"
+        android:layout_width="200dp"
+        android:layout_height="200dp" />
+
+</LinearLayout>
