@@ -6,8 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.phongdc.peaapp.EmployeeGroups.GetEmpGroupActivity;
 import com.example.phongdc.peaapp.Home.HomeActivity;
 import com.example.phongdc.peaapp.Home.HomeEmployee;
 import com.example.phongdc.peaapp.MainActivity;
@@ -21,12 +23,14 @@ import com.squareup.moshi.Json;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import customfonts.MyEditText;
+import customfonts.MyTextView;
 import cz.msebera.android.httpclient.Header;
 
 public class LoginActivity extends AppCompatActivity {
 
-    EditText username;
-    EditText password;
+    MyEditText username;
+    MyEditText password;
 
 
     @Override
@@ -34,8 +38,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        username = (EditText)findViewById(R.id.txtUsername);
-        password = (EditText)findViewById(R.id.txtPassword);
+        username = findViewById(R.id.txtUsername);
+        password = findViewById(R.id.txtPassword);
 
     }
 
@@ -131,5 +135,9 @@ public class LoginActivity extends AppCompatActivity {
                 super.onRetry(retryNo);
             }
         });
+    }
+
+    public void clickToCreateAccount(View view) {
+        startActivity(new Intent(LoginActivity.this, RegisterEmployeeActivity.class));
     }
 }

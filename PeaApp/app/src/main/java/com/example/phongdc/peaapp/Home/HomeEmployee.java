@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.example.phongdc.peaapp.CheckFinger.CheckFingerActivity;
 import com.example.phongdc.peaapp.LeftMenu.FragmentDrawer;
 import com.example.phongdc.peaapp.LoginActivity;
+import com.example.phongdc.peaapp.MyDetailActivity;
 import com.example.phongdc.peaapp.PayRollEmpActivity;
 import com.example.phongdc.peaapp.PayrollDetail.PayrollDetailActivity;
 import com.example.phongdc.peaapp.PayrollPeriod.GetPeriodActivity;
@@ -128,5 +129,9 @@ public class HomeEmployee extends AppCompatActivity implements FragmentDrawer.Fr
     public void clickToAcceptShiftRegisterEmp(View view) {
         startActivity(new Intent(HomeEmployee.this, ShiftRegisterActivity.class));
 
+    }
+
+    public void clickToMyDetail(View view) {
+        startActivity(new Intent(HomeEmployee.this, MyDetailActivity.class));
     }
 }
