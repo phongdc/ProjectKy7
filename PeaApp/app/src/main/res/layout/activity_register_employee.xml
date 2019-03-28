@@ -23,7 +23,7 @@
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="110dp"
+            android:layout_marginTop="60dp"
             android:background="@drawable/logo" />
 
         <LinearLayout
@@ -61,7 +61,7 @@
                 android:layout_marginRight="35dp"
                 android:background="#0000"
                 android:hint="Email"
-                android:inputType="textEmailAddress"
+                android:inputType="textEmailSubject"
                 android:padding="16dp"
                 android:textColor="#FFFF"
                 android:textColorHint="#FFFF"
