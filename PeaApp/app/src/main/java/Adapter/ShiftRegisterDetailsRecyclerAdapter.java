@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import com.example.phongdc.peaapp.ItemClickListener;
 import com.example.phongdc.peaapp.R;
-import com.example.phongdc.peaapp.ShiftRegisterDetailsActivity;
+import com.example.phongdc.peaapp.ShiftRegister.ShiftRegisterDetailsActivity;
 
 import java.util.List;
 
@@ -75,13 +75,13 @@ public class ShiftRegisterDetailsRecyclerAdapter extends RecyclerView.Adapter<Sh
 
     @NonNull
     @Override
-    public ShiftRegisterDetailsRecyclerAdapter.ShiftRegisterDetailsViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public ShiftRegisterDetailsViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.shift_register_details_view, viewGroup, false);
-        return new ShiftRegisterDetailsRecyclerAdapter.ShiftRegisterDetailsViewHolder(view);
+        return new ShiftRegisterDetailsViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(final ShiftRegisterDetailsRecyclerAdapter.ShiftRegisterDetailsViewHolder ShiftRegisterViewHolder, final int i) {
+    public void onBindViewHolder(final ShiftRegisterDetailsViewHolder ShiftRegisterViewHolder, final int i) {
         ShiftRegisterViewHolder.tvShiftRegisterDetailsName.setText(shiftRegistersDetails.get(i).getEmpName().toString());
         ShiftRegisterViewHolder.tvShiftRegisterDetailsStartTime.setText(shiftRegistersDetails.get(i).getStartTime().toString());
         ShiftRegisterViewHolder.tvShiftRegisterDetailsEndTime.setText(shiftRegistersDetails.get(i).getEndTime().toString());

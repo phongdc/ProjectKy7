@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#cccccc"
     android:weightSum="8"
-    tools:context=".ShiftRegisterDetailsActivity">
+    tools:context=".ShiftRegister.ShiftRegisterDetailsActivity">
     <include android:id="@+id/toolbar"
         layout="@layout/toolbar"   />
 

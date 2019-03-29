@@ -9,13 +9,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.TextView;
-import com.example.phongdc.peaapp.R;
 
 import com.example.phongdc.peaapp.ItemClickListener;
+import com.example.phongdc.peaapp.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import Model.Payroll;
@@ -43,7 +41,7 @@ public class PayrollRecyclerAdapter extends RecyclerView.Adapter<PayrollRecycler
         payrollViewHolder.tvPayrollName.setText(payrolls.get(i).getName());
         payrollViewHolder.chkSelected.setChecked(payrolls.get(i).isSelected());
         payrollViewHolder.chkSelected.setTag(i);
-        payrollViewHolder.chkSelected.setOnClickListener(new View.OnClickListener(){
+        payrollViewHolder.chkSelected.setOnClickListener(new OnClickListener(){
             @Override
             public void onClick(View v) {
                 Integer pos = (Integer) payrollViewHolder.chkSelected.getTag();

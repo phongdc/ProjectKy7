@@ -6,6 +6,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
+import com.example.phongdc.peaapp.AsyncHttpClient.HttpUtils;
+import com.example.phongdc.peaapp.Home.HomeEmployee;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.json.JSONArray;
@@ -34,7 +36,7 @@ public class PayRollEmpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payroll_period_emp);
 
-        a = 2;
+        a = HomeEmployee.getUserID();
 
         findViewById();
         tvTitle.setText("PayRoll");
@@ -51,7 +53,8 @@ public class PayRollEmpActivity extends AppCompatActivity {
     }
 
     public void getPayRollEmp(){
-        HttpUtils.getByUrl("http://payroll.unicode.edu.vn/api/payroll_period?empId=" + a, null, new JsonHttpResponseHandler(){
+        String token = HomeEmployee.getToken();
+        HttpUtils.getByUrlAuth("http://payroll.unicode.edu.vn/api/payroll_period?empId=" + a,token, null, new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 try {

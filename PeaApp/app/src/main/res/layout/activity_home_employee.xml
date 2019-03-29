@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Use DrawerLayout as root container for activity -->
+<android.support.v4.widget.DrawerLayout
+    android:id="@+id/drawer_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Home.HomeEmployee"
+    android:fitsSystemWindows="true">
+
+    <!-- Layout to contain contents of main body of screen (drawer will slide over this) -->
+    <FrameLayout
+        android:id="@+id/content_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/toolbar"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="#8BC34A"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:id="@+id/tvUserName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="ĐINH CAO PHONG"
+                    android:textColor="#0356FC"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/tvCurrentDay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Thứ 5, ngày 24 tháng 01 năm 2019"
+                    android:textSize="25sp" />
+            </LinearLayout>
+            <RelativeLayout
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/tvCode"
+                    android:textSize="20dp"
+                    android:text="Code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/tvBalance"
+                    android:layout_alignParentRight="true"
+                    android:textSize="20dp"
+                    android:text="Balance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_weight="3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <!--<LinearLayout-->
+                            <!--android:paddingTop="10dp"-->
+                            <!--android:paddingLeft="15dp"-->
+                            <!--android:paddingRight="5dp"-->
+                            <!--android:gravity="center"-->
+                            <!--android:layout_weight="1"-->
+                            <!--android:layout_width="0dp"-->
+                            <!--android:layout_height="match_parent">-->
+                            <!--<LinearLayout-->
+                                <!--android:gravity="center"-->
+                                <!--android:layout_gravity="center"-->
+                                <!--android:orientation="vertical"-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="match_parent"-->
+                                <!--android:onClick="clickToEmployeeList">-->
+                                <!--<ImageView-->
+                                    <!--android:layout_width="match_parent"-->
+                                    <!--android:layout_height="100dp"-->
+                                    <!--android:src="@drawable/group_icon"-->
+                                    <!--/>-->
+                                <!--<TextView-->
+                                    <!--android:textAlignment="center"-->
+                                    <!--android:text="Nhân viên"-->
+                                    <!--android:layout_width="match_parent"-->
+                                    <!--android:layout_height="wrap_content"-->
+                                    <!--/>-->
+                            <!--</LinearLayout>-->
+                        <!--</LinearLayout>-->
+                        <!--<LinearLayout-->
+                            <!--android:paddingTop="10dp"-->
+                            <!--android:paddingLeft="10dp"-->
+                            <!--android:paddingRight="10dp"-->
+                            <!--android:gravity="center"-->
+                            <!--android:layout_weight="1"-->
+                            <!--android:layout_width="0dp"-->
+                            <!--android:layout_height="match_parent">-->
+                            <!--<LinearLayout-->
+
+                                <!--android:gravity="center"-->
+                                <!--android:layout_gravity="center"-->
+                                <!--android:orientation="vertical"-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="match_parent"-->
+                                <!--android:onClick="clickToGroupEmp"-->
+                                <!--&gt;-->
+                                <!--<ImageView-->
+                                    <!--android:layout_width="match_parent"-->
+                                    <!--android:layout_height="100dp"-->
+                                    <!--android:src="@drawable/usergroup_icon"-->
+                                    <!--/>-->
+                                <!--<TextView-->
+                                    <!--android:textAlignment="center"-->
+                                    <!--android:text="Nhóm nhân viên"-->
+                                    <!--android:layout_width="match_parent"-->
+                                    <!--android:layout_height="wrap_content" />-->
+                            <!--</LinearLayout>-->
+                        <!--</LinearLayout>-->
+
+                        <LinearLayout
+                            android:paddingTop="10dp"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="15dp"
+                            android:gravity="center"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent">
+                            <LinearLayout
+
+                                android:gravity="center"
+                                android:layout_gravity="center"
+                                android:orientation="vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:onClick="clickToPayPeriodEmp">
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="100dp"
+                                    android:src="@drawable/weekly_calendar"/>
+                                <TextView
+                                    android:textAlignment="center"
+                                    android:text="Kỳ lương"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_weight="3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <!--<LinearLayout-->
+                            <!--android:paddingTop="10dp"-->
+                            <!--android:paddingLeft="15dp"-->
+                            <!--android:paddingRight="5dp"-->
+                            <!--android:gravity="center"-->
+                            <!--android:layout_weight="1"-->
+                            <!--android:layout_width="0dp"-->
+                            <!--android:layout_height="match_parent">-->
+                            <!--<LinearLayout-->
+                                <!--android:gravity="center"-->
+                                <!--android:layout_gravity="center"-->
+                                <!--android:orientation="vertical"-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="match_parent"-->
+                                <!--android:onClick="clickToPaySlipTemplate">-->
+                                <!--<ImageView-->
+
+                                    <!--android:layout_width="match_parent"-->
+                                    <!--android:layout_height="100dp"-->
+                                    <!--android:src="@drawable/slip_icon"/>-->
+                                <!--<TextView-->
+                                    <!--android:textAlignment="center"-->
+                                    <!--android:text="Mẫu phiếu lương"-->
+                                    <!--android:layout_width="match_parent"-->
+                                    <!--android:layout_height="wrap_content" />-->
+                            <!--</LinearLayout>-->
+                        <!--</LinearLayout>-->
+                        <LinearLayout
+                            android:paddingTop="10dp"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:gravity="center"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent">
+                            <LinearLayout
+
+                                android:gravity="center"
+                                android:layout_gravity="center"
+                                android:orientation="vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:onClick="clickToPayrollDetailEmp">
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="100dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/iconpayrolls"/>
+                                <TextView
+                                    android:textAlignment="center"
+                                    android:text="Thành phần lương"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:paddingTop="10dp"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="15dp"
+                            android:gravity="center"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent">
+                            <LinearLayout
+
+                                android:gravity="center"
+                                android:layout_gravity="center"
+                                android:orientation="vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:onClick="clickToAttendanceEmp">
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="100dp"
+                                    android:src="@drawable/dailywork_icon"/>
+                                <TextView
+                                    android:textAlignment="center"
+                                    android:text="Lịch làm việc"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_weight="3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <LinearLayout
+                            android:paddingTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="5dp"
+                            android:gravity="center"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent">
+                            <LinearLayout
+                                android:gravity="center"
+                                android:layout_gravity="center"
+                                android:orientation="vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:onClick="clickToCheckAttendanceEmp"
+                                >
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="100dp"
+                                    android:src="@drawable/icon_attendance" />
+                                <TextView
+                                    android:textAlignment="center"
+                                    android:text="Điểm danh"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:paddingTop="10dp"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:gravity="center"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent">
+                            <LinearLayout
+
+                                android:gravity="center"
+                                android:layout_gravity="center"
+                                android:orientation="vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:onClick="clickToAcceptShiftRegisterEmp"
+                                >
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="100dp"
+                                    android:src="@drawable/note"/>
+                                <TextView
+                                    android:textAlignment="center"
+                                    android:text="Đăng kí ca làm"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
+                        </LinearLayout>
+                        <!--<LinearLayout-->
+                            <!--android:paddingTop="10dp"-->
+                            <!--android:paddingLeft="5dp"-->
+                            <!--android:paddingRight="15dp"-->
+                            <!--android:gravity="center"-->
+                            <!--android:layout_weight="1"-->
+                            <!--android:layout_width="0dp"-->
+                            <!--android:layout_height="match_parent">-->
+                            <!--<LinearLayout-->
+                                <!--android:gravity="center"-->
+                                <!--android:layout_gravity="center"-->
+                                <!--android:orientation="vertical"-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="match_parent"-->
+                                <!--android:onClick="clickToOff"-->
+                                <!--&gt;-->
+                                <!--<ImageView-->
+                                    <!--android:layout_width="match_parent"-->
+                                    <!--android:layout_height="100dp"-->
+                                    <!--android:src="@drawable/flash"-->
+                                    <!--/>-->
+                                <!--<TextView-->
+                                    <!--android:textAlignment="center"-->
+                                    <!--android:text="Xin nghỉ"-->
+                                    <!--android:layout_width="match_parent"-->
+                                    <!--android:layout_height="wrap_content" />-->
+                            <!--</LinearLayout>-->
+                        <!--</LinearLayout>-->
+                    </LinearLayout>
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+    </FrameLayout>
+
+    <!-- Container for contents of drawer - use NavigationView to make configuration easier -->
+    <fragment
+        android:id="@+id/fragment_navigation_drawers"
+        android:name="com.example.phongdc.peaapp.LeftMenu.FragmentDrawer"
+        android:layout_width="@dimen/nav_drawer_width"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:layout="@layout/fragment_navigation_drawer"
+        tools:layout="@layout/fragment_navigation_drawer" />
+
+</android.support.v4.widget.DrawerLayout>

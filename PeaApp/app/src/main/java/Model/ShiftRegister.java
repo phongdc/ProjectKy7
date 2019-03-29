@@ -10,15 +10,6 @@ public class ShiftRegister {
     public String endDate;
     public String startTime;
     public String endTime;
-    public String timeFrameName;
-
-    public String getTimeFrameName() {
-        return timeFrameName;
-    }
-
-    public void setTimeFrameName(String timeFrameName) {
-        this.timeFrameName = timeFrameName;
-    }
 
     public int getShiftId() {
         return shiftId;

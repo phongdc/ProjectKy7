@@ -13,7 +13,8 @@ import android.widget.TextView;
 
 import com.example.phongdc.peaapp.ItemClickListener;
 import com.example.phongdc.peaapp.R;
-import com.example.phongdc.peaapp.ShiftRegisterDetailsActivity;
+import com.example.phongdc.peaapp.ShiftRegister.ShiftRegisterDetailsActivity;
+import com.example.phongdc.peaapp.ShiftRegister.ShiftRegisterDetailsActivity;
 
 import java.util.List;
 

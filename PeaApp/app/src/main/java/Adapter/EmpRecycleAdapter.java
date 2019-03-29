@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.phongdc.peaapp.EmpDetailsActivity;
+import com.example.phongdc.peaapp.Employees.EmpDetailsActivity;
 import com.example.phongdc.peaapp.ItemClickListener;
 import com.example.phongdc.peaapp.R;
 
@@ -69,8 +69,7 @@ public class EmpRecycleAdapter extends RecyclerView.Adapter<EmpRecycleAdapter.Em
             public void onClick(View view, int position, boolean isLongClick) {
                 Context context = view.getContext();
                 Intent intent = new Intent(context,EmpDetailsActivity.class);
-
-                int s = employees.get(position).id;
+                int s = employees.get(position).getId();
                 Bundle bundle = new Bundle();
                 bundle.putInt("ID", s);
                 intent.putExtras(bundle);

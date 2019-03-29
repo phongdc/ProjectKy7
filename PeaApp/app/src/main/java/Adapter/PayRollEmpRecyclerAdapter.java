@@ -15,8 +15,6 @@ import com.example.phongdc.peaapp.R;
 import java.util.List;
 
 import Model.PayRollEmp;
-import Model.TimeFrame;
-
 
 
 public class PayRollEmpRecyclerAdapter extends RecyclerView.Adapter<PayRollEmpRecyclerAdapter.PayRollEmpViewHolder> {

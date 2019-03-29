@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/ListBackground">
 
 <include android:id="@+id/toolbar"
     layout="@layout/toolbar"/>
@@ -26,6 +27,7 @@
         app:fabSize="normal"
         app:layout_anchor="@id/rv_Payslip_template"
         app:layout_anchorGravity="bottom|right|end"
-        android:src="@drawable/icon_add"
+        android:src="@drawable/iconadd"
+        android:backgroundTint="@color/colorPrimary"
         android:onClick="clickToCreateTemplate"/>
 </android.support.design.widget.CoordinatorLayout>
