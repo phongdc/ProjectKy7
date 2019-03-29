@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.example.phongdc.peaapp.ItemClickListener;
 import com.example.phongdc.peaapp.R;
 import com.example.phongdc.peaapp.ShiftRegister.ShiftRegisterDetailsActivity;
+import com.example.phongdc.peaapp.ShiftRegister.ShiftRegisterDetailsActivity;
 
 import java.util.List;
 
@@ -61,13 +62,13 @@ public static class ShiftRegisterViewHolder extends  RecyclerView.ViewHolder imp
 
     @NonNull
     @Override
-    public ShiftRegisterViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public GetShiftRegisterRecyclerAdapter.ShiftRegisterViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.shift_register_view, viewGroup, false);
-        return new ShiftRegisterViewHolder(view);
+        return new GetShiftRegisterRecyclerAdapter.ShiftRegisterViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(final ShiftRegisterViewHolder ShiftRegisterViewHolder, final int i) {
+    public void onBindViewHolder(final GetShiftRegisterRecyclerAdapter.ShiftRegisterViewHolder ShiftRegisterViewHolder, final int i) {
         ShiftRegisterViewHolder.tvShiftRegisterName.setText(shiftRegisters.get(i).getEmpName().toString());
 
 //        if(shiftRegisters.get(i).getStatus().toString().equals("Đã duyệt")){

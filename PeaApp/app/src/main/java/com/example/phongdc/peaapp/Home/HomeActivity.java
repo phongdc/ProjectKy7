@@ -21,6 +21,7 @@ import com.example.phongdc.peaapp.PayslipTemplate.GetAllPayslipTemplateActivity;
 import com.example.phongdc.peaapp.R;
 import com.example.phongdc.peaapp.SalaryRule.SalaryRuleGroupActivity;
 import com.example.phongdc.peaapp.ShiftRegister.AcceptShiftRegister;
+import com.example.phongdc.peaapp.ShiftRegister.GetShiftRegisterActivity;
 import com.example.phongdc.peaapp.TimeFrame.TimeFrameActivity;
 import com.example.phongdc.peaapp.User.MyDetailActivity;
 
@@ -126,7 +127,7 @@ public class HomeActivity extends AppCompatActivity implements FragmentDrawer.Fr
 
 
     public void clickToAcceptShiftRegister(View view) {
-        startActivity(new Intent(HomeActivity.this, AcceptShiftRegister.class));
+        startActivity(new Intent(HomeActivity.this,GetShiftRegisterActivity.class));
     }
 
     public void clickToSalaryRule(View view) {

@@ -24,8 +24,8 @@ public class GetAttendancePresenter {
         this.attendanceView = attendanceView;
         this.appRepository = new AppRepositoryImpl();
     }
-    public void getAttendace(String toDate,String fromDate,int empId){
-        appRepository.getAttendence(context, toDate, fromDate, empId, new CallBackData<List<Attendance>>() {
+    public void getAttendace(String token,String toDate,String fromDate,int empId){
+        appRepository.getAttendence(context,token,toDate, fromDate, empId, new CallBackData<List<Attendance>>() {
             @Override
             public void onSuccess(List<Attendance> attendances) {
                 attendanceView.getAttendance(attendances);

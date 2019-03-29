@@ -11,6 +11,8 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.phongdc.peaapp.AsyncHttpClient.HttpUtils;
+import com.example.phongdc.peaapp.Home.HomeActivity;
 import com.example.phongdc.peaapp.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -94,12 +96,13 @@ public class CreateTimeFrame extends AppCompatActivity implements View.OnClickLi
         params.put("name", nameTimeFrame);
         params.put("start_time",start);
         params.put("end_time", end);
-        params.put("brand_id", brandID);
+        params.put("brand_id", 5);
+        params.put("break_time","00:00:00");
 
 
         params.setUseJsonStreamer(true);
 
-        asyncHttpClient.post("http://payroll.unicode.edu.vn/api/time_frame", params, new AsyncHttpResponseHandler() {
+        HttpUtils.postByUrlAuth("http://payroll.unicode.edu.vn/api/time_frame", HomeActivity.getToken(),params, new AsyncHttpResponseHandler() {
             @Override
             public void onStart() {
             }

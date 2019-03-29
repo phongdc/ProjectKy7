@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.phongdc.peaapp.AsyncHttpClient.HttpUtils;
+import com.example.phongdc.peaapp.Home.HomeActivity;
 import com.example.phongdc.peaapp.R;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
@@ -19,10 +20,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import Adapter.GetShiftRegisterRecyclerAdapter;
 import Adapter.ShiftRegisterDetailsRecyclerAdapter;
-import Model.Employee;
-import Model.ShiftRegister;
 import Model.ShiftRegisterDetails;
 import cz.msebera.android.httpclient.Header;
 
@@ -33,7 +31,7 @@ public class ShiftRegisterDetailsActivity extends AppCompatActivity {
     private TextView tvTitle;
     private RecyclerView rv_ShiftRegisterDetails;
     private List<ShiftRegisterDetails> shiftRegisterList;
-
+    private String token;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +39,7 @@ public class ShiftRegisterDetailsActivity extends AppCompatActivity {
 
         Bundle extras = this.getIntent().getExtras();
         name = extras.getString("EmpNAME");
-
+        token = HomeActivity.getToken();
         findViewById();
         tvTitle.setText("Shift Register Details");
         shiftRegisterList = new ArrayList<>();
@@ -56,7 +54,7 @@ public class ShiftRegisterDetailsActivity extends AppCompatActivity {
     }
 
     public void getDetails(){
-        HttpUtils.getByUrl("http://payroll.unicode.edu.vn/api/shift_register", null, new JsonHttpResponseHandler(){
+       HttpUtils.getByUrlAuth("http://payroll.unicode.edu.vn/api/shift_register",token, null, new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 try {

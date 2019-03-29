@@ -39,11 +39,11 @@ public class PayPeriodAddListEmployee extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pay_period_add_list_emp);
-
+        token = HomeActivity.getToken();
         Bundle extras = this.getIntent().getExtras();
         id = extras.getInt("ID");
         name = extras.getString("NAME");
-        token = HomeActivity.getToken();
+
         checkParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         checkParams.setMargins(10, 10, 10, 10);
         checkParams.gravity = Gravity.LEFT;
@@ -57,7 +57,7 @@ public class PayPeriodAddListEmployee extends AppCompatActivity {
 
     public void getEmployee(){
 
-        HttpUtils.getByUrlAuth("http://payroll.unicode.edu.vn/api/employee",token,null, new JsonHttpResponseHandler(){
+        HttpUtils.getByUrlAuth("http://payroll.unicode.edu.vn/api/employee",token, null, new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
 
@@ -107,7 +107,7 @@ public class PayPeriodAddListEmployee extends AppCompatActivity {
         params.put("group_emp", 0);
         params.setUseJsonStreamer(true);
 
-        HttpUtils.postByUrlAuth("http://payroll.unicode.edu.vn/api/payroll_period/apply", token,params, new AsyncHttpResponseHandler() {
+        HttpUtils.postByUrlAuth("http://payroll.unicode.edu.vn/api/payroll_period/apply",token, params, new AsyncHttpResponseHandler() {
             @Override
             public void onStart() {
             }

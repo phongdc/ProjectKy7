@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.phongdc.peaapp.AsyncHttpClient.HttpUtils;
+import com.example.phongdc.peaapp.Home.HomeActivity;
 import com.example.phongdc.peaapp.R;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
@@ -34,7 +35,7 @@ public class TimeFrameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_time_frame);
         findViewById();
-        tvTitle.setText("TimeFrame");
+        tvTitle.setText("Ca làm việc");
         timeFrameList = new ArrayList<>();
         rv_TimeFrame.setLayoutManager(new LinearLayoutManager(this));
         getTimeFrame();
@@ -47,7 +48,7 @@ public class TimeFrameActivity extends AppCompatActivity {
 
     }
     public void getTimeFrame(){
-        HttpUtils.getByUrl("http://payroll.unicode.edu.vn/api/time_frame", null, new JsonHttpResponseHandler(){
+        HttpUtils.getByUrlAuth("http://payroll.unicode.edu.vn/api/time_frame", HomeActivity.getToken(),null, new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 try {
@@ -61,8 +62,6 @@ public class TimeFrameActivity extends AppCompatActivity {
                         timeFrame.setStart_time(object.getString("start_time"));
                         timeFrame.setEnd_time(object.getString("end_time"));
                         timeFrame.setDuration(object.getString("duration"));
-                        timeFrame.setBrand_id(object.getInt("brand_id"));
-                        timeFrame.setBreak_time(object.getString("break_time"));
                         timeFrameList.add(timeFrame);
                     }
                     rv_TimeFrame.setAdapter(new TimeFrameRecyclerAdapter(timeFrameList, TimeFrameActivity.this));

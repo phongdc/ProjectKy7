@@ -10,6 +10,7 @@ import com.applandeo.materialcalendarview.CalendarView;
 import com.applandeo.materialcalendarview.EventDay;
 import com.applandeo.materialcalendarview.exceptions.OutOfDateRangeException;
 import com.applandeo.materialcalendarview.listeners.OnDayClickListener;
+import com.example.phongdc.peaapp.Home.HomeEmployee;
 import com.example.phongdc.peaapp.presenters.GetAttendanceStatus;
 import com.example.phongdc.peaapp.views.AttendaneStatus;
 
@@ -43,7 +44,7 @@ private List<Boolean> status;
             String maxCalendar = covertDateToString(max);
             Log.e("max",maxCalendar);
             getAttendanceStatus = new GetAttendanceStatus(CalendarEmployeeActivity.this, CalendarEmployeeActivity.this,this);
-            getAttendanceStatus.getAttendanceStatus(maxCalendar,minCalendar,2);
+            getAttendanceStatus.getAttendanceStatus(HomeEmployee.getToken(),maxCalendar,minCalendar, HomeEmployee.getUserID());
         } catch (ParseException e) {
             e.printStackTrace();
         }

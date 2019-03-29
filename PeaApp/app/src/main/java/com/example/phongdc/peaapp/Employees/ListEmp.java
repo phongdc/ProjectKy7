@@ -60,6 +60,7 @@ public class ListEmp extends AppCompatActivity {
                     for (int i = 0; i < dataArray.length(); i++) {
                         Employee employee = new Employee();
                         JSONObject object = dataArray.getJSONObject(i);
+                        employee.setId(object.getInt("id"));
                         employee.setEmployee_name(object.getString("employee_name"));
                         employee.setCode(object.getString("code"));
                         employeeList.add(employee);

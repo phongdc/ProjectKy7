@@ -3,7 +3,6 @@
     package="com.example.phongdc.peaapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.SET_DEBUG_APP" />
 
     <application
         android:allowBackup="true"
@@ -14,7 +13,10 @@
         android:theme="@style/AppTheme">
         <activity android:name=".EmployeeGroups.GetEmpGroupActivity" />
         <activity android:name=".MainActivity">
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".DayMode.GetInformationDayTypeActivity" />
         <activity android:name=".DayMode.DayModeActivity" />
@@ -42,18 +44,16 @@
         <activity android:name=".SalaryRule.SalaryRule" />
         <activity android:name=".SalaryRule.CreateSalaryRule" />
         <activity android:name=".Home.HomeEmployee" />
+        <activity android:name=".ShiftRegister.ShiftRegisterDetailsActivity" />
         <activity android:name=".PayRollEmpActivity" />
         <activity android:name=".PayslipTemplate.PayslipTemplateDetailActivity"></activity>
-        <activity android:name=".CalendarEmployeeActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".CalendarEmployeeDetailActivity">
+        <activity android:name=".CalendarEmployeeActivity"/>
+        <activity android:name=".Login.RegisterEmployeeActivity"/>
+        <activity android:name=".CalendarEmployeeDetailActivity"/>
+        <activity android:name=".PaySipDetailActivity">
 
         </activity>
+
     </application>
 
 </manifest>

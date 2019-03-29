@@ -4,13 +4,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.phongdc.peaapp.AsyncHttpClient.HttpUtils;
@@ -29,8 +25,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Model.EmpGroup;
-import Model.Employee;
-import Model.PayslipTemplate;
 import cz.msebera.android.httpclient.Header;
 
 public class PayPeriodAddGroupEmployee extends AppCompatActivity {
@@ -43,7 +37,7 @@ public class PayPeriodAddGroupEmployee extends AppCompatActivity {
     RadioGroup rdGroupEmp;
     RadioButton rdEmp;
     int selectedId;
-    private String token;
+    private  String token;
 //    Spinner spnEmpGroup;
 //    private int empGroupID;
 
@@ -71,7 +65,7 @@ public class PayPeriodAddGroupEmployee extends AppCompatActivity {
         rdGroupEmp.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                selectedId = rdGroupEmp.getCheckedRadioButtonId();
+                        selectedId = rdGroupEmp.getCheckedRadioButtonId();
             }
         });
 
@@ -96,7 +90,7 @@ public class PayPeriodAddGroupEmployee extends AppCompatActivity {
 
     public void getGroupEmployee(){
 
-        HttpUtils.getByUrlAuth("http://payroll.unicode.edu.vn/api/employee_group",token, null, new JsonHttpResponseHandler(){
+       HttpUtils.getByUrlAuth("http://payroll.unicode.edu.vn/api/employee_group",token, null, new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
 
@@ -143,7 +137,7 @@ public class PayPeriodAddGroupEmployee extends AppCompatActivity {
 
         params.setUseJsonStreamer(true);
 
-        HttpUtils.postByUrlAuth("http://payroll.unicode.edu.vn/api/payroll_period/apply",token, params, new AsyncHttpResponseHandler() {
+       HttpUtils.postByUrlAuth("http://payroll.unicode.edu.vn/api/payroll_period/apply",token, params, new AsyncHttpResponseHandler() {
             @Override
             public void onStart() {
             }

@@ -1,14 +1,13 @@
 package com.example.phongdc.peaapp.ShiftRegister;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.widget.TextView;
 
 import com.example.phongdc.peaapp.AsyncHttpClient.HttpUtils;
+import com.example.phongdc.peaapp.Home.HomeActivity;
 import com.example.phongdc.peaapp.R;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
@@ -28,11 +27,12 @@ public class GetShiftRegisterActivity extends AppCompatActivity {
     private TextView tvTitle;
     private RecyclerView rv_ShiftRegister;
     private List<ShiftRegister> shiftRegisterList;
-
+    private String token;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_shift_register);
+        token = HomeActivity.getToken();
         findViewById();
         tvTitle.setText("Shift Register");
         shiftRegisterList = new ArrayList<>();
@@ -47,7 +47,7 @@ public class GetShiftRegisterActivity extends AppCompatActivity {
 
     }
     public void getTimeFrame(){
-        HttpUtils.getByUrl("http://payroll.unicode.edu.vn/api/shift_register", null, new JsonHttpResponseHandler(){
+        HttpUtils.getByUrlAuth("http://payroll.unicode.edu.vn/api/shift_register",token, null, new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 try {
@@ -57,14 +57,14 @@ public class GetShiftRegisterActivity extends AppCompatActivity {
                         JSONObject object = jArray.getJSONObject(i);
 //                        if(!object.getString("status").matches("Đã duyệt")){
                             ShiftRegister shiftRegister = new ShiftRegister();
-                            shiftRegister.setShiftId(object.getInt("id"));
-                            shiftRegister.setTimeFrameId(object.getInt("time_frame_id"));
+//                            shiftRegister.setShiftId(object.getInt("id"));
+//                            shiftRegister.setTimeFrameId(object.getInt("time_frame_id"));
                             shiftRegister.setEmpName(object.getString("name"));
-                            shiftRegister.setStartDate(object.getString("start_date"));
-                            shiftRegister.setEndDate(object.getString("end_date"));
-                            shiftRegister.setStartTime(object.getString("start_time"));
-                            shiftRegister.setEndTime(object.getString("end_time"));
-                            shiftRegister.setStatus(object.getString("status"));
+//                            shiftRegister.setStartDate(object.getString("start_date"));
+//                            shiftRegister.setEndDate(object.getString("end_date"));
+//                            shiftRegister.setStartTime(object.getString("start_time"));
+//                            shiftRegister.setEndTime(object.getString("end_time"));
+//                            shiftRegister.setStatus(object.getString("status"));
                             shiftRegisterList.add(shiftRegister);
 //                        }
 
@@ -79,8 +79,5 @@ public class GetShiftRegisterActivity extends AppCompatActivity {
     }
 
 
-    public void clickToGoToShiftAccept(View view) {
-        Intent intent = new Intent(GetShiftRegisterActivity.this, AcceptShiftRegister.class);
-        startActivity(intent);
-    }
+
 }

@@ -6,5 +6,7 @@ public class ConfigApi {
     public interface Api {
         String ATTENDANCE = "attendance";
         String STATUS = "attendance/status";
+        String PAYROLL_PERIOD= "payroll_period";
+        String PAYSLIP = "payslip";
     }
 }

@@ -1,0 +1,10 @@
+package com.example.phongdc.peaapp.views;
+
+import java.util.List;
+
+import Model.PayrollPeriodGet;
+
+public interface PayrollPeriod {
+    void getSuccess(List<PayrollPeriodGet> mPayrollPeriodGetList);
+    void getFail(String message);
+}

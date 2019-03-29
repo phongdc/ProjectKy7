@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.phongdc.peaapp.Home.HomeEmployee;
 import com.example.phongdc.peaapp.presenters.GetAttendancePresenter;
 import com.example.phongdc.peaapp.views.AttendanceView;
 
@@ -42,7 +43,7 @@ private TextView mTimeChoose,mShiftMin,mshiftMax,mCheckMin,mCheckMax,mTotal;
             imageView.setImageResource(image);
             mTimeChoose.setText("Ngày "+ time+"");
             mGetAttendancePresenter = new GetAttendancePresenter(CalendarEmployeeDetailActivity.this, CalendarEmployeeDetailActivity.this,this);
-            mGetAttendancePresenter.getAttendace(time,time,2);
+            mGetAttendancePresenter.getAttendace(HomeEmployee.getToken(),time,time,2);
     }
     private  void getDataIntent(){
         Bundle bundle = getIntent().getExtras();

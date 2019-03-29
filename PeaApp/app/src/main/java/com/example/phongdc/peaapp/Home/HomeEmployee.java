@@ -11,10 +11,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.phongdc.peaapp.CalendarEmployeeActivity;
 import com.example.phongdc.peaapp.CheckFinger.CheckFingerActivity;
 import com.example.phongdc.peaapp.LeftMenu.FragmentDrawer;
 import com.example.phongdc.peaapp.Login.LoginActivity;
 import com.example.phongdc.peaapp.PayRollEmpActivity;
+import com.example.phongdc.peaapp.PaySipDetailActivity;
 import com.example.phongdc.peaapp.PayrollDetail.PayrollDetailActivity;
 import com.example.phongdc.peaapp.PayrollPeriod.GetPeriodActivity;
 import com.example.phongdc.peaapp.R;
@@ -62,7 +64,7 @@ public class HomeEmployee extends AppCompatActivity implements FragmentDrawer.Fr
         tvUsername.setText(name);
         tvUserCode.setText(Code);
         accountCode = extras.getString("accountCode");
-        tvUserBalance.setText(balance);
+        tvUserBalance.setText(Integer.toString(balance));
         token = extras.getString("token");
     }
     public static String getUserCode(){
@@ -131,7 +133,7 @@ public class HomeEmployee extends AppCompatActivity implements FragmentDrawer.Fr
 
     }
     public void clickToAttendanceEmp(View view) {
-        startActivity(new Intent(HomeEmployee.this, PayrollDetailActivity.class));
+        startActivity(new Intent(HomeEmployee.this, CalendarEmployeeActivity.class));
     }
 
     public void clickToCheckAttendanceEmp(View view) {
@@ -142,5 +144,9 @@ public class HomeEmployee extends AppCompatActivity implements FragmentDrawer.Fr
     public void clickToAcceptShiftRegisterEmp(View view) {
         startActivity(new Intent(HomeEmployee.this, ShiftRegisterActivity.class));
 
+    }
+
+    public void clickToChiTiet(View view) {
+        startActivity(new Intent(HomeEmployee.this, PaySipDetailActivity.class));
     }
 }

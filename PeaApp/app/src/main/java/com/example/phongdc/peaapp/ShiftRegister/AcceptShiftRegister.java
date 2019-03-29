@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.phongdc.peaapp.AsyncHttpClient.HttpUtils;
+import com.example.phongdc.peaapp.Home.HomeActivity;
 import com.example.phongdc.peaapp.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -23,9 +24,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import Model.Employee;
 import Model.ShiftRegister;
-import Model.ShiftRegisterDetails;
 import cz.msebera.android.httpclient.Header;
 
 public class AcceptShiftRegister extends AppCompatActivity {
@@ -36,12 +35,12 @@ public class AcceptShiftRegister extends AppCompatActivity {
     LinearLayout linearLayout;
     LinearLayout.LayoutParams checkParams;
     List<CheckBox> allCheckBox;
-
+    private String token;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accept_shift_register);
-
+        token = HomeActivity.getToken();
         checkParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         checkParams.setMargins(10, 10, 10, 10);
         checkParams.gravity = Gravity.LEFT;
@@ -58,7 +57,7 @@ public class AcceptShiftRegister extends AppCompatActivity {
 
     public void getShift(){
 
-        HttpUtils.getByUrl("http://payroll.unicode.edu.vn/api/shift_register", null, new JsonHttpResponseHandler(){
+       HttpUtils.getByUrlAuth("http://payroll.unicode.edu.vn/api/shift_register",token, null, new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
 
@@ -115,7 +114,7 @@ public class AcceptShiftRegister extends AppCompatActivity {
 
         params.setUseJsonStreamer(true);
 
-        asyncHttpClient.post("http://payroll.unicode.edu.vn/api/attendance/accept", params, new AsyncHttpResponseHandler() {
+        HttpUtils.postByUrlAuth("http://payroll.unicode.edu.vn/api/attendance/accept",token, params, new AsyncHttpResponseHandler() {
             @Override
             public void onStart() {
             }

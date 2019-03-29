@@ -1,7 +1,6 @@
 package com.example.phongdc.peaapp.ShiftRegister;
 
 import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
@@ -15,6 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.phongdc.peaapp.AsyncHttpClient.HttpUtils;
+import com.example.phongdc.peaapp.Home.HomeActivity;
+import com.example.phongdc.peaapp.Home.HomeEmployee;
 import com.example.phongdc.peaapp.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -25,14 +26,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 import Model.Employee;
-import Model.PayslipTemplate;
+import Model.ShiftRegister;
 import Model.TimeFrame;
 import cz.msebera.android.httpclient.Header;
 
@@ -47,20 +47,22 @@ public class ShiftRegisterActivity  extends AppCompatActivity implements View.On
     private List<String> empName;
     private List<TimeFrame> timeFrameList;
     private List<String> timeFrameName;
+    private List<ShiftRegister> shiftRegisterList;
     private int empID;
     private int timeFrameID;
     Spinner spnEmployee;
     Spinner spnTimeFrame;
-
+    private  String token;
+    private int id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shift_register);
         dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        shiftRegisterList = new ArrayList<>();
         findViewsById();
-
+        token = HomeEmployee.getToken();
         setDateTimeField();
-        getEmployee();
         getTimeFrame();
 
         spnEmployee.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -152,52 +154,51 @@ public class ShiftRegisterActivity  extends AppCompatActivity implements View.On
         }
     }
     public void clickToAddShift(View view) {
-        AsyncHttpClient asyncHttpClient = new AsyncHttpClient();
-        final RequestParams params = new RequestParams();
-        JSONObject object = new JSONObject();
-
-        String from = edtShiftFromDate.getText().toString();
+        RequestParams params = new RequestParams();
+        String from = edtShiftFromDate.getText().toString().trim();
 //        String to = edtShiftTodate.getText().toString();
 //        String from = "2010-07-03";
 //        String to = "2012-08-04";
-
-        params.put("employee_id", 2);
-        params.put("start_time",from);
-        params.put("end_time", from);
-        params.put("time_frame_id", timeFrameID);
-
+        String token = HomeEmployee.getToken();
+        id = HomeEmployee.getUserID();
+        ShiftRegister shiftRegister = new ShiftRegister();
+        shiftRegister.setEmpId(id);
+        shiftRegister.setStart_time(from);
+        shiftRegister.setEnd_time(from);
+        shiftRegister.setTime_frame_id(timeFrameID);
+//        params.put("employee_id", id);
+//        params.put("start_time",from);
+//        params.put("end_time", from);
+//        params.put("time_frame_id", timeFrameID);
+        shiftRegisterList.add(shiftRegister);
+        JSONArray data = new JSONArray(shiftRegisterList);
+        JSONObject param = new JSONObject();
+        params.put("shift_register", data);
         params.setUseJsonStreamer(true);
-
-        asyncHttpClient.post("http://payroll.unicode.edu.vn/api/shift_register", params, new AsyncHttpResponseHandler() {
-            @Override
-            public void onStart() {
-            }
-
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-//                Intent intent = new Intent(ShiftRegisterActivity.this, GetPeriodActivity.class);
-//                startActivity(intent);
-                Toast.makeText(ShiftRegisterActivity.this,"Thêm Thành Công",Toast.LENGTH_SHORT ).show();
-
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                Toast.makeText(ShiftRegisterActivity.this,"Thêm that bai",Toast.LENGTH_SHORT ).show();
-//                Toast.makeText(ShiftRegisterActivity.this,params.toString(),Toast.LENGTH_SHORT ).show();
-            }
+        //params.
+       HttpUtils.postByUrlAuth("http://payroll.unicode.edu.vn/api/shift_register",token, params, new JsonHttpResponseHandler() {
 
 
-            @Override
-            public void onRetry(int retryNo) {
-                super.onRetry(retryNo);
-            }
+
+           @Override
+           public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+               super.onSuccess(statusCode, headers, response);
+               try {
+                   if (response.getBoolean("success") == true) {
+                       Toast.makeText(ShiftRegisterActivity.this, "Thêm Thành Công", Toast.LENGTH_SHORT).show();
+                   }
+               }catch (Exception e){
+                   e.printStackTrace();
+               }
+           }
+
+
         });
     }
 
     public void getTimeFrame(){
 
-        HttpUtils.getByUrl("http://payroll.unicode.edu.vn/api/time_frame", null, new JsonHttpResponseHandler(){
+       HttpUtils.getByUrlAuth("http://payroll.unicode.edu.vn/api/time_frame",token, null, new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
 
@@ -222,32 +223,7 @@ public class ShiftRegisterActivity  extends AppCompatActivity implements View.On
 
     }
 
-    public void getEmployee(){
 
-        HttpUtils.getByUrl("http://payroll.unicode.edu.vn/api/employee", null, new JsonHttpResponseHandler(){
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-
-                try {
-                    JSONObject json = new JSONObject(response.toString());
-                    JSONArray jArray = json.getJSONArray("data");
-
-                    for (int i = 0; i < jArray.length(); i++) {
-                        Employee employee = new Employee();
-                        JSONObject object = jArray.getJSONObject(i);
-                        employee.setId(object.getInt("id"));
-                        employee.setEmployee_name(object.getString("employee_name"));
-                        empList.add(employee);
-                        empName.add(object.getString("employee_name"));
-                    }
-                    spnEmployee.setAdapter(new ArrayAdapter<>(ShiftRegisterActivity.this, android.R.layout.simple_spinner_dropdown_item, empName));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
-    }
 
 
 

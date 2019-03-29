@@ -59,12 +59,13 @@ public class PayrollDetailActivity extends AppCompatActivity {
         String token =HomeActivity.getToken();
         HttpUtils.getAuth(nameApi,token, null, new JsonHttpResponseHandler() {
             @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 try {
                     payrolls.clear();
-                    for (int i = 0; i < response.length(); i++) {
+                    JSONArray data = (JSONArray) response.get("data");
+                    for (int i = 0; i < data.length(); i++) {
                         Payroll payroll = new Payroll();
-                        JSONObject object = response.getJSONObject(i);
+                        JSONObject object = data.getJSONObject(i);
                         payroll.setId(object.getInt("id"));
                         //payroll.setPayroll_detail_category_id(object.getInt("payroll_detail_category_id"));
                         //payroll.setSalary_rule_group_id(object.getInt("salary_rule_group_id"));

@@ -10,6 +10,43 @@ public class ShiftRegister {
     public String endDate;
     public String startTime;
     public String endTime;
+    private String start_time;
+    private String end_time;
+    private int time_frame_id;
+
+    public String getStart_time() {
+        return start_time;
+    }
+
+    public void setStart_time(String start_time) {
+        this.start_time = start_time;
+    }
+
+    public String getEnd_time() {
+        return end_time;
+    }
+
+    public void setEnd_time(String end_time) {
+        this.end_time = end_time;
+    }
+
+    public int getTime_frame_id() {
+        return time_frame_id;
+    }
+
+    public void setTime_frame_id(int time_frame_id) {
+        this.time_frame_id = time_frame_id;
+    }
+
+    public int empId;
+
+    public int getEmpId() {
+        return empId;
+    }
+
+    public void setEmpId(int empId) {
+        this.empId = empId;
+    }
 
     public int getShiftId() {
         return shiftId;

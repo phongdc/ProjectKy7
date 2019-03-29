@@ -9,13 +9,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.TextView;
-import com.example.phongdc.peaapp.R;
 
 import com.example.phongdc.peaapp.ItemClickListener;
+import com.example.phongdc.peaapp.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import Model.Payroll;

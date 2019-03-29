@@ -8,6 +8,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Home.HomeActivity"
+    android:background="@drawable/img"
     android:fitsSystemWindows="true">
 
     <!-- Layout to contain contents of main body of screen (drawer will slide over this) -->
@@ -26,7 +27,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:background="#8BC34A"
+
                 android:orientation="vertical"
                 android:padding="20dp">
 
@@ -36,7 +37,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="ADMIN"
-                    android:textColor="#0356FC"
+                    android:textColor="#FFEB3B"
                     android:textSize="30sp" />
 
                 <TextView
@@ -44,17 +45,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:textColor="#FFF"
                     android:text="Thứ 5, ngày 24 tháng 01 năm 2019"
                     android:textSize="25sp" />
             </LinearLayout>
             <RelativeLayout
                 android:padding="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="50dp">
+                android:layout_height="50dp"
+                android:background="@drawable/vien">
                 <TextView
                     android:id="@+id/tvCompany"
                     android:textSize="20dp"
                     android:text="FPT University"
+                    android:textColor="#FFF"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <TextView
@@ -62,301 +66,311 @@
                     android:layout_alignParentRight="true"
                     android:textSize="20dp"
                     android:text="ID: SE62594"
+                    android:textColor="#FFF"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </RelativeLayout>
-           <ScrollView
-               android:layout_width="match_parent"
-               android:layout_height="match_parent">
-            <LinearLayout
-                android:orientation="vertical"
+            <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <LinearLayout
-
+                    android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent">
                     <LinearLayout
-                        android:layout_weight="3"
+
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="wrap_content">
                         <LinearLayout
-                            android:paddingTop="10dp"
-                            android:paddingLeft="15dp"
-                            android:paddingRight="5dp"
-                            android:gravity="center"
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent">
                             <LinearLayout
+                                android:paddingTop="10dp"
+                                android:paddingLeft="15dp"
+                                android:paddingRight="5dp"
                                 android:gravity="center"
-                                android:layout_gravity="center"
-                                android:orientation="vertical"
-                                android:layout_width="match_parent"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:onClick="clickToEmployeeList">
-                                <ImageView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="100dp"
-                                    android:src="@drawable/group_icon"
-                                    />
-                                <TextView
-                                    android:textAlignment="center"
-                                    android:text="Nhân viên"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    />
-                            </LinearLayout>
-                        </LinearLayout>
-                        <LinearLayout
-                            android:paddingTop="10dp"
-                            android:paddingLeft="10dp"
-                            android:paddingRight="10dp"
-                            android:gravity="center"
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent">
-                            <LinearLayout
-
-                                android:gravity="center"
-                                android:layout_gravity="center"
-                                android:orientation="vertical"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:onClick="clickToGroupEmp"
-                                >
-                                <ImageView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="100dp"
-                                    android:src="@drawable/usergroup_icon"
-                                    />
-                                <TextView
-                                    android:textAlignment="center"
-                                    android:text="Nhóm nhân viên"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content" />
-                            </LinearLayout>
-                        </LinearLayout>
-                        <LinearLayout
-                            android:paddingTop="10dp"
-                            android:paddingLeft="5dp"
-                            android:paddingRight="15dp"
-                            android:gravity="center"
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent">
-                            <LinearLayout
-
-                                android:gravity="center"
-                                android:layout_gravity="center"
-                                android:orientation="vertical"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:onClick="clickToPayPeriod">
-                                <ImageView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="100dp"
-                                    android:src="@drawable/calendar_icon"/>
-                                <TextView
-                                    android:textAlignment="center"
-                                    android:text="Kỳ lương"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content" />
-                            </LinearLayout>
-                        </LinearLayout>
-                    </LinearLayout>
-                </LinearLayout>
-                <LinearLayout
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <LinearLayout
-                        android:layout_weight="3"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-                        <LinearLayout
-                            android:paddingTop="10dp"
-                            android:paddingLeft="15dp"
-                            android:paddingRight="5dp"
-                            android:gravity="center"
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent">
-                            <LinearLayout
-                                android:gravity="center"
-                                android:layout_gravity="center"
-                                android:orientation="vertical"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:onClick="clickToPaySlipTemplate">
-                                <ImageView
-
-                                    android:layout_width="match_parent"
-                                    android:layout_height="100dp"
-                                    android:src="@drawable/slip_icon"/>
-                                <TextView
-                                    android:textAlignment="center"
-                                    android:text="Mẫu phiếu lương"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content" />
-                            </LinearLayout>
-                        </LinearLayout>
-                        <LinearLayout
-                            android:paddingTop="10dp"
-                            android:paddingLeft="10dp"
-                            android:paddingRight="10dp"
-                            android:gravity="center"
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent">
-                            <LinearLayout
-
-                                android:gravity="center"
-                                android:layout_gravity="center"
-                                android:orientation="vertical"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:onClick="clickToPayrollDetail">
-                                <ImageView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="100dp"
+                                android:background="@drawable/vien">
+                                <LinearLayout
+                                    android:gravity="center"
                                     android:layout_gravity="center"
-                                    android:src="@drawable/iconpayrolls"/>
-                                <TextView
-                                    android:textAlignment="center"
-                                    android:text="Bảng lương"
+                                    android:orientation="vertical"
                                     android:layout_width="match_parent"
-                                    android:layout_height="wrap_content" />
+                                    android:layout_height="match_parent"
+                                    android:onClick="clickToEmployeeList">
+                                    <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="100dp"
+                                        android:src="@drawable/group_icon"
+                                        />
+                                    <TextView
+                                        android:textAlignment="center"
+                                        android:text="Nhân viên"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        />
+                                </LinearLayout>
                             </LinearLayout>
-                        </LinearLayout>
-                        <LinearLayout
-                            android:paddingTop="10dp"
-                            android:paddingLeft="5dp"
-                            android:paddingRight="15dp"
-                            android:gravity="center"
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent">
                             <LinearLayout
-
+                                android:paddingTop="10dp"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
                                 android:gravity="center"
-                                android:layout_gravity="center"
-                                android:orientation="vertical"
-                                android:layout_width="match_parent"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:onClick="clickToDayMode">
-                                <ImageView
+                                android:background="@drawable/vien">
+                                <LinearLayout
+
+                                    android:gravity="center"
+                                    android:layout_gravity="center"
+                                    android:orientation="vertical"
                                     android:layout_width="match_parent"
-                                    android:layout_height="100dp"
-                                    android:src="@drawable/daymode_icon"/>
-                                <TextView
-                                    android:textAlignment="center"
-                                    android:text="Lịch ngày làm"
+                                    android:layout_height="match_parent"
+                                    android:onClick="clickToGroupEmp"
+                                    >
+                                    <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="100dp"
+                                        android:src="@drawable/usergroup_icon"
+                                        />
+                                    <TextView
+                                        android:textAlignment="center"
+                                        android:text="Nhóm nhân viên"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+                                </LinearLayout>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:paddingTop="10dp"
+                                android:paddingLeft="5dp"
+                                android:paddingRight="15dp"
+                                android:gravity="center"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/vien">
+                                <LinearLayout
+
+                                    android:gravity="center"
+                                    android:layout_gravity="center"
+                                    android:orientation="vertical"
                                     android:layout_width="match_parent"
-                                    android:layout_height="wrap_content" />
+                                    android:layout_height="match_parent"
+                                    android:onClick="clickToPayPeriod">
+                                    <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="100dp"
+                                        android:src="@drawable/calendar_icon"/>
+                                    <TextView
+                                        android:textAlignment="center"
+                                        android:text="Kỳ lương"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+                                </LinearLayout>
                             </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
-                </LinearLayout>
-                <LinearLayout
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
                     <LinearLayout
-                        android:layout_weight="3"
+
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="wrap_content">
                         <LinearLayout
-                            android:paddingTop="10dp"
-                            android:paddingLeft="15dp"
-                            android:paddingRight="5dp"
-                            android:gravity="center"
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent">
                             <LinearLayout
+                                android:paddingTop="10dp"
+                                android:paddingLeft="15dp"
+                                android:paddingRight="5dp"
                                 android:gravity="center"
-                                android:layout_gravity="center"
-                                android:orientation="vertical"
-                                android:layout_width="match_parent"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:onClick="clickToTimeFrame"
-                                >
+                                android:background="@drawable/vien">
+                                <LinearLayout
+                                    android:gravity="center"
+                                    android:layout_gravity="center"
+                                    android:orientation="vertical"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:onClick="clickToPaySlipTemplate">
+                                    <ImageView
 
-                                <ImageView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="100dp"
-                                    android:src="@drawable/timeframe_icon" />
-                                <TextView
-                                    android:textAlignment="center"
-                                    android:text="Time frame"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content" />
+                                        android:layout_width="match_parent"
+                                        android:layout_height="100dp"
+                                        android:src="@drawable/slip_icon"/>
+                                    <TextView
+                                        android:textAlignment="center"
+                                        android:text="Mẫu phiếu lương"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+                                </LinearLayout>
                             </LinearLayout>
-                        </LinearLayout>
-                        <LinearLayout
-                            android:paddingTop="10dp"
-                            android:paddingLeft="10dp"
-                            android:paddingRight="10dp"
-                            android:gravity="center"
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent">
                             <LinearLayout
+                                android:paddingTop="10dp"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
+                                android:gravity="center"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/vien">
+                                <LinearLayout
 
-                                android:gravity="center"
-                                android:layout_gravity="center"
-                                android:orientation="vertical"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:onClick="clickToAcceptShiftRegister"
-                                >
-                                <ImageView
+                                    android:gravity="center"
+                                    android:layout_gravity="center"
+                                    android:orientation="vertical"
                                     android:layout_width="match_parent"
-                                    android:layout_height="100dp"
-                                    android:src="@drawable/clipboard_icon"/>
-                                <TextView
-                                    android:textAlignment="center"
-                                    android:text="Duyệt ca"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content" />
+                                    android:layout_height="match_parent"
+                                    android:onClick="clickToPayrollDetail">
+                                    <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="100dp"
+                                        android:layout_gravity="center"
+                                        android:src="@drawable/iconpayrolls"/>
+                                    <TextView
+                                        android:textAlignment="center"
+                                        android:text="Bảng lương"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+                                </LinearLayout>
                             </LinearLayout>
-                        </LinearLayout>
-                        <LinearLayout
-                            android:paddingTop="10dp"
-                            android:paddingLeft="5dp"
-                            android:paddingRight="15dp"
-                            android:gravity="center"
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent">
                             <LinearLayout
+                                android:paddingTop="10dp"
+                                android:paddingLeft="5dp"
+                                android:paddingRight="15dp"
                                 android:gravity="center"
-                                android:layout_gravity="center"
-                                android:orientation="vertical"
-                                android:layout_width="match_parent"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:onClick="clickToSalaryRule"
-                                >
-                                <ImageView
+                                android:background="@drawable/vien">
+                                <LinearLayout
+
+                                    android:gravity="center"
+                                    android:layout_gravity="center"
+                                    android:orientation="vertical"
                                     android:layout_width="match_parent"
-                                    android:layout_height="100dp"
-                                    android:src="@drawable/salaryrule_icon"
-                                    />
-                                <TextView
-                                    android:textAlignment="center"
-                                    android:text="Quy định lương"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content" />
+                                    android:layout_height="match_parent"
+                                    android:onClick="clickToDayMode">
+                                    <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="100dp"
+                                        android:src="@drawable/daymode_icon"/>
+                                    <TextView
+                                        android:textAlignment="center"
+                                        android:text="Lịch ngày làm"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+                                </LinearLayout>
                             </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <LinearLayout
+                                android:paddingTop="10dp"
+                                android:paddingLeft="15dp"
+                                android:paddingRight="5dp"
+                                android:gravity="center"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/vien">
+                                <LinearLayout
+                                    android:gravity="center"
+                                    android:layout_gravity="center"
+                                    android:orientation="vertical"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:onClick="clickToTimeFrame"
+                                    >
+
+                                    <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="100dp"
+                                        android:src="@drawable/timeframe_icon" />
+                                    <TextView
+                                        android:textAlignment="center"
+                                        android:text="Ca làm việc"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+                                </LinearLayout>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:paddingTop="10dp"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
+                                android:gravity="center"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/vien">
+                                <LinearLayout
+
+                                    android:gravity="center"
+                                    android:layout_gravity="center"
+                                    android:orientation="vertical"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:onClick="clickToAcceptShiftRegister"
+                                    >
+                                    <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="100dp"
+                                        android:src="@drawable/clipboard_icon"/>
+                                    <TextView
+                                        android:textAlignment="center"
+                                        android:text="Duyệt ca"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+                                </LinearLayout>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:paddingTop="10dp"
+                                android:paddingLeft="5dp"
+                                android:paddingRight="15dp"
+                                android:gravity="center"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/vien">
+                                <LinearLayout
+                                    android:gravity="center"
+                                    android:layout_gravity="center"
+                                    android:orientation="vertical"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:onClick="clickToSalaryRule"
+                                    >
+                                    <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="100dp"
+                                        android:src="@drawable/salaryrule_icon"
+                                        />
+                                    <TextView
+                                        android:textAlignment="center"
+                                        android:text="Quy định lương"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+
                 </LinearLayout>
-
-
-
-            </LinearLayout>
-           </ScrollView>
+            </ScrollView>
         </LinearLayout>
     </FrameLayout>
 

@@ -131,4 +131,8 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void clickToCreateAccount(View view) {
+        startActivity(new Intent(LoginActivity.this, RegisterEmployeeActivity.class));
+    }
 }

@@ -11,8 +11,6 @@ import com.example.phongdc.peaapp.views.AttendaneStatus;
 import java.util.List;
 
 import Model.Status;
-
-
 public class GetAttendanceStatus {
     private Context context;
     private Activity activity;
@@ -25,8 +23,8 @@ public class GetAttendanceStatus {
         this.attendaneStatus = attendaneStatus;
         this.appRepository = new AppRepositoryImpl();
     }
-    public void getAttendanceStatus(String toDate,String fromDate,int empId){
-        appRepository.getAttendenceStatus(context, toDate, fromDate, empId, new CallBackData<List<Status>>() {
+    public void getAttendanceStatus(String token,String toDate,String fromDate,int empId){
+        appRepository.getAttendenceStatus(context,token,toDate, fromDate, empId, new CallBackData<List<Status>>() {
             @Override
             public void onSuccess(List<Status> statuses) {
                 attendaneStatus.getAttdanceStatus(statuses);

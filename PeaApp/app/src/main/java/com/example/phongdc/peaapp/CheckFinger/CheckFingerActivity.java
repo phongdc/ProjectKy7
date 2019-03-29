@@ -11,7 +11,10 @@ import com.example.phongdc.peaapp.AsyncHttpClient.HttpUtils;
 import com.example.phongdc.peaapp.Home.HomeEmployee;
 import com.example.phongdc.peaapp.R;
 import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+
+import org.json.JSONObject;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -40,16 +43,23 @@ public class CheckFingerActivity extends AppCompatActivity {
         params.put("store_id", 1);
         params.put("code", code);
         params.setUseJsonStreamer(true);
-        HttpUtils.postAuth("check_finger",token, params, new AsyncHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                Toast.makeText(CheckFingerActivity.this, "Xin cảm ơn", Toast.LENGTH_SHORT).show();
-            }
+        HttpUtils.postAuth("check_finger",token, params, new JsonHttpResponseHandler() {
 
             @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+                try {
+                    if (response.getInt("result-code") == 13) {
+                        Toast.makeText(CheckFingerActivity.this, "Vui lòng đăng nhập wifi công ty!", Toast.LENGTH_LONG).show();
+                    }else {
+                        Toast.makeText(CheckFingerActivity.this, "Xin cảm ơn", Toast.LENGTH_SHORT).show();
 
+                    }
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
             }
+
         });
     }
 

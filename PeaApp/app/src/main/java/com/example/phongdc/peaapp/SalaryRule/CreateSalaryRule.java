@@ -65,9 +65,9 @@ public class CreateSalaryRule extends AppCompatActivity {
     }
     private void findViewById(){
         tvTitle = findViewById(R.id.tvTitle);
-        tvTitle.setText("");
+        tvTitle.setText("Tạo quy định lương");
         edtSalaryRuleName = findViewById(R.id.edtSalaryRuleName);
-        edtRateValue = findViewById(R.id.edtSalaryValue);
+        edtSalaryValue = findViewById(R.id.edtSalaryValue);
         edtDurationMin = findViewById(R.id.edtDurationMin);
         edtDurationMax = findViewById(R.id.edtDurationMax);
         edtRateValue = findViewById(R.id.edtRateValue);
@@ -105,6 +105,7 @@ public class CreateSalaryRule extends AppCompatActivity {
         params.put("duration_max", edtDurationMax.getText().toString());
         params.put("fix_value", edtSalaryValue.getText().toString());
         params.put("rate_value", edtRateValue.getText().toString());
+        params.put("brand_id", 5);
         params.setUseJsonStreamer(true);
         HttpUtils.postAuth("salary_rule",token, null, new AsyncHttpResponseHandler() {
             @Override
