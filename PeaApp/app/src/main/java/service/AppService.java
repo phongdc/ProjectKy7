@@ -30,4 +30,13 @@ public interface AppService {
             @Query("from_date") String fromDate,
             @Query("emp_id") int empId
     );
+    @GET(ConfigApi.Api.PAYROLL_PERIOD)
+    Call<ResponseBody> getPayROll_PERIOD( @HeaderMap Map<String, String> header,
+            @Query("emp_id") int  empID
+    );
+    @GET(ConfigApi.Api.PAYSLIP)
+    Call<ResponseBody> getPaySlip( @HeaderMap Map<String, String> header,
+                                          @Query("period_id") int periodId,
+                                          @Query("emp_id") int  empID
+    );
 }

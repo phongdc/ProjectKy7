@@ -4,8 +4,6 @@ public class PaySlip {
     private int id;
     private int groupId;
     private String groupName;
-
-
     public int getId() {
         return id;
     }

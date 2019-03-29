@@ -12,17 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CalendarEmployeeActivity">
-
-        </activity>
+        <activity android:name=".CalendarEmployeeActivity"></activity>
         <activity android:name=".HomeEmployee" />
         <activity android:name=".GetEmpGroupActivity" />
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".GetInformationDayTypeActivity" />
         <activity android:name=".DayModeActivity" />
@@ -46,7 +40,14 @@
         <activity android:name=".GetShiftRegisterActivity" />
         <activity android:name=".PayPeriodDetails" />
         <activity android:name=".CreatePayrollDetailActivity" />
-        <activity android:name=".CalendarEmployeeDetailActivity"></activity>
+        <activity android:name=".CalendarEmployeeDetailActivity" />
+        <activity android:name=".PaySipDetailActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
